@@ -43,7 +43,7 @@ Next, install all the dependencies
 $ pip install -r requirements.txt
 ```
 
-The code requires `Cython 0.29.14`, which compiles some the critical algorithm components into C. For this, you will need a c-compiler (though the errors will only pop-up later).
+The code requires `Cython 0.29.14`, which compiles some of the critical algorithm components into C. For this, you will need a c-compiler (though the errors will only pop-up later).
 
 Next, activate a python session.
 
@@ -117,7 +117,7 @@ It would be great if someone wishes to use this for real route planning (check t
 5. Network location of dumpsite, landfills or intermediate facilities, and the depot.
 6. Time required to offload waste.
 
-Points 3 and 4 is a tall order for most municipalities. The street network can be collected from OSM, but thereafter it has to be split into road segments and then converted into the correct format for these algorithms. We've hacked our way through this a few times, but unfortunately we have nothing to automate this process.
+Points 3 and 4 are a tall order for most municipalities. The street network can be collected from OSM, but thereafter it has to be split into road segments and then converted into the correct format for these algorithms. We've hacked our way through this a few times, but unfortunately we have nothing to automate this process.
 
 The speed and waste quantities are a really tricky one. We've been working on a way to use GPS records of the vehicle fleet, which could also be linked to weigh-bridge data. It's a simple process. See [this post](https://www.linkedin.com/pulse/using-data-science-analyse-waste-collection-willemse-phd-pr-eng-/) for some preliminary results.
 
