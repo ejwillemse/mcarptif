@@ -1,0 +1,33 @@
+NAME : gdb20.txt
+NODES : 11
+REQ_EDGES : 22
+NOREQ_EDGES : 0
+REQ_ARCS : 0
+NOREQ_ARCS : 0
+VEHICLES : 4
+CAPACITY : 27
+DUMPING_COST : 0
+LIST_REQ_EDGES :
+(1,3)   serv_cost 2   trave_cost 2   demand 8
+(1,4)   serv_cost 3   trave_cost 3   demand 1
+(1,5)   serv_cost 4   trave_cost 4   demand 1
+(1,7)   serv_cost 1   trave_cost 1   demand 7
+(1,8)   serv_cost 9   trave_cost 9   demand 8
+(1,9)   serv_cost 1   trave_cost 1   demand 1
+(2,5)   serv_cost 6   trave_cost 6   demand 5
+(2,9)   serv_cost 2   trave_cost 2   demand 4
+(3,7)   serv_cost 7   trave_cost 7   demand 1
+(3,10)   serv_cost 7   trave_cost 7   demand 4
+(4,7)   serv_cost 4   trave_cost 4   demand 1
+(4,8)   serv_cost 9   trave_cost 9   demand 1
+(4,9)   serv_cost 6   trave_cost 6   demand 9
+(5,6)   serv_cost 7   trave_cost 7   demand 9
+(5,7)   serv_cost 2   trave_cost 2   demand 3
+(5,8)   serv_cost 8   trave_cost 8   demand 7
+(5,11)   serv_cost 7   trave_cost 7   demand 6
+(7,8)   serv_cost 3   trave_cost 3   demand 5
+(7,10)   serv_cost 4   trave_cost 4   demand 7
+(7,11)   serv_cost 4   trave_cost 4   demand 9
+(8,9)   serv_cost 7   trave_cost 7   demand 3
+(8,10)   serv_cost 2   trave_cost 2   demand 7
+DEPOT : 1

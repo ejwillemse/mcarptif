@@ -1,0 +1,103 @@
+NAME : val9A.txt
+NODES : 50
+REQ_EDGES : 92
+NOREQ_EDGES : 0
+REQ_ARCS : 0
+NOREQ_ARCS : 0
+VEHICLES : 3
+CAPACITY : 235
+DUMPING_COST : 0
+LIST_REQ_EDGES :
+(1,5)   serv_cost 3   trave_cost 3   demand 12
+(1,9)   serv_cost 3   trave_cost 3   demand 7
+(1,10)   serv_cost 4   trave_cost 4   demand 13
+(1,15)   serv_cost 4   trave_cost 4   demand 8
+(1,16)   serv_cost 4   trave_cost 4   demand 12
+(2,3)   serv_cost 2   trave_cost 2   demand 3
+(2,5)   serv_cost 2   trave_cost 2   demand 4
+(3,4)   serv_cost 3   trave_cost 3   demand 6
+(3,6)   serv_cost 4   trave_cost 4   demand 7
+(4,7)   serv_cost 3   trave_cost 3   demand 6
+(5,6)   serv_cost 2   trave_cost 2   demand 8
+(5,10)   serv_cost 2   trave_cost 2   demand 5
+(6,7)   serv_cost 3   trave_cost 3   demand 7
+(6,11)   serv_cost 3   trave_cost 3   demand 6
+(7,12)   serv_cost 2   trave_cost 2   demand 8
+(8,9)   serv_cost 5   trave_cost 5   demand 10
+(8,13)   serv_cost 6   trave_cost 6   demand 11
+(9,13)   serv_cost 4   trave_cost 4   demand 12
+(9,14)   serv_cost 1   trave_cost 1   demand 3
+(10,11)   serv_cost 2   trave_cost 2   demand 4
+(10,17)   serv_cost 4   trave_cost 4   demand 8
+(11,12)   serv_cost 2   trave_cost 2   demand 5
+(11,18)   serv_cost 3   trave_cost 3   demand 9
+(12,19)   serv_cost 4   trave_cost 4   demand 8
+(13,21)   serv_cost 1   trave_cost 1   demand 3
+(13,22)   serv_cost 4   trave_cost 4   demand 10
+(14,15)   serv_cost 3   trave_cost 3   demand 5
+(14,22)   serv_cost 4   trave_cost 4   demand 8
+(14,23)   serv_cost 2   trave_cost 2   demand 5
+(15,16)   serv_cost 4   trave_cost 4   demand 10
+(15,23)   serv_cost 1   trave_cost 1   demand 3
+(15,24)   serv_cost 2   trave_cost 2   demand 4
+(16,17)   serv_cost 3   trave_cost 3   demand 7
+(17,18)   serv_cost 1   trave_cost 1   demand 3
+(17,24)   serv_cost 4   trave_cost 4   demand 12
+(17,30)   serv_cost 6   trave_cost 6   demand 14
+(17,31)   serv_cost 4   trave_cost 4   demand 15
+(18,19)   serv_cost 1   trave_cost 1   demand 2
+(19,32)   serv_cost 7   trave_cost 7   demand 16
+(20,21)   serv_cost 1   trave_cost 1   demand 5
+(20,25)   serv_cost 3   trave_cost 3   demand 5
+(21,22)   serv_cost 2   trave_cost 2   demand 4
+(21,26)   serv_cost 2   trave_cost 2   demand 4
+(22,23)   serv_cost 5   trave_cost 5   demand 8
+(22,28)   serv_cost 4   trave_cost 4   demand 8
+(23,24)   serv_cost 2   trave_cost 2   demand 5
+(23,28)   serv_cost 2   trave_cost 2   demand 4
+(23,29)   serv_cost 4   trave_cost 4   demand 3
+(24,29)   serv_cost 2   trave_cost 2   demand 6
+(24,30)   serv_cost 3   trave_cost 3   demand 5
+(25,26)   serv_cost 2   trave_cost 2   demand 4
+(25,33)   serv_cost 1   trave_cost 1   demand 4
+(26,27)   serv_cost 3   trave_cost 3   demand 5
+(26,34)   serv_cost 4   trave_cost 4   demand 6
+(27,28)   serv_cost 1   trave_cost 1   demand 3
+(27,35)   serv_cost 2   trave_cost 2   demand 7
+(28,29)   serv_cost 5   trave_cost 5   demand 8
+(28,36)   serv_cost 5   trave_cost 5   demand 8
+(29,30)   serv_cost 1   trave_cost 1   demand 4
+(29,37)   serv_cost 3   trave_cost 3   demand 7
+(30,38)   serv_cost 3   trave_cost 3   demand 4
+(30,39)   serv_cost 2   trave_cost 2   demand 5
+(31,32)   serv_cost 2   trave_cost 2   demand 7
+(31,39)   serv_cost 4   trave_cost 4   demand 6
+(32,40)   serv_cost 2   trave_cost 2   demand 4
+(33,34)   serv_cost 2   trave_cost 2   demand 4
+(33,41)   serv_cost 4   trave_cost 4   demand 11
+(34,35)   serv_cost 1   trave_cost 1   demand 5
+(34,42)   serv_cost 4   trave_cost 4   demand 10
+(35,36)   serv_cost 2   trave_cost 2   demand 4
+(35,43)   serv_cost 6   trave_cost 6   demand 14
+(36,38)   serv_cost 1   trave_cost 1   demand 3
+(36,44)   serv_cost 5   trave_cost 5   demand 10
+(37,38)   serv_cost 2   trave_cost 2   demand 5
+(37,44)   serv_cost 3   trave_cost 3   demand 8
+(38,39)   serv_cost 3   trave_cost 3   demand 7
+(38,46)   serv_cost 3   trave_cost 3   demand 12
+(39,40)   serv_cost 4   trave_cost 4   demand 10
+(39,47)   serv_cost 5   trave_cost 5   demand 14
+(40,47)   serv_cost 3   trave_cost 3   demand 10
+(41,42)   serv_cost 2   trave_cost 2   demand 4
+(42,43)   serv_cost 2   trave_cost 2   demand 5
+(43,44)   serv_cost 4   trave_cost 4   demand 10
+(43,48)   serv_cost 7   trave_cost 7   demand 12
+(44,45)   serv_cost 2   trave_cost 2   demand 5
+(45,46)   serv_cost 2   trave_cost 2   demand 4
+(45,48)   serv_cost 5   trave_cost 5   demand 12
+(45,49)   serv_cost 3   trave_cost 3   demand 8
+(45,50)   serv_cost 3   trave_cost 3   demand 7
+(46,50)   serv_cost 2   trave_cost 2   demand 4
+(48,49)   serv_cost 4   trave_cost 4   demand 10
+(49,50)   serv_cost 2   trave_cost 2   demand 8
+DEPOT : 1

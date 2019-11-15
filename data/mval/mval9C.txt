@@ -1,0 +1,137 @@
+NAME : mval9C.dat
+NODES : 50
+REQ_EDGES : 42
+NOREQ_EDGES : 0
+REQ_ARCS : 83
+NOREQ_ARCS : 0
+VEHICLES : 5
+CAPACITY : 140
+DUMPING_COST : 0
+LIST_REQ_EDGES :
+(1,9)   serv_cost 3    trav_cost 3    demand 7
+(1,10)   serv_cost 4    trav_cost 4    demand 13
+(1,16)   serv_cost 4    trav_cost 4    demand 12
+(4,7)   serv_cost 3    trav_cost 3    demand 6
+(5,6)   serv_cost 2    trav_cost 2    demand 8
+(5,10)   serv_cost 2    trav_cost 2    demand 5
+(6,7)   serv_cost 3    trav_cost 3    demand 7
+(8,9)   serv_cost 5    trav_cost 5    demand 10
+(9,14)   serv_cost 1    trav_cost 1    demand 3
+(10,17)   serv_cost 4    trav_cost 4    demand 8
+(11,12)   serv_cost 2    trav_cost 2    demand 5
+(13,22)   serv_cost 4    trav_cost 4    demand 10
+(14,15)   serv_cost 3    trav_cost 3    demand 5
+(15,16)   serv_cost 4    trav_cost 4    demand 10
+(16,17)   serv_cost 3    trav_cost 3    demand 7
+(17,24)   serv_cost 4    trav_cost 4    demand 12
+(17,31)   serv_cost 4    trav_cost 4    demand 15
+(19,32)   serv_cost 7    trav_cost 7    demand 16
+(22,28)   serv_cost 4    trav_cost 4    demand 8
+(23,28)   serv_cost 2    trav_cost 2    demand 4
+(25,26)   serv_cost 2    trav_cost 2    demand 4
+(25,33)   serv_cost 1    trav_cost 1    demand 4
+(27,35)   serv_cost 2    trav_cost 2    demand 7
+(29,30)   serv_cost 1    trav_cost 1    demand 4
+(29,37)   serv_cost 3    trav_cost 3    demand 7
+(30,38)   serv_cost 3    trav_cost 3    demand 4
+(31,39)   serv_cost 4    trav_cost 4    demand 6
+(32,40)   serv_cost 2    trav_cost 2    demand 4
+(33,34)   serv_cost 2    trav_cost 2    demand 4
+(33,41)   serv_cost 4    trav_cost 4    demand 11
+(34,35)   serv_cost 1    trav_cost 1    demand 5
+(36,44)   serv_cost 5    trav_cost 5    demand 10
+(37,38)   serv_cost 2    trav_cost 2    demand 5
+(37,44)   serv_cost 3    trav_cost 3    demand 8
+(38,39)   serv_cost 3    trav_cost 3    demand 7
+(38,46)   serv_cost 3    trav_cost 3    demand 12
+(39,47)   serv_cost 5    trav_cost 5    demand 14
+(40,47)   serv_cost 3    trav_cost 3    demand 10
+(43,48)   serv_cost 7    trav_cost 7    demand 12
+(44,45)   serv_cost 2    trav_cost 2    demand 5
+(45,48)   serv_cost 5    trav_cost 5    demand 12
+(48,49)   serv_cost 4    trav_cost 4    demand 10
+LIST_REQ_ARCS : 
+(1,5)   serv_cost 3   trav_cost 3   demand 6
+(1,15)   serv_cost 4   trav_cost 4   demand 4
+(2,3)   serv_cost 2   trav_cost 2   demand 3
+(2,5)   serv_cost 2   trav_cost 2   demand 2
+(3,4)   serv_cost 3   trav_cost 3   demand 3
+(3,6)   serv_cost 4   trav_cost 4   demand 7
+(4,3)   serv_cost 3   trav_cost 3   demand 3
+(5,1)   serv_cost 3   trav_cost 3   demand 6
+(5,2)   serv_cost 2   trav_cost 2   demand 2
+(6,11)   serv_cost 3   trav_cost 3   demand 3
+(7,12)   serv_cost 2   trav_cost 2   demand 4
+(8,13)   serv_cost 6   trav_cost 6   demand 5
+(10,11)   serv_cost 2   trav_cost 2   demand 2
+(11,6)   serv_cost 3   trav_cost 3   demand 3
+(11,10)   serv_cost 2   trav_cost 2   demand 2
+(11,18)   serv_cost 3   trav_cost 3   demand 9
+(12,7)   serv_cost 2   trav_cost 2   demand 4
+(12,19)   serv_cost 4   trav_cost 4   demand 4
+(13,8)   serv_cost 6   trav_cost 6   demand 6
+(13,9)   serv_cost 4   trav_cost 4   demand 12
+(13,21)   serv_cost 1   trav_cost 1   demand 1
+(14,22)   serv_cost 4   trav_cost 4   demand 8
+(14,23)   serv_cost 2   trav_cost 2   demand 2
+(15,1)   serv_cost 4   trav_cost 4   demand 4
+(15,23)   serv_cost 1   trav_cost 1   demand 1
+(15,24)   serv_cost 2   trav_cost 2   demand 4
+(17,30)   serv_cost 6   trav_cost 6   demand 7
+(18,17)   serv_cost 1   trav_cost 1   demand 3
+(18,19)   serv_cost 1   trav_cost 1   demand 1
+(19,12)   serv_cost 4   trav_cost 4   demand 4
+(19,18)   serv_cost 1   trav_cost 1   demand 1
+(20,21)   serv_cost 1   trav_cost 1   demand 5
+(20,25)   serv_cost 3   trav_cost 3   demand 2
+(21,13)   serv_cost 1   trav_cost 1   demand 2
+(21,22)   serv_cost 2   trav_cost 2   demand 2
+(21,26)   serv_cost 2   trav_cost 2   demand 4
+(22,21)   serv_cost 2   trav_cost 2   demand 2
+(23,14)   serv_cost 2   trav_cost 2   demand 3
+(23,15)   serv_cost 1   trav_cost 1   demand 2
+(23,22)   serv_cost 5   trav_cost 5   demand 8
+(23,24)   serv_cost 2   trav_cost 2   demand 2
+(23,29)   serv_cost 4   trav_cost 4   demand 1
+(24,23)   serv_cost 2   trav_cost 2   demand 3
+(24,29)   serv_cost 2   trav_cost 2   demand 3
+(25,20)   serv_cost 3   trav_cost 3   demand 3
+(26,27)   serv_cost 3   trav_cost 3   demand 2
+(26,34)   serv_cost 4   trav_cost 4   demand 3
+(27,26)   serv_cost 3   trav_cost 3   demand 3
+(27,28)   serv_cost 1   trav_cost 1   demand 1
+(28,27)   serv_cost 1   trav_cost 1   demand 2
+(28,29)   serv_cost 5   trav_cost 5   demand 8
+(28,36)   serv_cost 5   trav_cost 5   demand 4
+(29,23)   serv_cost 4   trav_cost 4   demand 2
+(29,24)   serv_cost 2   trav_cost 2   demand 3
+(30,17)   serv_cost 6   trav_cost 6   demand 7
+(30,24)   serv_cost 3   trav_cost 3   demand 5
+(30,39)   serv_cost 2   trav_cost 2   demand 5
+(31,32)   serv_cost 2   trav_cost 2   demand 3
+(32,31)   serv_cost 2   trav_cost 2   demand 4
+(34,26)   serv_cost 4   trav_cost 4   demand 3
+(34,42)   serv_cost 4   trav_cost 4   demand 5
+(35,36)   serv_cost 2   trav_cost 2   demand 2
+(36,28)   serv_cost 5   trav_cost 5   demand 4
+(36,35)   serv_cost 2   trav_cost 2   demand 2
+(36,38)   serv_cost 1   trav_cost 1   demand 3
+(39,40)   serv_cost 4   trav_cost 4   demand 5
+(40,39)   serv_cost 4   trav_cost 4   demand 5
+(41,42)   serv_cost 2   trav_cost 2   demand 4
+(42,34)   serv_cost 4   trav_cost 4   demand 5
+(42,43)   serv_cost 2   trav_cost 2   demand 2
+(43,35)   serv_cost 6   trav_cost 6   demand 14
+(43,42)   serv_cost 2   trav_cost 2   demand 3
+(43,44)   serv_cost 4   trav_cost 4   demand 5
+(44,43)   serv_cost 4   trav_cost 4   demand 5
+(45,46)   serv_cost 2   trav_cost 2   demand 2
+(45,49)   serv_cost 3   trav_cost 3   demand 4
+(45,50)   serv_cost 3   trav_cost 3   demand 3
+(46,45)   serv_cost 2   trav_cost 2   demand 2
+(49,45)   serv_cost 3   trav_cost 3   demand 4
+(49,50)   serv_cost 2   trav_cost 2   demand 4
+(50,45)   serv_cost 3   trav_cost 3   demand 4
+(50,46)   serv_cost 2   trav_cost 2   demand 4
+(50,49)   serv_cost 2   trav_cost 2   demand 4
+DEPOT : 1

@@ -1,0 +1,26 @@
+NAME : kshs1.txt
+NODES : 8
+REQ_EDGES : 15
+NOREQ_EDGES : 0
+REQ_ARCS : 0
+NOREQ_ARCS : 0
+VEHICLES : 4
+CAPACITY : 150
+DUMPING_COST : 0
+LIST_REQ_EDGES :
+(1,3)   serv_cost 737   trave_cost 737   demand 40
+(1,8)   serv_cost 1082   trave_cost 1082   demand 27
+(2,3)   serv_cost 510   trave_cost 510   demand 25
+(2,4)   serv_cost 166   trave_cost 166   demand 54
+(2,5)   serv_cost 745   trave_cost 745   demand 5
+(2,6)   serv_cost 780   trave_cost 780   demand 60
+(2,7)   serv_cost 370   trave_cost 370   demand 30
+(3,4)   serv_cost 663   trave_cost 663   demand 7
+(3,7)   serv_cost 311   trave_cost 311   demand 50
+(3,8)   serv_cost 696   trave_cost 696   demand 23
+(4,7)   serv_cost 468   trave_cost 468   demand 39
+(4,8)   serv_cost 1046   trave_cost 1046   demand 55
+(5,8)   serv_cost 239   trave_cost 239   demand 29
+(6,7)   serv_cost 490   trave_cost 490   demand 65
+(6,8)   serv_cost 402   trave_cost 402   demand 26
+DEPOT : 1

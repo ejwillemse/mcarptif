@@ -1,0 +1,36 @@
+NAME : gdb12_IF.txt
+NODES : 13
+REQ_EDGES : 23
+NOREQ_EDGES : 0
+REQ_ARCS : 0
+NOREQ_ARCS : 0
+VEHICLES : 7
+CAPACITY : 35
+DUMPING_COST : 0
+MAX_TRIP : 114
+LIST_REQ_EDGES :
+(1,2)   serv_cost 5   trave_cost 5   demand 7
+(1,3)   serv_cost 7   trave_cost 7   demand 12
+(1,4)   serv_cost 10   trave_cost 10   demand 15
+(1,5)   serv_cost 19   trave_cost 19   demand 1
+(2,3)   serv_cost 16   trave_cost 16   demand 13
+(2,6)   serv_cost 8   trave_cost 8   demand 8
+(2,7)   serv_cost 9   trave_cost 9   demand 16
+(2,8)   serv_cost 14   trave_cost 14   demand 7
+(3,6)   serv_cost 11   trave_cost 11   demand 3
+(4,5)   serv_cost 11   trave_cost 11   demand 15
+(4,10)   serv_cost 26   trave_cost 26   demand 8
+(4,11)   serv_cost 30   trave_cost 30   demand 16
+(5,10)   serv_cost 3   trave_cost 3   demand 11
+(6,10)   serv_cost 13   trave_cost 13   demand 14
+(6,12)   serv_cost 17   trave_cost 17   demand 4
+(7,9)   serv_cost 30   trave_cost 30   demand 3
+(8,9)   serv_cost 18   trave_cost 18   demand 1
+(8,12)   serv_cost 21   trave_cost 21   demand 5
+(9,13)   serv_cost 8   trave_cost 8   demand 9
+(10,11)   serv_cost 15   trave_cost 15   demand 14
+(11,12)   serv_cost 19   trave_cost 19   demand 15
+(11,13)   serv_cost 12   trave_cost 12   demand 1
+(12,13)   serv_cost 14   trave_cost 14   demand 14
+DEPOT : 1
+DUMPING_SITES : 13

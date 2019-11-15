@@ -1,0 +1,108 @@
+NAME : Lpr_IF_MCARP-a-01.dat
+NODES : 28
+REQ_EDGES : 0
+NOREQ_EDGES : 0
+REQ_ARCS : 52
+NOREQ_ARCS : 42
+VEHICLES : 2
+CAPACITY : 10000
+DUMPING_COST : 300
+MAX_TRIP : 100000000
+LIST_REQ_ARCS : 
+(2,14)   serv_cost 274   trav_cost 34   demand 240
+(2,3)   serv_cost 156   trav_cost 19   demand 137
+(2,8)   serv_cost 299   trav_cost 20   demand 279
+(4,3)   serv_cost 284   trav_cost 20   demand 264
+(4,5)   serv_cost 287   trav_cost 22   demand 265
+(4,9)   serv_cost 346   trav_cost 21   demand 325
+(5,4)   serv_cost 50   trav_cost 22   demand 28
+(6,11)   serv_cost 304   trav_cost 19   demand 285
+(7,14)   serv_cost 172   trav_cost 22   demand 150
+(7,8)   serv_cost 124   trav_cost 42   demand 82
+(7,12)   serv_cost 64   trav_cost 17   demand 47
+(8,13)   serv_cost 210   trav_cost 23   demand 187
+(9,4)   serv_cost 122   trav_cost 21   demand 101
+(9,10)   serv_cost 143   trav_cost 21   demand 122
+(9,15)   serv_cost 171   trav_cost 18   demand 153
+(10,5)   serv_cost 106   trav_cost 20   demand 86
+(11,10)   serv_cost 323   trav_cost 18   demand 305
+(11,17)   serv_cost 84   trav_cost 18   demand 66
+(12,7)   serv_cost 214   trav_cost 17   demand 197
+(12,13)   serv_cost 103   trav_cost 39   demand 64
+(12,18)   serv_cost 174   trav_cost 22   demand 152
+(13,12)   serv_cost 280   trav_cost 39   demand 241
+(1,3)   serv_cost 246   trav_cost 41   demand 205
+(1,13)   serv_cost 325   trav_cost 19   demand 306
+(15,21)   serv_cost 319   trav_cost 18   demand 301
+(16,10)   serv_cost 109   trav_cost 21   demand 88
+(16,15)   serv_cost 400   trav_cost 21   demand 379
+(16,17)   serv_cost 391   trav_cost 19   demand 372
+(17,11)   serv_cost 395   trav_cost 18   demand 377
+(17,16)   serv_cost 418   trav_cost 19   demand 399
+(17,23)   serv_cost 405   trav_cost 15   demand 390
+(18,19)   serv_cost 383   trav_cost 35   demand 348
+(18,24)   serv_cost 259   trav_cost 21   demand 238
+(19,13)   serv_cost 234   trav_cost 18   demand 216
+(19,18)   serv_cost 410   trav_cost 35   demand 375
+(19,20)   serv_cost 45   trav_cost 19   demand 26
+(19,25)   serv_cost 50   trav_cost 18   demand 32
+(20,1)   serv_cost 221   trav_cost 19   demand 202
+(20,21)   serv_cost 332   trav_cost 19   demand 313
+(20,26)   serv_cost 153   trav_cost 14   demand 139
+(21,20)   serv_cost 286   trav_cost 19   demand 267
+(21,27)   serv_cost 381   trav_cost 17   demand 364
+(22,21)   serv_cost 31   trav_cost 20   demand 11
+(22,23)   serv_cost 168   trav_cost 21   demand 147
+(22,27)   serv_cost 124   trav_cost 26   demand 98
+(24,25)   serv_cost 435   trav_cost 41   demand 394
+(25,24)   serv_cost 327   trav_cost 41   demand 286
+(25,26)   serv_cost 77   trav_cost 18   demand 59
+(26,20)   serv_cost 97   trav_cost 14   demand 83
+(26,27)   serv_cost 282   trav_cost 20   demand 262
+(27,22)   serv_cost 424   trav_cost 26   demand 398
+(27,28)   serv_cost 423   trav_cost 39   demand 384
+LIST_NOREQ_ARCS :
+(14,2)   cost 34
+(14,7)   cost 22
+(3,2)   cost 19
+(3,4)   cost 20
+(3,1)   cost 41
+(5,6)   cost 21
+(5,10)   cost 20
+(6,5)   cost 21
+(8,2)   cost 20
+(8,7)   cost 42
+(10,9)   cost 21
+(10,11)   cost 18
+(10,16)   cost 21
+(11,6)   cost 19
+(13,8)   cost 23
+(13,1)   cost 19
+(13,19)   cost 18
+(1,15)   cost 14
+(1,20)   cost 19
+(15,9)   cost 18
+(15,1)   cost 14
+(15,16)   cost 21
+(15,20)   cost 27
+(17,22)   cost 26
+(18,12)   cost 22
+(20,15)   cost 27
+(20,19)   cost 19
+(20,25)   cost 24
+(21,15)   cost 18
+(21,22)   cost 20
+(22,17)   cost 26
+(23,17)   cost 15
+(23,22)   cost 21
+(23,28)   cost 19
+(24,18)   cost 21
+(25,19)   cost 18
+(25,20)   cost 24
+(26,25)   cost 18
+(27,21)   cost 17
+(27,26)   cost 20
+(28,23)   cost 19
+(28,27)   cost 39
+DEPOT : 1
+DUMPING_SITES : 1

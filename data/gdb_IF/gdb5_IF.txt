@@ -1,0 +1,39 @@
+NAME : gdb5_IF.txt
+NODES : 13
+REQ_EDGES : 26
+NOREQ_EDGES : 0
+REQ_ARCS : 0
+NOREQ_ARCS : 0
+VEHICLES : 6
+CAPACITY : 5
+DUMPING_COST : 0
+MAX_TRIP : 88
+LIST_REQ_EDGES :
+(1,2)   serv_cost 13   trave_cost 13   demand 1
+(1,4)   serv_cost 17   trave_cost 17   demand 1
+(1,7)   serv_cost 19   trave_cost 19   demand 1
+(1,10)   serv_cost 19   trave_cost 19   demand 1
+(1,12)   serv_cost 4   trave_cost 4   demand 1
+(2,3)   serv_cost 18   trave_cost 18   demand 1
+(2,4)   serv_cost 9   trave_cost 9   demand 1
+(2,9)   serv_cost 2   trave_cost 2   demand 1
+(3,4)   serv_cost 20   trave_cost 20   demand 1
+(3,5)   serv_cost 5   trave_cost 5   demand 1
+(3,13)   serv_cost 22   trave_cost 22   demand 1
+(4,13)   serv_cost 6   trave_cost 6   demand 1
+(5,6)   serv_cost 7   trave_cost 7   demand 1
+(5,11)   serv_cost 20   trave_cost 20   demand 1
+(5,12)   serv_cost 11   trave_cost 11   demand 1
+(5,13)   serv_cost 17   trave_cost 17   demand 1
+(6,7)   serv_cost 4   trave_cost 4   demand 1
+(6,12)   serv_cost 3   trave_cost 3   demand 1
+(7,8)   serv_cost 8   trave_cost 8   demand 1
+(7,12)   serv_cost 18   trave_cost 18   demand 1
+(8,10)   serv_cost 3   trave_cost 3   demand 1
+(8,11)   serv_cost 10   trave_cost 10   demand 1
+(9,10)   serv_cost 16   trave_cost 16   demand 1
+(9,11)   serv_cost 14   trave_cost 14   demand 1
+(10,11)   serv_cost 12   trave_cost 12   demand 1
+(12,13)   serv_cost 19   trave_cost 19   demand 1
+DEPOT : 1
+DUMPING_SITES : 13

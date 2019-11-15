@@ -1,0 +1,77 @@
+NAME : Lpr-b-01.dat
+NODES : 28
+REQ_EDGES : 5
+NOREQ_EDGES : 0
+REQ_ARCS : 45
+NOREQ_ARCS : 13
+VEHICLES : 2
+CAPACITY : 10000
+DUMPING_COST : 300
+MAX_TRIP : 28800
+LIST_REQ_EDGES :
+(6,11)   serv_cost 472    trav_cost 19    demand 453
+(18,24)   serv_cost 500    trav_cost 22    demand 478
+(20,25)   serv_cost 229    trav_cost 25    demand 204
+(21,27)   serv_cost 724    trav_cost 17    demand 707
+(27,28)   serv_cost 752    trav_cost 37    demand 715
+LIST_REQ_ARCS : 
+(14,2)   serv_cost 273   trav_cost 33   demand 240
+(2,14)   serv_cost 298   trav_cost 33   demand 265
+(2,3)   serv_cost 115   trav_cost 18   demand 97
+(3,2)   serv_cost 282   trav_cost 18   demand 264
+(3,4)   serv_cost 345   trav_cost 20   demand 325
+(4,3)   serv_cost 203   trav_cost 20   demand 183
+(5,4)   serv_cost 235   trav_cost 21   demand 214
+(5,6)   serv_cost 229   trav_cost 22   demand 207
+(5,10)   serv_cost 133   trav_cost 21   demand 112
+(6,5)   serv_cost 69   trav_cost 22   demand 47
+(7,8)   serv_cost 231   trav_cost 44   demand 187
+(7,12)   serv_cost 119   trav_cost 18   demand 101
+(8,2)   serv_cost 141   trav_cost 19   demand 122
+(8,13)   serv_cost 176   trav_cost 23   demand 153
+(9,4)   serv_cost 344   trav_cost 20   demand 324
+(10,5)   serv_cost 306   trav_cost 21   demand 285
+(10,9)   serv_cost 87   trav_cost 21   demand 66
+(11,10)   serv_cost 32   trav_cost 18   demand 14
+(12,7)   serv_cost 329   trav_cost 18   demand 311
+(12,18)   serv_cost 401   trav_cost 20   demand 381
+(13,12)   serv_cost 212   trav_cost 40   demand 172
+(1,3)   serv_cost 246   trav_cost 41   demand 205
+(15,9)   serv_cost 317   trav_cost 17   demand 300
+(15,1)   serv_cost 316   trav_cost 15   demand 301
+(15,16)   serv_cost 35   trav_cost 21   demand 14
+(16,10)   serv_cost 109   trav_cost 21   demand 88
+(16,17)   serv_cost 391   trav_cost 19   demand 372
+(17,11)   serv_cost 396   trav_cost 17   demand 379
+(17,23)   serv_cost 125   trav_cost 15   demand 110
+(18,12)   serv_cost 410   trav_cost 20   demand 390
+(18,19)   serv_cost 380   trav_cost 37   demand 343
+(19,25)   serv_cost 255   trav_cost 17   demand 238
+(20,21)   serv_cost 112   trav_cost 18   demand 94
+(21,22)   serv_cost 327   trav_cost 19   demand 308
+(22,17)   serv_cost 165   trav_cost 26   demand 139
+(22,23)   serv_cost 370   trav_cost 21   demand 349
+(23,17)   serv_cost 392   trav_cost 15   demand 377
+(23,28)   serv_cost 71   trav_cost 18   demand 53
+(24,25)   serv_cost 186   trav_cost 39   demand 147
+(25,24)   serv_cost 373   trav_cost 39   demand 334
+(25,26)   serv_cost 72   trav_cost 18   demand 54
+(26,27)   serv_cost 389   trav_cost 21   demand 368
+(27,22)   serv_cost 185   trav_cost 26   demand 159
+(27,26)   serv_cost 268   trav_cost 21   demand 247
+(28,23)   serv_cost 164   trav_cost 18   demand 146
+LIST_NOREQ_ARCS :
+(14,7)   cost 22
+(4,5)   cost 21
+(7,14)   cost 22
+(10,11)   cost 18
+(11,17)   cost 17
+(13,19)   cost 19
+(1,13)   cost 18
+(1,20)   cost 19
+(19,20)   cost 19
+(20,15)   cost 27
+(20,26)   cost 14
+(21,15)   cost 17
+(26,25)   cost 18
+DEPOT : 1

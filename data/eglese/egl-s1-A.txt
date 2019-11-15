@@ -1,0 +1,202 @@
+NAME : egl-s1-A.txt
+NODES : 140
+REQ_EDGES : 75
+NOREQ_EDGES : 115
+REQ_ARCS : 0
+NOREQ_ARCS : 0
+VEHICLES : 7
+CAPACITY : 210
+DUMPING_COST : 0
+LIST_REQ_EDGES :
+(5,6)   serv_cost 26   trave_cost 26   demand 26
+(6,8)   serv_cost 10   trave_cost 10   demand 10
+(8,9)   serv_cost 37   trave_cost 37   demand 37
+(8,11)   serv_cost 48   trave_cost 48   demand 48
+(11,12)   serv_cost 25   trave_cost 25   demand 25
+(12,13)   serv_cost 12   trave_cost 12   demand 12
+(13,14)   serv_cost 18   trave_cost 18   demand 18
+(20,22)   serv_cost 10   trave_cost 10   demand 10
+(20,24)   serv_cost 33   trave_cost 33   demand 33
+(24,25)   serv_cost 10   trave_cost 10   demand 10
+(25,27)   serv_cost 19   trave_cost 19   demand 19
+(27,28)   serv_cost 6   trave_cost 6   demand 6
+(28,29)   serv_cost 5   trave_cost 5   demand 5
+(28,30)   serv_cost 5   trave_cost 5   demand 5
+(30,32)   serv_cost 28   trave_cost 28   demand 28
+(11,33)   serv_cost 24   trave_cost 24   demand 24
+(34,139)   serv_cost 49   trave_cost 49   demand 49
+(36,37)   serv_cost 20   trave_cost 20   demand 20
+(36,38)   serv_cost 25   trave_cost 25   demand 25
+(38,39)   serv_cost 6   trave_cost 6   demand 6
+(39,40)   serv_cost 18   trave_cost 18   demand 18
+(37,43)   serv_cost 16   trave_cost 16   demand 16
+(43,44)   serv_cost 31   trave_cost 31   demand 31
+(44,45)   serv_cost 14   trave_cost 14   demand 14
+(34,45)   serv_cost 4   trave_cost 4   demand 4
+(43,46)   serv_cost 5   trave_cost 5   demand 5
+(33,139)   serv_cost 13   trave_cost 13   demand 13
+(48,49)   serv_cost 10   trave_cost 10   demand 10
+(49,140)   serv_cost 24   trave_cost 24   demand 24
+(54,55)   serv_cost 10   trave_cost 10   demand 10
+(55,56)   serv_cost 4   trave_cost 4   demand 4
+(62,63)   serv_cost 7   trave_cost 7   demand 7
+(63,64)   serv_cost 9   trave_cost 9   demand 9
+(64,65)   serv_cost 15   trave_cost 15   demand 15
+(62,66)   serv_cost 37   trave_cost 37   demand 37
+(66,67)   serv_cost 33   trave_cost 33   demand 33
+(67,68)   serv_cost 9   trave_cost 9   demand 9
+(67,69)   serv_cost 4   trave_cost 4   demand 4
+(69,71)   serv_cost 6   trave_cost 6   demand 6
+(71,72)   serv_cost 9   trave_cost 9   demand 9
+(72,73)   serv_cost 18   trave_cost 18   demand 18
+(44,73)   serv_cost 36   trave_cost 36   demand 36
+(46,77)   serv_cost 16   trave_cost 16   demand 16
+(77,78)   serv_cost 15   trave_cost 15   demand 15
+(78,79)   serv_cost 12   trave_cost 12   demand 12
+(79,80)   serv_cost 12   trave_cost 12   demand 12
+(80,82)   serv_cost 16   trave_cost 16   demand 16
+(82,84)   serv_cost 13   trave_cost 13   demand 13
+(84,85)   serv_cost 10   trave_cost 10   demand 10
+(85,86)   serv_cost 20   trave_cost 20   demand 20
+(86,87)   serv_cost 4   trave_cost 4   demand 4
+(95,96)   serv_cost 8   trave_cost 8   demand 8
+(96,97)   serv_cost 17   trave_cost 17   demand 17
+(97,98)   serv_cost 3   trave_cost 3   demand 3
+(102,104)   serv_cost 21   trave_cost 21   demand 21
+(104,105)   serv_cost 6   trave_cost 6   demand 6
+(105,106)   serv_cost 15   trave_cost 15   demand 15
+(106,107)   serv_cost 28   trave_cost 28   demand 28
+(107,108)   serv_cost 25   trave_cost 25   demand 25
+(108,109)   serv_cost 103   trave_cost 103   demand 103
+(107,110)   serv_cost 8   trave_cost 8   demand 8
+(110,111)   serv_cost 7   trave_cost 7   demand 7
+(110,112)   serv_cost 13   trave_cost 13   demand 13
+(107,112)   serv_cost 13   trave_cost 13   demand 13
+(112,113)   serv_cost 4   trave_cost 4   demand 4
+(113,114)   serv_cost 12   trave_cost 12   demand 12
+(1,116)   serv_cost 18   trave_cost 18   demand 18
+(116,117)   serv_cost 19   trave_cost 19   demand 19
+(2,117)   serv_cost 16   trave_cost 16   demand 16
+(117,119)   serv_cost 24   trave_cost 24   demand 24
+(114,118)   serv_cost 58   trave_cost 58   demand 58
+(124,126)   serv_cost 11   trave_cost 11   demand 11
+(126,130)   serv_cost 35   trave_cost 35   demand 35
+(55,140)   serv_cost 14   trave_cost 14   demand 14
+(11,27)   serv_cost 50   trave_cost 50   demand 50
+LIST_NOREQ_EDGES :
+(6,7)   cost 21
+(9,10)   cost 12
+(10,15)   cost 13
+(15,16)   cost 8
+(15,17)   cost 13
+(13,17)   cost 6
+(13,16)   cost 12
+(17,18)   cost 8
+(18,19)   cost 6
+(10,19)   cost 28
+(12,20)   cost 34
+(20,21)   cost 58
+(21,23)   cost 55
+(23,24)   cost 56
+(25,26)   cost 48
+(23,26)   cost 20
+(30,31)   cost 41
+(26,31)   cost 12
+(29,33)   cost 52
+(34,35)   cost 59
+(35,36)   cost 4
+(35,37)   cost 17
+(40,41)   cost 12
+(38,41)   cost 10
+(41,47)   cost 99
+(37,42)   cost 17
+(42,43)   cost 5
+(42,47)   cost 4
+(46,47)   cost 7
+(48,139)   cost 49
+(48,50)   cost 8
+(50,51)   cost 30
+(51,52)   cost 12
+(52,53)   cost 12
+(53,140)   cost 24
+(56,57)   cost 49
+(57,58)   cost 20
+(58,59)   cost 40
+(59,60)   cost 18
+(45,60)   cost 15
+(60,61)   cost 35
+(59,61)   cost 31
+(49,61)   cost 13
+(57,62)   cost 14
+(56,65)   cost 30
+(69,70)   cost 8
+(70,71)   cost 9
+(72,74)   cost 15
+(73,74)   cost 5
+(71,75)   cost 36
+(75,76)   cost 47
+(74,76)   cost 27
+(76,77)   cost 10
+(79,81)   cost 9
+(80,81)   cost 10
+(82,83)   cost 10
+(81,83)   cost 17
+(83,84)   cost 18
+(86,88)   cost 33
+(88,89)   cost 14
+(88,90)   cost 12
+(90,91)   cost 7
+(68,90)   cost 67
+(66,91)   cost 69
+(89,92)   cost 10
+(82,92)   cost 26
+(84,92)   cost 29
+(64,93)   cost 28
+(63,93)   cost 25
+(93,94)   cost 17
+(94,95)   cost 49
+(96,99)   cost 10
+(97,99)   cost 37
+(99,100)   cost 33
+(94,100)   cost 17
+(94,101)   cost 4
+(66,101)   cost 28
+(101,102)   cost 17
+(102,103)   cost 42
+(91,103)   cost 27
+(106,108)   cost 38
+(103,113)   cost 46
+(114,115)   cost 36
+(115,116)   cost 10
+(115,117)   cost 20
+(117,118)   cost 49
+(119,120)   cost 14
+(91,118)   cost 35
+(118,121)   cost 17
+(120,121)   cost 16
+(121,122)   cost 8
+(87,122)   cost 15
+(122,123)   cost 15
+(123,124)   cost 29
+(120,123)   cost 32
+(123,125)   cost 32
+(4,124)   cost 67
+(126,127)   cost 15
+(127,128)   cost 22
+(3,128)   cost 41
+(128,129)   cost 23
+(127,129)   cost 11
+(126,131)   cost 26
+(131,132)   cost 5
+(132,133)   cost 7
+(133,134)   cost 10
+(133,135)   cost 19
+(134,135)   cost 14
+(134,136)   cost 31
+(136,137)   cost 29
+(136,138)   cost 5
+(131,138)   cost 47
+(125,138)   cost 20
+(54,140)   cost 18
+(58,70)   cost 11
+DEPOT : 1

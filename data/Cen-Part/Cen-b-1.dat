@@ -1,0 +1,3130 @@
+NAME : Cen-b-1.dat
+NODES : 2443
+REQ_EDGES : 1285
+NOREQ_EDGES : 1505
+REQ_ARCS : 94
+NOREQ_ARCS : 231
+VEHICLES : 146
+CAPACITY : 10000
+DUMPING_COST : 300
+MAX_TRIP : 28800
+LIST_REQ_EDGES : 
+(6,4)  serv_cost 37  trav_cost 7  demand 38
+(7,8)  serv_cost 59  trav_cost 9  demand 51
+(9,10)  serv_cost 60  trav_cost 10  demand 55
+(8,9)  serv_cost 119  trav_cost 19  demand 106
+(11,12)  serv_cost 24  trav_cost 4  demand 23
+(13,14)  serv_cost 37  trav_cost 7  demand 39
+(15,16)  serv_cost 130  trav_cost 20  demand 111
+(19,20)  serv_cost 131  trav_cost 21  demand 119
+(21,22)  serv_cost 106  trav_cost 16  demand 92
+(20,23)  serv_cost 83  trav_cost 13  demand 71
+(26,27)  serv_cost 155  trav_cost 25  demand 137
+(27,28)  serv_cost 83  trav_cost 13  demand 74
+(29,26)  serv_cost 84  trav_cost 14  demand 79
+(32,33)  serv_cost 107  trav_cost 17  demand 97
+(38,39)  serv_cost 83  trav_cost 13  demand 71
+(40,38)  serv_cost 36  trav_cost 6  demand 33
+(41,42)  serv_cost 130  trav_cost 20  demand 113
+(43,44)  serv_cost 48  trav_cost 8  demand 46
+(45,46)  serv_cost 425  trav_cost 65  demand 364
+(47,48)  serv_cost 106  trav_cost 16  demand 90
+(49,50)  serv_cost 190  trav_cost 30  demand 169
+(45,51)  serv_cost 95  trav_cost 15  demand 84
+(52,53)  serv_cost 118  trav_cost 18  demand 102
+(54,55)  serv_cost 130  trav_cost 20  demand 113
+(56,57)  serv_cost 177  trav_cost 27  demand 150
+(58,49)  serv_cost 213  trav_cost 33  demand 185
+(59,60)  serv_cost 142  trav_cost 22  demand 120
+(61,52)  serv_cost 107  trav_cost 17  demand 96
+(63,41)  serv_cost 449  trav_cost 69  demand 381
+(66,49)  serv_cost 438  trav_cost 68  demand 378
+(67,68)  serv_cost 402  trav_cost 62  demand 347
+(71,72)  serv_cost 107  trav_cost 17  demand 97
+(73,74)  serv_cost 143  trav_cost 23  demand 127
+(75,71)  serv_cost 307  trav_cost 47  demand 262
+(76,77)  serv_cost 84  trav_cost 14  demand 78
+(78,79)  serv_cost 119  trav_cost 19  demand 105
+(80,73)  serv_cost 154  trav_cost 24  demand 134
+(81,82)  serv_cost 142  trav_cost 22  demand 122
+(83,78)  serv_cost 426  trav_cost 66  demand 366
+(84,85)  serv_cost 119  trav_cost 19  demand 108
+(86,79)  serv_cost 119  trav_cost 19  demand 103
+(87,88)  serv_cost 107  trav_cost 17  demand 93
+(89,90)  serv_cost 35  trav_cost 5  demand 30
+(90,91)  serv_cost 71  trav_cost 11  demand 63
+(92,93)  serv_cost 94  trav_cost 14  demand 80
+(94,95)  serv_cost 130  trav_cost 20  demand 113
+(96,97)  serv_cost 107  trav_cost 17  demand 93
+(98,99)  serv_cost 142  trav_cost 22  demand 122
+(100,101)  serv_cost 378  trav_cost 58  demand 324
+(102,103)  serv_cost 225  trav_cost 35  demand 192
+(104,92)  serv_cost 248  trav_cost 38  demand 211
+(105,106)  serv_cost 84  trav_cost 14  demand 77
+(107,108)  serv_cost 177  trav_cost 27  demand 152
+(88,109)  serv_cost 367  trav_cost 57  demand 314
+(108,110)  serv_cost 154  trav_cost 24  demand 131
+(108,111)  serv_cost 60  trav_cost 10  demand 55
+(112,113)  serv_cost 60  trav_cost 10  demand 58
+(114,105)  serv_cost 177  trav_cost 27  demand 151
+(117,118)  serv_cost 118  trav_cost 18  demand 102
+(119,120)  serv_cost 154  trav_cost 24  demand 136
+(121,122)  serv_cost 391  trav_cost 61  demand 339
+(125,126)  serv_cost 166  trav_cost 26  demand 142
+(127,128)  serv_cost 106  trav_cost 16  demand 91
+(129,130)  serv_cost 119  trav_cost 19  demand 108
+(131,132)  serv_cost 367  trav_cost 57  demand 317
+(133,134)  serv_cost 83  trav_cost 13  demand 74
+(135,136)  serv_cost 201  trav_cost 31  demand 175
+(137,138)  serv_cost 83  trav_cost 13  demand 73
+(145,146)  serv_cost 1640  trav_cost 250  demand 1392
+(147,148)  serv_cost 106  trav_cost 16  demand 91
+(149,150)  serv_cost 143  trav_cost 23  demand 127
+(151,152)  serv_cost 120  trav_cost 20  demand 109
+(153,148)  serv_cost 107  trav_cost 17  demand 96
+(5,154)  serv_cost 36  trav_cost 6  demand 33
+(155,156)  serv_cost 142  trav_cost 22  demand 121
+(155,157)  serv_cost 166  trav_cost 26  demand 144
+(158,159)  serv_cost 84  trav_cost 14  demand 79
+(159,160)  serv_cost 12  trav_cost 2  demand 11
+(161,162)  serv_cost 119  trav_cost 19  demand 107
+(163,164)  serv_cost 107  trav_cost 17  demand 94
+(165,161)  serv_cost 60  trav_cost 10  demand 56
+(166,167)  serv_cost 71  trav_cost 11  demand 64
+(168,169)  serv_cost 107  trav_cost 17  demand 93
+(170,171)  serv_cost 202  trav_cost 32  demand 175
+(172,173)  serv_cost 379  trav_cost 59  demand 327
+(174,7)  serv_cost 60  trav_cost 10  demand 54
+(175,176)  serv_cost 95  trav_cost 15  demand 84
+(177,178)  serv_cost 84  trav_cost 14  demand 77
+(179,180)  serv_cost 107  trav_cost 17  demand 96
+(181,182)  serv_cost 95  trav_cost 15  demand 83
+(185,186)  serv_cost 142  trav_cost 22  demand 122
+(187,188)  serv_cost 24  trav_cost 4  demand 24
+(189,190)  serv_cost 71  trav_cost 11  demand 63
+(191,192)  serv_cost 237  trav_cost 37  demand 205
+(193,194)  serv_cost 47  trav_cost 7  demand 41
+(195,178)  serv_cost 650  trav_cost 100  demand 554
+(196,197)  serv_cost 95  trav_cost 15  demand 82
+(198,190)  serv_cost 130  trav_cost 20  demand 110
+(199,200)  serv_cost 425  trav_cost 65  demand 360
+(26,201)  serv_cost 213  trav_cost 33  demand 184
+(202,203)  serv_cost 331  trav_cost 51  demand 286
+(204,196)  serv_cost 84  trav_cost 14  demand 76
+(205,206)  serv_cost 403  trav_cost 63  demand 349
+(207,208)  serv_cost 131  trav_cost 21  demand 118
+(21,182)  serv_cost 202  trav_cost 32  demand 179
+(209,210)  serv_cost 95  trav_cost 15  demand 81
+(211,212)  serv_cost 59  trav_cost 9  demand 51
+(213,214)  serv_cost 59  trav_cost 9  demand 52
+(215,216)  serv_cost 60  trav_cost 10  demand 54
+(217,216)  serv_cost 95  trav_cost 15  demand 83
+(218,219)  serv_cost 178  trav_cost 28  demand 155
+(220,202)  serv_cost 96  trav_cost 16  demand 86
+(223,224)  serv_cost 744  trav_cost 114  demand 631
+(226,227)  serv_cost 107  trav_cost 17  demand 96
+(228,229)  serv_cost 284  trav_cost 44  demand 247
+(230,231)  serv_cost 189  trav_cost 29  demand 161
+(233,234)  serv_cost 95  trav_cost 15  demand 84
+(235,236)  serv_cost 95  trav_cost 15  demand 81
+(237,228)  serv_cost 367  trav_cost 57  demand 319
+(238,239)  serv_cost 24  trav_cost 4  demand 24
+(240,241)  serv_cost 59  trav_cost 9  demand 52
+(242,243)  serv_cost 426  trav_cost 66  demand 368
+(244,245)  serv_cost 238  trav_cost 38  demand 209
+(242,246)  serv_cost 450  trav_cost 70  demand 389
+(248,246)  serv_cost 166  trav_cost 26  demand 142
+(249,250)  serv_cost 462  trav_cost 72  demand 398
+(251,252)  serv_cost 531  trav_cost 81  demand 450
+(253,254)  serv_cost 47  trav_cost 7  demand 41
+(255,256)  serv_cost 49  trav_cost 9  demand 49
+(257,258)  serv_cost 61  trav_cost 11  demand 59
+(259,255)  serv_cost 1  trav_cost 1  demand 6
+(260,261)  serv_cost 378  trav_cost 58  demand 325
+(262,263)  serv_cost 60  trav_cost 10  demand 54
+(264,265)  serv_cost 225  trav_cost 35  demand 195
+(266,46)  serv_cost 272  trav_cost 42  demand 233
+(267,268)  serv_cost 49  trav_cost 9  demand 48
+(269,270)  serv_cost 107  trav_cost 17  demand 95
+(271,259)  serv_cost 130  trav_cost 20  demand 114
+(272,273)  serv_cost 686  trav_cost 106  demand 587
+(274,38)  serv_cost 72  trav_cost 12  demand 66
+(275,276)  serv_cost 166  trav_cost 26  demand 143
+(277,278)  serv_cost 177  trav_cost 27  demand 150
+(279,280)  serv_cost 119  trav_cost 19  demand 105
+(281,45)  serv_cost 83  trav_cost 13  demand 72
+(57,282)  serv_cost 107  trav_cost 17  demand 94
+(283,43)  serv_cost 236  trav_cost 36  demand 200
+(282,283)  serv_cost 107  trav_cost 17  demand 93
+(284,285)  serv_cost 119  trav_cost 19  demand 107
+(286,287)  serv_cost 142  trav_cost 22  demand 122
+(288,289)  serv_cost 627  trav_cost 97  demand 539
+(290,291)  serv_cost 155  trav_cost 25  demand 137
+(270,292)  serv_cost 178  trav_cost 28  demand 157
+(293,294)  serv_cost 190  trav_cost 30  demand 166
+(295,278)  serv_cost 153  trav_cost 23  demand 130
+(298,299)  serv_cost 95  trav_cost 15  demand 83
+(300,301)  serv_cost 48  trav_cost 8  demand 42
+(305,306)  serv_cost 95  trav_cost 15  demand 85
+(60,47)  serv_cost 118  trav_cost 18  demand 101
+(307,48)  serv_cost 131  trav_cost 21  demand 117
+(308,309)  serv_cost 108  trav_cost 18  demand 98
+(285,311)  serv_cost 213  trav_cost 33  demand 181
+(314,313)  serv_cost 24  trav_cost 4  demand 22
+(317,318)  serv_cost 12  trav_cost 2  demand 14
+(319,314)  serv_cost 1  trav_cost 1  demand 8
+(63,308)  serv_cost 212  trav_cost 32  demand 180
+(323,324)  serv_cost 107  trav_cost 17  demand 93
+(325,326)  serv_cost 59  trav_cost 9  demand 50
+(327,328)  serv_cost 59  trav_cost 9  demand 50
+(329,291)  serv_cost 201  trav_cost 31  demand 172
+(330,331)  serv_cost 36  trav_cost 6  demand 32
+(332,333)  serv_cost 260  trav_cost 40  demand 222
+(336,332)  serv_cost 130  trav_cost 20  demand 113
+(344,345)  serv_cost 143  trav_cost 23  demand 128
+(331,346)  serv_cost 61  trav_cost 11  demand 59
+(347,348)  serv_cost 24  trav_cost 4  demand 22
+(349,350)  serv_cost 130  trav_cost 20  demand 113
+(351,352)  serv_cost 378  trav_cost 58  demand 321
+(353,354)  serv_cost 366  trav_cost 56  demand 314
+(355,356)  serv_cost 60  trav_cost 10  demand 58
+(359,360)  serv_cost 201  trav_cost 31  demand 172
+(83,361)  serv_cost 83  trav_cost 13  demand 75
+(91,362)  serv_cost 25  trav_cost 5  demand 29
+(365,366)  serv_cost 189  trav_cost 29  demand 163
+(349,367)  serv_cost 261  trav_cost 41  demand 228
+(368,369)  serv_cost 224  trav_cost 34  demand 191
+(370,371)  serv_cost 47  trav_cost 7  demand 41
+(372,373)  serv_cost 438  trav_cost 68  demand 375
+(374,375)  serv_cost 107  trav_cost 17  demand 94
+(369,376)  serv_cost 178  trav_cost 28  demand 154
+(366,377)  serv_cost 118  trav_cost 18  demand 101
+(377,379)  serv_cost 743  trav_cost 113  demand 631
+(380,97)  serv_cost 367  trav_cost 57  demand 315
+(381,89)  serv_cost 142  trav_cost 22  demand 123
+(382,380)  serv_cost 60  trav_cost 10  demand 56
+(383,384)  serv_cost 130  trav_cost 20  demand 112
+(361,385)  serv_cost 425  trav_cost 65  demand 360
+(386,382)  serv_cost 108  trav_cost 18  demand 97
+(387,106)  serv_cost 401  trav_cost 61  demand 341
+(388,389)  serv_cost 295  trav_cost 45  demand 251
+(390,391)  serv_cost 95  trav_cost 15  demand 86
+(390,392)  serv_cost 331  trav_cost 51  demand 283
+(393,394)  serv_cost 603  trav_cost 93  demand 515
+(395,396)  serv_cost 37  trav_cost 7  demand 37
+(397,398)  serv_cost 390  trav_cost 60  demand 336
+(399,385)  serv_cost 284  trav_cost 44  demand 243
+(400,401)  serv_cost 36  trav_cost 6  demand 35
+(402,403)  serv_cost 108  trav_cost 18  demand 99
+(404,405)  serv_cost 166  trav_cost 26  demand 142
+(406,112)  serv_cost 155  trav_cost 25  demand 136
+(407,408)  serv_cost 72  trav_cost 12  demand 67
+(411,404)  serv_cost 72  trav_cost 12  demand 67
+(412,413)  serv_cost 2  trav_cost 2  demand 9
+(414,411)  serv_cost 96  trav_cost 16  demand 88
+(417,418)  serv_cost 190  trav_cost 30  demand 165
+(421,422)  serv_cost 107  trav_cost 17  demand 97
+(423,424)  serv_cost 225  trav_cost 35  demand 193
+(425,426)  serv_cost 24  trav_cost 4  demand 20
+(427,428)  serv_cost 95  trav_cost 15  demand 83
+(429,100)  serv_cost 461  trav_cost 71  demand 396
+(430,431)  serv_cost 378  trav_cost 58  demand 321
+(432,433)  serv_cost 35  trav_cost 5  demand 30
+(434,435)  serv_cost 72  trav_cost 12  demand 68
+(436,437)  serv_cost 95  trav_cost 15  demand 85
+(438,439)  serv_cost 213  trav_cost 33  demand 185
+(440,441)  serv_cost 391  trav_cost 61  demand 338
+(445,446)  serv_cost 166  trav_cost 26  demand 146
+(128,447)  serv_cost 107  trav_cost 17  demand 96
+(448,136)  serv_cost 95  trav_cost 15  demand 81
+(418,449)  serv_cost 166  trav_cost 26  demand 144
+(450,434)  serv_cost 84  trav_cost 14  demand 79
+(453,454)  serv_cost 189  trav_cost 29  demand 162
+(455,456)  serv_cost 25  trav_cost 5  demand 28
+(459,445)  serv_cost 155  trav_cost 25  demand 137
+(460,121)  serv_cost 107  trav_cost 17  demand 96
+(449,462)  serv_cost 273  trav_cost 43  demand 239
+(463,464)  serv_cost 83  trav_cost 13  demand 71
+(465,466)  serv_cost 25  trav_cost 5  demand 29
+(469,455)  serv_cost 166  trav_cost 26  demand 146
+(470,471)  serv_cost 96  trav_cost 16  demand 89
+(414,472)  serv_cost 437  trav_cost 67  demand 370
+(462,473)  serv_cost 83  trav_cost 13  demand 70
+(475,476)  serv_cost 107  trav_cost 17  demand 96
+(471,477)  serv_cost 106  trav_cost 16  demand 90
+(478,479)  serv_cost 72  trav_cost 12  demand 66
+(480,481)  serv_cost 166  trav_cost 26  demand 142
+(480,482)  serv_cost 190  trav_cost 30  demand 164
+(483,484)  serv_cost 190  trav_cost 30  demand 166
+(138,486)  serv_cost 13  trav_cost 3  demand 14
+(489,490)  serv_cost 119  trav_cost 19  demand 106
+(491,492)  serv_cost 60  trav_cost 10  demand 54
+(473,493)  serv_cost 59  trav_cost 9  demand 50
+(494,495)  serv_cost 13  trav_cost 3  demand 15
+(496,497)  serv_cost 308  trav_cost 48  demand 268
+(498,499)  serv_cost 96  trav_cost 16  demand 87
+(503,504)  serv_cost 36  trav_cost 6  demand 34
+(507,508)  serv_cost 165  trav_cost 25  demand 140
+(509,510)  serv_cost 202  trav_cost 32  demand 178
+(511,509)  serv_cost 60  trav_cost 10  demand 54
+(512,513)  serv_cost 438  trav_cost 68  demand 379
+(514,486)  serv_cost 59  trav_cost 9  demand 50
+(515,127)  serv_cost 284  trav_cost 44  demand 244
+(516,162)  serv_cost 260  trav_cost 40  demand 220
+(162,517)  serv_cost 153  trav_cost 23  demand 130
+(518,519)  serv_cost 84  trav_cost 14  demand 76
+(163,520)  serv_cost 83  trav_cost 13  demand 71
+(521,522)  serv_cost 166  trav_cost 26  demand 147
+(169,523)  serv_cost 330  trav_cost 50  demand 281
+(135,524)  serv_cost 342  trav_cost 52  demand 290
+(521,482)  serv_cost 402  trav_cost 62  demand 347
+(522,480)  serv_cost 344  trav_cost 54  demand 299
+(525,526)  serv_cost 379  trav_cost 59  demand 325
+(527,160)  serv_cost 284  trav_cost 44  demand 243
+(528,163)  serv_cost 84  trav_cost 14  demand 77
+(529,530)  serv_cost 107  trav_cost 17  demand 95
+(530,531)  serv_cost 60  trav_cost 10  demand 58
+(532,533)  serv_cost 96  trav_cost 16  demand 88
+(534,535)  serv_cost 190  trav_cost 30  demand 167
+(531,536)  serv_cost 48  trav_cost 8  demand 42
+(537,522)  serv_cost 155  trav_cost 25  demand 139
+(538,539)  serv_cost 165  trav_cost 25  demand 140
+(540,541)  serv_cost 72  trav_cost 12  demand 67
+(542,543)  serv_cost 84  trav_cost 14  demand 78
+(544,545)  serv_cost 84  trav_cost 14  demand 78
+(546,547)  serv_cost 201  trav_cost 31  demand 174
+(548,549)  serv_cost 131  trav_cost 21  demand 117
+(550,524)  serv_cost 213  trav_cost 33  demand 183
+(551,552)  serv_cost 108  trav_cost 18  demand 98
+(553,554)  serv_cost 59  trav_cost 9  demand 50
+(555,556)  serv_cost 166  trav_cost 26  demand 145
+(557,558)  serv_cost 307  trav_cost 47  demand 263
+(559,560)  serv_cost 12  trav_cost 2  demand 10
+(561,562)  serv_cost 308  trav_cost 48  demand 265
+(563,564)  serv_cost 24  trav_cost 4  demand 21
+(206,565)  serv_cost 72  trav_cost 12  demand 64
+(190,527)  serv_cost 389  trav_cost 59  demand 330
+(566,567)  serv_cost 131  trav_cost 21  demand 117
+(568,569)  serv_cost 179  trav_cost 29  demand 159
+(570,571)  serv_cost 190  trav_cost 30  demand 167
+(572,198)  serv_cost 143  trav_cost 23  demand 129
+(572,573)  serv_cost 60  trav_cost 10  demand 56
+(574,575)  serv_cost 107  trav_cost 17  demand 95
+(576,577)  serv_cost 60  trav_cost 10  demand 55
+(578,579)  serv_cost 450  trav_cost 70  demand 387
+(580,581)  serv_cost 84  trav_cost 14  demand 77
+(582,583)  serv_cost 285  trav_cost 45  demand 248
+(584,585)  serv_cost 37  trav_cost 7  demand 38
+(588,589)  serv_cost 25  trav_cost 5  demand 28
+(590,591)  serv_cost 248  trav_cost 38  demand 212
+(592,593)  serv_cost 226  trav_cost 36  demand 198
+(594,595)  serv_cost 83  trav_cost 13  demand 73
+(596,596)  serv_cost 981  trav_cost 151  demand 837
+(597,572)  serv_cost 143  trav_cost 23  demand 128
+(598,599)  serv_cost 178  trav_cost 28  demand 158
+(600,601)  serv_cost 190  trav_cost 30  demand 166
+(602,603)  serv_cost 190  trav_cost 30  demand 167
+(594,604)  serv_cost 95  trav_cost 15  demand 83
+(243,205)  serv_cost 307  trav_cost 47  demand 262
+(605,252)  serv_cost 142  trav_cost 22  demand 121
+(230,199)  serv_cost 378  trav_cost 58  demand 320
+(606,607)  serv_cost 47  trav_cost 7  demand 40
+(557,612)  serv_cost 261  trav_cost 41  demand 228
+(615,609)  serv_cost 166  trav_cost 26  demand 146
+(616,617)  serv_cost 61  trav_cost 11  demand 59
+(558,618)  serv_cost 379  trav_cost 59  demand 329
+(619,616)  serv_cost 47  trav_cost 7  demand 40
+(621,622)  serv_cost 84  trav_cost 14  demand 77
+(623,624)  serv_cost 1  trav_cost 1  demand 7
+(625,626)  serv_cost 484  trav_cost 74  demand 413
+(627,628)  serv_cost 189  trav_cost 29  demand 160
+(629,630)  serv_cost 61  trav_cost 11  demand 59
+(631,632)  serv_cost 201  trav_cost 31  demand 172
+(633,634)  serv_cost 155  trav_cost 25  demand 139
+(635,636)  serv_cost 107  trav_cost 17  demand 95
+(637,633)  serv_cost 296  trav_cost 46  demand 255
+(250,228)  serv_cost 165  trav_cost 25  demand 140
+(638,635)  serv_cost 61  trav_cost 11  demand 59
+(639,238)  serv_cost 118  trav_cost 18  demand 102
+(640,603)  serv_cost 426  trav_cost 66  demand 366
+(641,642)  serv_cost 48  trav_cost 8  demand 46
+(643,644)  serv_cost 107  trav_cost 17  demand 97
+(645,646)  serv_cost 167  trav_cost 27  demand 148
+(647,648)  serv_cost 437  trav_cost 67  demand 374
+(632,649)  serv_cost 201  trav_cost 31  demand 174
+(650,651)  serv_cost 83  trav_cost 13  demand 72
+(654,655)  serv_cost 60  trav_cost 10  demand 54
+(656,657)  serv_cost 520  trav_cost 80  demand 445
+(658,659)  serv_cost 425  trav_cost 65  demand 362
+(660,661)  serv_cost 225  trav_cost 35  demand 193
+(246,243)  serv_cost 202  trav_cost 32  demand 177
+(662,663)  serv_cost 130  trav_cost 20  demand 110
+(664,665)  serv_cost 555  trav_cost 85  demand 471
+(666,667)  serv_cost 84  trav_cost 14  demand 79
+(668,669)  serv_cost 273  trav_cost 43  demand 239
+(670,671)  serv_cost 25  trav_cost 5  demand 28
+(672,670)  serv_cost 60  trav_cost 10  demand 57
+(251,673)  serv_cost 131  trav_cost 21  demand 119
+(674,675)  serv_cost 60  trav_cost 10  demand 56
+(674,676)  serv_cost 154  trav_cost 24  demand 135
+(677,678)  serv_cost 60  trav_cost 10  demand 54
+(260,242)  serv_cost 356  trav_cost 56  demand 309
+(679,680)  serv_cost 48  trav_cost 8  demand 44
+(661,681)  serv_cost 84  trav_cost 14  demand 79
+(682,683)  serv_cost 25  trav_cost 5  demand 26
+(684,685)  serv_cost 25  trav_cost 5  demand 28
+(686,684)  serv_cost 1  trav_cost 1  demand 5
+(679,687)  serv_cost 12  trav_cost 2  demand 13
+(688,689)  serv_cost 37  trav_cost 7  demand 37
+(690,691)  serv_cost 637  trav_cost 97  demand 540
+(681,692)  serv_cost 84  trav_cost 14  demand 75
+(697,698)  serv_cost 59  trav_cost 9  demand 51
+(700,701)  serv_cost 296  trav_cost 46  demand 255
+(702,703)  serv_cost 201  trav_cost 31  demand 170
+(285,704)  serv_cost 49  trav_cost 9  demand 47
+(705,706)  serv_cost 202  trav_cost 32  demand 175
+(707,660)  serv_cost 308  trav_cost 48  demand 269
+(708,690)  serv_cost 330  trav_cost 50  demand 280
+(352,284)  serv_cost 48  trav_cost 8  demand 43
+(709,710)  serv_cost 84  trav_cost 14  demand 75
+(291,668)  serv_cost 331  trav_cost 51  demand 284
+(711,712)  serv_cost 2  trav_cost 2  demand 8
+(713,711)  serv_cost 13  trav_cost 3  demand 17
+(300,310)  serv_cost 36  trav_cost 6  demand 33
+(714,286)  serv_cost 165  trav_cost 25  demand 141
+(715,288)  serv_cost 319  trav_cost 49  demand 271
+(720,721)  serv_cost 24  trav_cost 4  demand 22
+(710,722)  serv_cost 143  trav_cost 23  demand 127
+(328,315)  serv_cost 84  trav_cost 14  demand 77
+(724,725)  serv_cost 449  trav_cost 69  demand 383
+(726,727)  serv_cost 591  trav_cost 91  demand 505
+(728,727)  serv_cost 48  trav_cost 8  demand 44
+(292,349)  serv_cost 236  trav_cost 36  demand 202
+(365,722)  serv_cost 685  trav_cost 105  demand 585
+(295,729)  serv_cost 283  trav_cost 43  demand 240
+(730,697)  serv_cost 461  trav_cost 71  demand 396
+(731,331)  serv_cost 37  trav_cost 7  demand 39
+(732,293)  serv_cost 283  trav_cost 43  demand 240
+(347,733)  serv_cost 84  trav_cost 14  demand 77
+(734,735)  serv_cost 107  trav_cost 17  demand 92
+(738,327)  serv_cost 178  trav_cost 28  demand 154
+(739,736)  serv_cost 119  trav_cost 19  demand 104
+(742,743)  serv_cost 49  trav_cost 9  demand 48
+(744,745)  serv_cost 37  trav_cost 7  demand 36
+(311,355)  serv_cost 261  trav_cost 41  demand 228
+(746,739)  serv_cost 61  trav_cost 11  demand 59
+(747,397)  serv_cost 131  trav_cost 21  demand 117
+(748,749)  serv_cost 83  trav_cost 13  demand 71
+(750,353)  serv_cost 308  trav_cost 48  demand 268
+(751,752)  serv_cost 107  trav_cost 17  demand 96
+(753,754)  serv_cost 37  trav_cost 7  demand 38
+(755,374)  serv_cost 13  trav_cost 3  demand 15
+(756,754)  serv_cost 48  trav_cost 8  demand 44
+(757,753)  serv_cost 47  trav_cost 7  demand 41
+(758,759)  serv_cost 165  trav_cost 25  demand 140
+(760,761)  serv_cost 36  trav_cost 6  demand 32
+(762,757)  serv_cost 48  trav_cost 8  demand 44
+(763,764)  serv_cost 379  trav_cost 59  demand 327
+(765,766)  serv_cost 225  trav_cost 35  demand 193
+(763,767)  serv_cost 118  trav_cost 18  demand 100
+(770,771)  serv_cost 47  trav_cost 7  demand 41
+(373,774)  serv_cost 131  trav_cost 21  demand 117
+(767,401)  serv_cost 107  trav_cost 17  demand 95
+(401,775)  serv_cost 119  trav_cost 19  demand 105
+(377,776)  serv_cost 84  trav_cost 14  demand 78
+(355,777)  serv_cost 791  trav_cost 121  demand 670
+(780,781)  serv_cost 25  trav_cost 5  demand 26
+(782,783)  serv_cost 166  trav_cost 26  demand 143
+(776,784)  serv_cost 60  trav_cost 10  demand 54
+(785,786)  serv_cost 95  trav_cost 15  demand 85
+(789,790)  serv_cost 107  trav_cost 17  demand 94
+(791,413)  serv_cost 273  trav_cost 43  demand 238
+(421,792)  serv_cost 343  trav_cost 53  demand 292
+(794,795)  serv_cost 84  trav_cost 14  demand 75
+(796,797)  serv_cost 131  trav_cost 21  demand 118
+(800,801)  serv_cost 131  trav_cost 21  demand 118
+(802,803)  serv_cost 71  trav_cost 11  demand 64
+(805,802)  serv_cost 355  trav_cost 55  demand 308
+(394,806)  serv_cost 319  trav_cost 49  demand 273
+(807,808)  serv_cost 390  trav_cost 60  demand 336
+(441,808)  serv_cost 131  trav_cost 21  demand 119
+(454,809)  serv_cost 226  trav_cost 36  demand 198
+(810,433)  serv_cost 59  trav_cost 9  demand 53
+(808,811)  serv_cost 48  trav_cost 8  demand 45
+(413,812)  serv_cost 178  trav_cost 28  demand 156
+(813,814)  serv_cost 107  trav_cost 17  demand 96
+(814,440)  serv_cost 84  trav_cost 14  demand 79
+(422,813)  serv_cost 107  trav_cost 17  demand 94
+(815,816)  serv_cost 178  trav_cost 28  demand 157
+(817,818)  serv_cost 355  trav_cost 55  demand 304
+(819,820)  serv_cost 1  trav_cost 1  demand 8
+(821,822)  serv_cost 12  trav_cost 2  demand 14
+(825,826)  serv_cost 25  trav_cost 5  demand 29
+(827,805)  serv_cost 378  trav_cost 58  demand 324
+(828,829)  serv_cost 307  trav_cost 47  demand 260
+(828,830)  serv_cost 177  trav_cost 27  demand 153
+(513,834)  serv_cost 71  trav_cost 11  demand 61
+(835,797)  serv_cost 485  trav_cost 75  demand 414
+(836,825)  serv_cost 84  trav_cost 14  demand 77
+(837,838)  serv_cost 25  trav_cost 5  demand 28
+(839,840)  serv_cost 237  trav_cost 37  demand 204
+(841,837)  serv_cost 177  trav_cost 27  demand 151
+(470,843)  serv_cost 107  trav_cost 17  demand 92
+(418,462)  serv_cost 356  trav_cost 56  demand 309
+(844,841)  serv_cost 95  trav_cost 15  demand 81
+(845,835)  serv_cost 213  trav_cost 33  demand 186
+(464,846)  serv_cost 130  trav_cost 20  demand 113
+(847,848)  serv_cost 131  trav_cost 21  demand 114
+(850,424)  serv_cost 214  trav_cost 34  demand 189
+(851,852)  serv_cost 36  trav_cost 6  demand 32
+(853,854)  serv_cost 366  trav_cost 56  demand 310
+(844,855)  serv_cost 36  trav_cost 6  demand 36
+(856,857)  serv_cost 283  trav_cost 43  demand 240
+(858,859)  serv_cost 94  trav_cost 14  demand 80
+(860,453)  serv_cost 166  trav_cost 26  demand 143
+(474,861)  serv_cost 107  trav_cost 17  demand 94
+(862,469)  serv_cost 72  trav_cost 12  demand 64
+(863,864)  serv_cost 155  trav_cost 25  demand 139
+(865,866)  serv_cost 154  trav_cost 24  demand 131
+(867,868)  serv_cost 154  trav_cost 24  demand 133
+(472,869)  serv_cost 72  trav_cost 12  demand 68
+(488,871)  serv_cost 96  trav_cost 16  demand 89
+(534,867)  serv_cost 379  trav_cost 59  demand 329
+(872,873)  serv_cost 71  trav_cost 11  demand 60
+(875,876)  serv_cost 106  trav_cost 16  demand 91
+(877,878)  serv_cost 72  trav_cost 12  demand 67
+(879,855)  serv_cost 237  trav_cost 37  demand 204
+(880,881)  serv_cost 165  trav_cost 25  demand 140
+(882,883)  serv_cost 190  trav_cost 30  demand 166
+(884,865)  serv_cost 296  trav_cost 46  demand 253
+(885,886)  serv_cost 47  trav_cost 7  demand 41
+(887,888)  serv_cost 60  trav_cost 10  demand 56
+(540,889)  serv_cost 84  trav_cost 14  demand 76
+(890,891)  serv_cost 272  trav_cost 42  demand 231
+(890,892)  serv_cost 60  trav_cost 10  demand 57
+(893,894)  serv_cost 426  trav_cost 66  demand 364
+(895,896)  serv_cost 261  trav_cost 41  demand 228
+(583,897)  serv_cost 48  trav_cost 8  demand 44
+(556,898)  serv_cost 190  trav_cost 30  demand 167
+(901,888)  serv_cost 59  trav_cost 9  demand 52
+(904,898)  serv_cost 167  trav_cost 27  demand 148
+(907,881)  serv_cost 165  trav_cost 25  demand 141
+(908,909)  serv_cost 71  trav_cost 11  demand 62
+(910,578)  serv_cost 60  trav_cost 10  demand 56
+(913,914)  serv_cost 24  trav_cost 4  demand 24
+(915,916)  serv_cost 118  trav_cost 18  demand 103
+(917,918)  serv_cost 107  trav_cost 17  demand 97
+(574,919)  serv_cost 119  trav_cost 19  demand 104
+(920,921)  serv_cost 83  trav_cost 13  demand 71
+(924,920)  serv_cost 37  trav_cost 7  demand 38
+(925,820)  serv_cost 780  trav_cost 120  demand 664
+(926,927)  serv_cost 131  trav_cost 21  demand 117
+(924,928)  serv_cost 83  trav_cost 13  demand 71
+(564,929)  serv_cost 83  trav_cost 13  demand 72
+(560,930)  serv_cost 1  trav_cost 1  demand 8
+(931,913)  serv_cost 108  trav_cost 18  demand 99
+(497,932)  serv_cost 438  trav_cost 68  demand 375
+(937,938)  serv_cost 72  trav_cost 12  demand 69
+(579,932)  serv_cost 155  trav_cost 25  demand 138
+(691,939)  serv_cost 201  trav_cost 31  demand 175
+(940,941)  serv_cost 142  trav_cost 22  demand 124
+(575,942)  serv_cost 60  trav_cost 10  demand 53
+(943,917)  serv_cost 166  trav_cost 26  demand 143
+(944,945)  serv_cost 131  trav_cost 21  demand 118
+(946,926)  serv_cost 142  trav_cost 22  demand 122
+(949,950)  serv_cost 72  trav_cost 12  demand 65
+(622,943)  serv_cost 142  trav_cost 22  demand 121
+(585,952)  serv_cost 36  trav_cost 6  demand 35
+(953,954)  serv_cost 60  trav_cost 10  demand 57
+(955,956)  serv_cost 166  trav_cost 26  demand 146
+(614,958)  serv_cost 154  trav_cost 24  demand 132
+(619,959)  serv_cost 2  trav_cost 2  demand 9
+(960,961)  serv_cost 35  trav_cost 5  demand 30
+(962,629)  serv_cost 83  trav_cost 13  demand 74
+(963,654)  serv_cost 12  trav_cost 2  demand 10
+(964,965)  serv_cost 166  trav_cost 26  demand 145
+(966,967)  serv_cost 165  trav_cost 25  demand 141
+(968,969)  serv_cost 24  trav_cost 4  demand 24
+(970,971)  serv_cost 283  trav_cost 43  demand 241
+(972,973)  serv_cost 178  trav_cost 28  demand 153
+(974,975)  serv_cost 319  trav_cost 49  demand 275
+(647,660)  serv_cost 142  trav_cost 22  demand 124
+(642,976)  serv_cost 131  trav_cost 21  demand 119
+(977,978)  serv_cost 166  trav_cost 26  demand 147
+(659,979)  serv_cost 60  trav_cost 10  demand 57
+(980,981)  serv_cost 24  trav_cost 4  demand 25
+(982,980)  serv_cost 35  trav_cost 5  demand 30
+(985,986)  serv_cost 308  trav_cost 48  demand 267
+(987,988)  serv_cost 72  trav_cost 12  demand 65
+(990,682)  serv_cost 1  trav_cost 1  demand 5
+(991,985)  serv_cost 61  trav_cost 11  demand 59
+(992,979)  serv_cost 661  trav_cost 101  demand 563
+(993,990)  serv_cost 36  trav_cost 6  demand 32
+(994,995)  serv_cost 142  trav_cost 22  demand 122
+(996,997)  serv_cost 166  trav_cost 26  demand 145
+(974,998)  serv_cost 166  trav_cost 26  demand 143
+(992,1001)  serv_cost 201  trav_cost 31  demand 171
+(1002,707)  serv_cost 142  trav_cost 22  demand 120
+(995,1003)  serv_cost 331  trav_cost 51  demand 285
+(1004,1005)  serv_cost 826  trav_cost 126  demand 702
+(1006,1007)  serv_cost 142  trav_cost 22  demand 120
+(1008,1009)  serv_cost 131  trav_cost 21  demand 118
+(1010,1011)  serv_cost 166  trav_cost 26  demand 145
+(1012,1013)  serv_cost 178  trav_cost 28  demand 153
+(1014,1015)  serv_cost 167  trav_cost 27  demand 148
+(1015,1010)  serv_cost 320  trav_cost 50  demand 276
+(1016,1017)  serv_cost 308  trav_cost 48  demand 266
+(1018,1019)  serv_cost 130  trav_cost 20  demand 113
+(1020,1021)  serv_cost 94  trav_cost 14  demand 81
+(1022,1020)  serv_cost 95  trav_cost 15  demand 86
+(1023,1024)  serv_cost 166  trav_cost 26  demand 142
+(1025,1026)  serv_cost 142  trav_cost 22  demand 121
+(1028,794)  serv_cost 107  trav_cost 17  demand 92
+(1029,1018)  serv_cost 212  trav_cost 32  demand 180
+(1030,1031)  serv_cost 166  trav_cost 26  demand 142
+(1032,1030)  serv_cost 272  trav_cost 42  demand 234
+(1033,1034)  serv_cost 1121  trav_cost 171  demand 952
+(1035,796)  serv_cost 438  trav_cost 68  demand 379
+(1036,1037)  serv_cost 555  trav_cost 85  demand 470
+(1038,1039)  serv_cost 61  trav_cost 11  demand 59
+(838,1038)  serv_cost 143  trav_cost 23  demand 128
+(854,839)  serv_cost 201  trav_cost 31  demand 174
+(1040,837)  serv_cost 107  trav_cost 17  demand 96
+(878,1041)  serv_cost 108  trav_cost 18  demand 98
+(1042,878)  serv_cost 71  trav_cost 11  demand 64
+(1043,1044)  serv_cost 390  trav_cost 60  demand 335
+(1045,880)  serv_cost 201  trav_cost 31  demand 174
+(1044,1046)  serv_cost 237  trav_cost 37  demand 207
+(1047,1042)  serv_cost 295  trav_cost 45  demand 252
+(1048,884)  serv_cost 272  trav_cost 42  demand 231
+(1049,1050)  serv_cost 143  trav_cost 23  demand 125
+(1051,944)  serv_cost 119  trav_cost 19  demand 107
+(944,1052)  serv_cost 355  trav_cost 55  demand 303
+(1053,1048)  serv_cost 213  trav_cost 33  demand 181
+(1054,1055)  serv_cost 284  trav_cost 44  demand 245
+(1056,1057)  serv_cost 284  trav_cost 44  demand 242
+(1058,1059)  serv_cost 71  trav_cost 11  demand 64
+(1060,1061)  serv_cost 142  trav_cost 22  demand 122
+(1062,1056)  serv_cost 106  trav_cost 16  demand 90
+(975,1062)  serv_cost 59  trav_cost 9  demand 51
+(1063,975)  serv_cost 166  trav_cost 26  demand 145
+(1064,1065)  serv_cost 61  trav_cost 11  demand 58
+(1066,1063)  serv_cost 166  trav_cost 26  demand 145
+(1067,1068)  serv_cost 202  trav_cost 32  demand 178
+(1017,1069)  serv_cost 107  trav_cost 17  demand 92
+(1007,1067)  serv_cost 142  trav_cost 22  demand 125
+(994,1070)  serv_cost 331  trav_cost 51  demand 285
+(1073,1072)  serv_cost 25  trav_cost 5  demand 26
+(1009,1073)  serv_cost 202  trav_cost 32  demand 178
+(1006,1019)  serv_cost 212  trav_cost 32  demand 180
+(1021,1074)  serv_cost 248  trav_cost 38  demand 210
+(1075,1022)  serv_cost 167  trav_cost 27  demand 149
+(1076,1031)  serv_cost 272  trav_cost 42  demand 232
+(1077,1032)  serv_cost 273  trav_cost 43  demand 238
+(1081,1082)  serv_cost 673  trav_cost 103  demand 570
+(1083,1084)  serv_cost 83  trav_cost 13  demand 70
+(1085,1086)  serv_cost 118  trav_cost 18  demand 101
+(1087,1088)  serv_cost 519  trav_cost 79  demand 440
+(1089,1090)  serv_cost 143  trav_cost 23  demand 126
+(1091,1092)  serv_cost 13  trav_cost 3  demand 19
+(1093,1094)  serv_cost 496  trav_cost 76  demand 424
+(1095,1096)  serv_cost 485  trav_cost 75  demand 415
+(1098,1099)  serv_cost 107  trav_cost 17  demand 95
+(1100,1101)  serv_cost 202  trav_cost 32  demand 177
+(1102,1103)  serv_cost 107  trav_cost 17  demand 97
+(1104,1105)  serv_cost 59  trav_cost 9  demand 51
+(1108,1109)  serv_cost 189  trav_cost 29  demand 163
+(1110,1111)  serv_cost 95  trav_cost 15  demand 85
+(1112,1113)  serv_cost 96  trav_cost 16  demand 86
+(1114,1115)  serv_cost 225  trav_cost 35  demand 194
+(1116,1117)  serv_cost 59  trav_cost 9  demand 50
+(1120,1121)  serv_cost 48  trav_cost 8  demand 45
+(1122,1123)  serv_cost 48  trav_cost 8  demand 42
+(1124,1125)  serv_cost 59  trav_cost 9  demand 51
+(1126,1127)  serv_cost 212  trav_cost 32  demand 180
+(1130,1131)  serv_cost 48  trav_cost 8  demand 45
+(1132,1133)  serv_cost 177  trav_cost 27  demand 152
+(1130,1134)  serv_cost 72  trav_cost 12  demand 66
+(1135,1136)  serv_cost 84  trav_cost 14  demand 76
+(1137,1138)  serv_cost 59  trav_cost 9  demand 53
+(1100,1141)  serv_cost 71  trav_cost 11  demand 62
+(1142,1143)  serv_cost 107  trav_cost 17  demand 93
+(1123,1144)  serv_cost 25  trav_cost 5  demand 28
+(1145,1109)  serv_cost 225  trav_cost 35  demand 194
+(1146,1147)  serv_cost 366  trav_cost 56  demand 310
+(1148,1149)  serv_cost 236  trav_cost 36  demand 200
+(1152,1153)  serv_cost 48  trav_cost 8  demand 44
+(1157,1148)  serv_cost 319  trav_cost 49  demand 270
+(1158,1151)  serv_cost 261  trav_cost 41  demand 227
+(1161,1162)  serv_cost 12  trav_cost 2  demand 13
+(1171,103)  serv_cost 295  trav_cost 45  demand 252
+(1176,1177)  serv_cost 461  trav_cost 71  demand 395
+(1178,1179)  serv_cost 167  trav_cost 27  demand 148
+(1180,1181)  serv_cost 107  trav_cost 17  demand 96
+(526,1182)  serv_cost 461  trav_cost 71  demand 394
+(1183,1184)  serv_cost 83  trav_cost 13  demand 73
+(1187,1188)  serv_cost 1039  trav_cost 159  demand 884
+(1189,1190)  serv_cost 177  trav_cost 27  demand 150
+(1190,1191)  serv_cost 72  trav_cost 12  demand 66
+(1192,1193)  serv_cost 213  trav_cost 33  demand 183
+(1194,1192)  serv_cost 95  trav_cost 15  demand 83
+(1195,1196)  serv_cost 237  trav_cost 37  demand 204
+(1197,1198)  serv_cost 84  trav_cost 14  demand 77
+(1199,1200)  serv_cost 96  trav_cost 16  demand 87
+(1189,1201)  serv_cost 119  trav_cost 19  demand 107
+(1204,1205)  serv_cost 509  trav_cost 79  demand 437
+(1206,1207)  serv_cost 154  trav_cost 24  demand 135
+(1208,1209)  serv_cost 108  trav_cost 18  demand 98
+(1210,1211)  serv_cost 48  trav_cost 8  demand 46
+(1212,1213)  serv_cost 60  trav_cost 10  demand 54
+(1214,1215)  serv_cost 284  trav_cost 44  demand 247
+(1216,1217)  serv_cost 48  trav_cost 8  demand 43
+(1218,1219)  serv_cost 59  trav_cost 9  demand 51
+(1220,1221)  serv_cost 224  trav_cost 34  demand 190
+(1221,1222)  serv_cost 60  trav_cost 10  demand 58
+(1223,1224)  serv_cost 332  trav_cost 52  demand 287
+(1225,1226)  serv_cost 261  trav_cost 41  demand 227
+(1227,1228)  serv_cost 84  trav_cost 14  demand 79
+(1229,1230)  serv_cost 107  trav_cost 17  demand 93
+(1230,1231)  serv_cost 59  trav_cost 9  demand 52
+(1235,1236)  serv_cost 307  trav_cost 47  demand 262
+(1237,1238)  serv_cost 59  trav_cost 9  demand 52
+(1239,1240)  serv_cost 107  trav_cost 17  demand 96
+(1241,1242)  serv_cost 367  trav_cost 57  demand 316
+(1243,1244)  serv_cost 142  trav_cost 22  demand 123
+(1245,1246)  serv_cost 72  trav_cost 12  demand 67
+(1247,1248)  serv_cost 261  trav_cost 41  demand 229
+(1223,1249)  serv_cost 95  trav_cost 15  demand 82
+(1250,1251)  serv_cost 48  trav_cost 8  demand 45
+(1240,1252)  serv_cost 579  trav_cost 89  demand 493
+(1257,1212)  serv_cost 142  trav_cost 22  demand 121
+(1258,1259)  serv_cost 237  trav_cost 37  demand 205
+(1237,1229)  serv_cost 107  trav_cost 17  demand 96
+(1260,1261)  serv_cost 59  trav_cost 9  demand 50
+(1262,1263)  serv_cost 60  trav_cost 10  demand 56
+(1264,1265)  serv_cost 214  trav_cost 34  demand 186
+(1266,1267)  serv_cost 83  trav_cost 13  demand 73
+(1268,1269)  serv_cost 60  trav_cost 10  demand 54
+(1270,1271)  serv_cost 59  trav_cost 9  demand 51
+(1272,1270)  serv_cost 95  trav_cost 15  demand 81
+(1273,1274)  serv_cost 83  trav_cost 13  demand 72
+(1275,1276)  serv_cost 59  trav_cost 9  demand 50
+(1277,1278)  serv_cost 332  trav_cost 52  demand 289
+(1279,1280)  serv_cost 142  trav_cost 22  demand 123
+(1281,1282)  serv_cost 83  trav_cost 13  demand 72
+(1283,1284)  serv_cost 296  trav_cost 46  demand 254
+(1282,1285)  serv_cost 83  trav_cost 13  demand 70
+(1286,1287)  serv_cost 260  trav_cost 40  demand 223
+(1288,1289)  serv_cost 260  trav_cost 40  demand 222
+(1290,1291)  serv_cost 83  trav_cost 13  demand 73
+(1292,1293)  serv_cost 83  trav_cost 13  demand 71
+(1294,1295)  serv_cost 59  trav_cost 9  demand 51
+(1296,1297)  serv_cost 83  trav_cost 13  demand 72
+(1298,1299)  serv_cost 59  trav_cost 9  demand 50
+(1300,1296)  serv_cost 60  trav_cost 10  demand 58
+(1301,1302)  serv_cost 83  trav_cost 13  demand 71
+(1303,1301)  serv_cost 48  trav_cost 8  demand 43
+(1304,1305)  serv_cost 485  trav_cost 75  demand 415
+(1308,1309)  serv_cost 60  trav_cost 10  demand 56
+(1310,1311)  serv_cost 95  trav_cost 15  demand 81
+(1312,1306)  serv_cost 131  trav_cost 21  demand 117
+(1315,1316)  serv_cost 13  trav_cost 3  demand 16
+(1324,1325)  serv_cost 391  trav_cost 61  demand 338
+(1326,1083)  serv_cost 284  trav_cost 44  demand 243
+(1096,1328)  serv_cost 578  trav_cost 88  demand 490
+(1091,1329)  serv_cost 48  trav_cost 8  demand 45
+(1331,1332)  serv_cost 107  trav_cost 17  demand 94
+(1333,1334)  serv_cost 202  trav_cost 32  demand 176
+(1096,1335)  serv_cost 319  trav_cost 49  demand 274
+(1336,1337)  serv_cost 107  trav_cost 17  demand 96
+(1081,1326)  serv_cost 142  trav_cost 22  demand 121
+(1099,1102)  serv_cost 273  trav_cost 43  demand 238
+(1343,1344)  serv_cost 272  trav_cost 42  demand 232
+(1104,1345)  serv_cost 13  trav_cost 3  demand 19
+(1346,1347)  serv_cost 108  trav_cost 18  demand 98
+(1348,1343)  serv_cost 72  trav_cost 12  demand 69
+(1349,1350)  serv_cost 72  trav_cost 12  demand 68
+(1106,1349)  serv_cost 83  trav_cost 13  demand 73
+(1351,1108)  serv_cost 95  trav_cost 15  demand 85
+(1352,1353)  serv_cost 107  trav_cost 17  demand 96
+(1354,1355)  serv_cost 59  trav_cost 9  demand 52
+(1356,1357)  serv_cost 237  trav_cost 37  demand 208
+(1112,1358)  serv_cost 59  trav_cost 9  demand 51
+(1359,1112)  serv_cost 48  trav_cost 8  demand 45
+(1359,1132)  serv_cost 24  trav_cost 4  demand 25
+(1123,1359)  serv_cost 59  trav_cost 9  demand 53
+(1118,1360)  serv_cost 1  trav_cost 1  demand 6
+(1361,1146)  serv_cost 118  trav_cost 18  demand 101
+(1348,1362)  serv_cost 119  trav_cost 19  demand 107
+(1363,1124)  serv_cost 71  trav_cost 11  demand 60
+(1361,1364)  serv_cost 273  trav_cost 43  demand 237
+(1367,1368)  serv_cost 107  trav_cost 17  demand 92
+(1149,1369)  serv_cost 414  trav_cost 64  demand 357
+(1370,1361)  serv_cost 284  trav_cost 44  demand 243
+(1371,1372)  serv_cost 118  trav_cost 18  demand 102
+(1363,1373)  serv_cost 178  trav_cost 28  demand 153
+(1138,1134)  serv_cost 24  trav_cost 4  demand 20
+(1376,1377)  serv_cost 108  trav_cost 18  demand 98
+(1242,1378)  serv_cost 497  trav_cost 77  demand 427
+(1127,1379)  serv_cost 379  trav_cost 59  demand 328
+(1150,1379)  serv_cost 71  trav_cost 11  demand 62
+(1380,1139)  serv_cost 48  trav_cost 8  demand 42
+(1381,1157)  serv_cost 190  trav_cost 30  demand 167
+(1382,1383)  serv_cost 260  trav_cost 40  demand 224
+(1388,1389)  serv_cost 131  trav_cost 21  demand 117
+(1394,1157)  serv_cost 415  trav_cost 65  demand 358
+(1400,1401)  serv_cost 297  trav_cost 47  demand 259
+(1402,1400)  serv_cost 154  trav_cost 24  demand 131
+(526,1178)  serv_cost 166  trav_cost 26  demand 146
+(1405,1187)  serv_cost 685  trav_cost 105  demand 585
+(1406,1407)  serv_cost 319  trav_cost 49  demand 273
+(1408,1192)  serv_cost 366  trav_cost 56  demand 314
+(1179,1409)  serv_cost 390  trav_cost 60  demand 332
+(1410,1356)  serv_cost 190  trav_cost 30  demand 168
+(1411,1412)  serv_cost 390  trav_cost 60  demand 335
+(1413,1414)  serv_cost 815  trav_cost 125  demand 695
+(1415,1416)  serv_cost 118  trav_cost 18  demand 102
+(1417,1406)  serv_cost 72  trav_cost 12  demand 68
+(1408,1418)  serv_cost 331  trav_cost 51  demand 283
+(1419,1420)  serv_cost 72  trav_cost 12  demand 68
+(1421,1422)  serv_cost 155  trav_cost 25  demand 138
+(1423,1378)  serv_cost 224  trav_cost 34  demand 192
+(1424,1425)  serv_cost 155  trav_cost 25  demand 136
+(1378,1382)  serv_cost 189  trav_cost 29  demand 160
+(1219,1426)  serv_cost 95  trav_cost 15  demand 84
+(1427,1428)  serv_cost 49  trav_cost 9  demand 48
+(1255,1241)  serv_cost 236  trav_cost 36  demand 203
+(1429,1243)  serv_cost 60  trav_cost 10  demand 57
+(1430,1431)  serv_cost 84  trav_cost 14  demand 78
+(1407,1196)  serv_cost 48  trav_cost 8  demand 43
+(1432,1433)  serv_cost 84  trav_cost 14  demand 77
+(1233,1434)  serv_cost 96  trav_cost 16  demand 88
+(1435,1426)  serv_cost 130  trav_cost 20  demand 113
+(1436,1436)  serv_cost 580  trav_cost 90  demand 498
+(1437,1438)  serv_cost 532  trav_cost 82  demand 453
+(1439,1440)  serv_cost 214  trav_cost 34  demand 188
+(1438,1441)  serv_cost 95  trav_cost 15  demand 82
+(1438,1442)  serv_cost 154  trav_cost 24  demand 132
+(1216,1443)  serv_cost 37  trav_cost 7  demand 39
+(1444,1445)  serv_cost 84  trav_cost 14  demand 78
+(1446,1447)  serv_cost 118  trav_cost 18  demand 100
+(1449,1450)  serv_cost 71  trav_cost 11  demand 62
+(1451,1258)  serv_cost 59  trav_cost 9  demand 51
+(1454,1455)  serv_cost 106  trav_cost 16  demand 90
+(1455,1456)  serv_cost 720  trav_cost 110  demand 612
+(1457,1227)  serv_cost 59  trav_cost 9  demand 51
+(1230,1458)  serv_cost 59  trav_cost 9  demand 51
+(1456,1229)  serv_cost 225  trav_cost 35  demand 194
+(1229,1459)  serv_cost 48  trav_cost 8  demand 42
+(1460,1461)  serv_cost 225  trav_cost 35  demand 197
+(1462,1281)  serv_cost 118  trav_cost 18  demand 102
+(1265,1463)  serv_cost 61  trav_cost 11  demand 59
+(1464,1465)  serv_cost 60  trav_cost 10  demand 58
+(1461,1466)  serv_cost 225  trav_cost 35  demand 192
+(1263,1467)  serv_cost 414  trav_cost 64  demand 354
+(1462,1468)  serv_cost 83  trav_cost 13  demand 73
+(1469,1470)  serv_cost 214  trav_cost 34  demand 189
+(1471,1262)  serv_cost 83  trav_cost 13  demand 73
+(1472,1265)  serv_cost 71  trav_cost 11  demand 60
+(1474,1475)  serv_cost 60  trav_cost 10  demand 58
+(1474,1476)  serv_cost 83  trav_cost 13  demand 71
+(1477,1478)  serv_cost 343  trav_cost 53  demand 296
+(1479,1480)  serv_cost 47  trav_cost 7  demand 40
+(1278,1481)  serv_cost 60  trav_cost 10  demand 54
+(1482,1483)  serv_cost 166  trav_cost 26  demand 143
+(1484,1268)  serv_cost 71  trav_cost 11  demand 64
+(1485,1462)  serv_cost 72  trav_cost 12  demand 65
+(1486,1485)  serv_cost 119  trav_cost 19  demand 106
+(1487,1284)  serv_cost 71  trav_cost 11  demand 60
+(1488,1489)  serv_cost 84  trav_cost 14  demand 79
+(1490,1491)  serv_cost 260  trav_cost 40  demand 221
+(1492,1279)  serv_cost 237  trav_cost 37  demand 206
+(1288,1493)  serv_cost 59  trav_cost 9  demand 52
+(1274,1494)  serv_cost 71  trav_cost 11  demand 62
+(1475,1495)  serv_cost 83  trav_cost 13  demand 71
+(1303,1496)  serv_cost 84  trav_cost 14  demand 78
+(1497,1498)  serv_cost 60  trav_cost 10  demand 58
+(1499,1308)  serv_cost 60  trav_cost 10  demand 56
+(1500,1501)  serv_cost 36  trav_cost 6  demand 35
+(1502,1503)  serv_cost 154  trav_cost 24  demand 135
+(1310,1504)  serv_cost 167  trav_cost 27  demand 149
+(1505,1287)  serv_cost 957  trav_cost 147  demand 818
+(1307,1507)  serv_cost 12  trav_cost 2  demand 13
+(1369,1318)  serv_cost 59  trav_cost 9  demand 53
+(1511,1512)  serv_cost 60  trav_cost 10  demand 58
+(1513,1503)  serv_cost 13  trav_cost 3  demand 19
+(1516,1517)  serv_cost 165  trav_cost 25  demand 140
+(1203,1518)  serv_cost 143  trav_cost 23  demand 126
+(1418,1239)  serv_cost 320  trav_cost 50  demand 278
+(1334,1519)  serv_cost 107  trav_cost 17  demand 97
+(1522,1523)  serv_cost 83  trav_cost 13  demand 75
+(1524,1525)  serv_cost 59  trav_cost 9  demand 53
+(1526,1527)  serv_cost 48  trav_cost 8  demand 47
+(1529,955)  serv_cost 166  trav_cost 26  demand 145
+(1530,149)  serv_cost 166  trav_cost 26  demand 142
+(524,1531)  serv_cost 237  trav_cost 37  demand 203
+(1532,1533)  serv_cost 130  trav_cost 20  demand 113
+(389,81)  serv_cost 414  trav_cost 64  demand 357
+(1535,1536)  serv_cost 108  trav_cost 18  demand 98
+(1537,1538)  serv_cost 261  trav_cost 41  demand 227
+(93,1540)  serv_cost 296  trav_cost 46  demand 255
+(892,1541)  serv_cost 1  trav_cost 1  demand 6
+(1542,137)  serv_cost 308  trav_cost 48  demand 269
+(1543,1544)  serv_cost 107  trav_cost 17  demand 92
+(1547,1548)  serv_cost 24  trav_cost 4  demand 23
+(1549,479)  serv_cost 71  trav_cost 11  demand 63
+(571,192)  serv_cost 96  trav_cost 16  demand 89
+(889,1550)  serv_cost 72  trav_cost 12  demand 67
+(1551,1552)  serv_cost 167  trav_cost 27  demand 148
+(1553,1554)  serv_cost 756  trav_cost 116  demand 645
+(1556,1557)  serv_cost 13  trav_cost 3  demand 16
+(1558,1559)  serv_cost 179  trav_cost 29  demand 159
+(74,1560)  serv_cost 83  trav_cost 13  demand 73
+(1162,1562)  serv_cost 1098  trav_cost 168  demand 934
+(1086,1563)  serv_cost 296  trav_cost 46  demand 257
+(1564,1263)  serv_cost 83  trav_cost 13  demand 73
+(1567,1568)  serv_cost 96  trav_cost 16  demand 86
+(1569,1477)  serv_cost 61  trav_cost 11  demand 59
+(1570,1479)  serv_cost 60  trav_cost 10  demand 55
+(289,1187)  serv_cost 638  trav_cost 98  demand 544
+(1572,891)  serv_cost 71  trav_cost 11  demand 63
+(1573,1574)  serv_cost 355  trav_cost 55  demand 304
+(644,659)  serv_cost 131  trav_cost 21  demand 118
+(1061,1575)  serv_cost 37  trav_cost 7  demand 39
+(1576,1577)  serv_cost 84  trav_cost 14  demand 78
+(1578,1579)  serv_cost 378  trav_cost 58  demand 320
+(1580,151)  serv_cost 131  trav_cost 21  demand 115
+(1581,1582)  serv_cost 61  trav_cost 11  demand 59
+(1583,726)  serv_cost 366  trav_cost 56  demand 311
+(735,1584)  serv_cost 36  trav_cost 6  demand 31
+(1585,514)  serv_cost 84  trav_cost 14  demand 79
+(873,1587)  serv_cost 72  trav_cost 12  demand 65
+(862,529)  serv_cost 154  trav_cost 24  demand 134
+(1588,1589)  serv_cost 47  trav_cost 7  demand 40
+(607,1590)  serv_cost 61  trav_cost 11  demand 59
+(794,1591)  serv_cost 461  trav_cost 71  demand 395
+(1236,1592)  serv_cost 272  trav_cost 42  demand 235
+(1311,1593)  serv_cost 378  trav_cost 58  demand 323
+(1511,1594)  serv_cost 83  trav_cost 13  demand 72
+(1595,1596)  serv_cost 190  trav_cost 30  demand 167
+(1560,1597)  serv_cost 166  trav_cost 26  demand 143
+(891,1598)  serv_cost 71  trav_cost 11  demand 61
+(840,828)  serv_cost 59  trav_cost 9  demand 51
+(174,1600)  serv_cost 49  trav_cost 9  demand 48
+(203,1601)  serv_cost 83  trav_cost 13  demand 73
+(273,1602)  serv_cost 24  trav_cost 4  demand 23
+(1603,1604)  serv_cost 84  trav_cost 14  demand 76
+(429,1606)  serv_cost 390  trav_cost 60  demand 335
+(771,761)  serv_cost 47  trav_cost 7  demand 40
+(861,809)  serv_cost 190  trav_cost 30  demand 169
+(1607,1608)  serv_cost 271  trav_cost 41  demand 230
+(330,1609)  serv_cost 143  trav_cost 23  demand 129
+(1610,1611)  serv_cost 72  trav_cost 12  demand 69
+(1612,1613)  serv_cost 142  trav_cost 22  demand 120
+(379,1614)  serv_cost 142  trav_cost 22  demand 123
+(1615,1028)  serv_cost 485  trav_cost 75  demand 419
+(1331,1324)  serv_cost 119  trav_cost 19  demand 105
+(1616,1130)  serv_cost 249  trav_cost 39  demand 219
+(1617,1477)  serv_cost 154  trav_cost 24  demand 135
+(1261,1483)  serv_cost 225  trav_cost 35  demand 192
+(1618,1283)  serv_cost 84  trav_cost 14  demand 79
+(1619,1620)  serv_cost 84  trav_cost 14  demand 76
+(1621,1622)  serv_cost 308  trav_cost 48  demand 267
+(1623,1073)  serv_cost 143  trav_cost 23  demand 127
+(119,1627)  serv_cost 166  trav_cost 26  demand 144
+(258,1628)  serv_cost 189  trav_cost 29  demand 162
+(1629,179)  serv_cost 142  trav_cost 22  demand 125
+(1630,542)  serv_cost 71  trav_cost 11  demand 63
+(931,1631)  serv_cost 119  trav_cost 19  demand 103
+(1632,1633)  serv_cost 178  trav_cost 28  demand 153
+(1634,636)  serv_cost 190  trav_cost 30  demand 166
+(816,1635)  serv_cost 237  trav_cost 37  demand 206
+(1636,487)  serv_cost 130  trav_cost 20  demand 112
+(1050,1637)  serv_cost 189  trav_cost 29  demand 162
+(595,1638)  serv_cost 107  trav_cost 17  demand 93
+(1640,1091)  serv_cost 402  trav_cost 62  demand 342
+(1172,1505)  serv_cost 389  trav_cost 59  demand 330
+(1641,1642)  serv_cost 248  trav_cost 38  demand 212
+(172,525)  serv_cost 165  trav_cost 25  demand 140
+(187,1643)  serv_cost 48  trav_cost 8  demand 47
+(1644,570)  serv_cost 47  trav_cost 7  demand 40
+(173,526)  serv_cost 165  trav_cost 25  demand 142
+(913,898)  serv_cost 48  trav_cost 8  demand 46
+(1646,1551)  serv_cost 24  trav_cost 4  demand 23
+(402,1647)  serv_cost 130  trav_cost 20  demand 112
+(1648,764)  serv_cost 36  trav_cost 6  demand 34
+(1649,650)  serv_cost 166  trav_cost 26  demand 146
+(1650,250)  serv_cost 166  trav_cost 26  demand 143
+(836,499)  serv_cost 177  trav_cost 27  demand 151
+(1651,1036)  serv_cost 224  trav_cost 34  demand 191
+(1652,1529)  serv_cost 166  trav_cost 26  demand 146
+(280,32)  serv_cost 96  trav_cost 16  demand 87
+(1101,1653)  serv_cost 131  trav_cost 21  demand 116
+(1212,1654)  serv_cost 497  trav_cost 77  demand 428
+(1655,1298)  serv_cost 61  trav_cost 11  demand 59
+(1328,1097)  serv_cost 649  trav_cost 99  demand 552
+(1657,1658)  serv_cost 991  trav_cost 151  demand 840
+(1236,1235)  serv_cost 214  trav_cost 34  demand 188
+(1659,548)  serv_cost 96  trav_cost 16  demand 88
+(1039,1660)  serv_cost 344  trav_cost 54  demand 299
+(969,1661)  serv_cost 72  trav_cost 12  demand 65
+(301,674)  serv_cost 308  trav_cost 48  demand 265
+(1665,1666)  serv_cost 12  trav_cost 2  demand 10
+(1667,1572)  serv_cost 131  trav_cost 21  demand 116
+(1668,915)  serv_cost 107  trav_cost 17  demand 94
+(777,1669)  serv_cost 130  trav_cost 20  demand 111
+(1670,1402)  serv_cost 36  trav_cost 6  demand 35
+(1671,1277)  serv_cost 61  trav_cost 11  demand 59
+(1498,1672)  serv_cost 59  trav_cost 9  demand 50
+(1311,1673)  serv_cost 108  trav_cost 18  demand 99
+(1675,1161)  serv_cost 1098  trav_cost 168  demand 931
+(1676,688)  serv_cost 48  trav_cost 8  demand 42
+(1677,1678)  serv_cost 354  trav_cost 54  demand 303
+(1679,1012)  serv_cost 49  trav_cost 9  demand 47
+(1067,1652)  serv_cost 142  trav_cost 22  demand 120
+(148,483)  serv_cost 166  trav_cost 26  demand 146
+(33,226)  serv_cost 95  trav_cost 15  demand 83
+(329,1680)  serv_cost 285  trav_cost 45  demand 249
+(1681,885)  serv_cost 72  trav_cost 12  demand 65
+(1682,552)  serv_cost 378  trav_cost 58  demand 323
+(1683,202)  serv_cost 142  trav_cost 22  demand 122
+(1684,1685)  serv_cost 177  trav_cost 27  demand 152
+(1041,1686)  serv_cost 343  trav_cost 53  demand 295
+(1687,925)  serv_cost 119  trav_cost 19  demand 108
+(642,1688)  serv_cost 25  trav_cost 5  demand 27
+(1689,1690)  serv_cost 71  trav_cost 11  demand 60
+(1300,1691)  serv_cost 83  trav_cost 13  demand 72
+(1060,1692)  serv_cost 296  trav_cost 46  demand 257
+(1029,1037)  serv_cost 120  trav_cost 20  demand 109
+(258,1693)  serv_cost 401  trav_cost 61  demand 340
+(1694,1695)  serv_cost 296  trav_cost 46  demand 254
+(359,1696)  serv_cost 190  trav_cost 30  demand 166
+(85,381)  serv_cost 72  trav_cost 12  demand 66
+(1697,406)  serv_cost 261  trav_cost 41  demand 228
+(482,125)  serv_cost 178  trav_cost 28  demand 158
+(157,521)  serv_cost 166  trav_cost 26  demand 147
+(573,189)  serv_cost 94  trav_cost 14  demand 80
+(599,550)  serv_cost 260  trav_cost 40  demand 225
+(1700,262)  serv_cost 284  trav_cost 44  demand 246
+(1701,718)  serv_cost 130  trav_cost 20  demand 110
+(1702,336)  serv_cost 131  trav_cost 21  demand 115
+(1703,705)  serv_cost 367  trav_cost 57  demand 315
+(1704,434)  serv_cost 48  trav_cost 8  demand 47
+(1707,556)  serv_cost 118  trav_cost 18  demand 101
+(1577,1708)  serv_cost 48  trav_cost 8  demand 46
+(553,1576)  serv_cost 106  trav_cost 16  demand 90
+(966,1709)  serv_cost 319  trav_cost 49  demand 273
+(1710,174)  serv_cost 60  trav_cost 10  demand 56
+(1711,817)  serv_cost 709  trav_cost 109  demand 604
+(607,1712)  serv_cost 83  trav_cost 13  demand 75
+(58,63)  serv_cost 83  trav_cost 13  demand 72
+(1519,1088)  serv_cost 460  trav_cost 70  demand 391
+(1714,1388)  serv_cost 96  trav_cost 16  demand 89
+(1409,1715)  serv_cost 202  trav_cost 32  demand 178
+(1198,1189)  serv_cost 130  trav_cost 20  demand 114
+(1453,1716)  serv_cost 130  trav_cost 20  demand 112
+(1717,1226)  serv_cost 214  trav_cost 34  demand 187
+(1718,1271)  serv_cost 95  trav_cost 15  demand 81
+(588,620)  serv_cost 143  trav_cost 23  demand 128
+(151,516)  serv_cost 107  trav_cost 17  demand 97
+(720,393)  serv_cost 47  trav_cost 7  demand 41
+(1470,1720)  serv_cost 450  trav_cost 70  demand 387
+(1721,1108)  serv_cost 48  trav_cost 8  demand 43
+(1722,1723)  serv_cost 107  trav_cost 17  demand 94
+(1724,1351)  serv_cost 330  trav_cost 50  demand 280
+(1727,1728)  serv_cost 83  trav_cost 13  demand 73
+(1730,1731)  serv_cost 83  trav_cost 13  demand 72
+(1732,1733)  serv_cost 59  trav_cost 9  demand 50
+(888,1736)  serv_cost 60  trav_cost 10  demand 56
+(535,867)  serv_cost 438  trav_cost 68  demand 375
+(914,914)  serv_cost 238  trav_cost 38  demand 209
+(1737,641)  serv_cost 166  trav_cost 26  demand 144
+(954,946)  serv_cost 178  trav_cost 28  demand 156
+(995,1061)  serv_cost 319  trav_cost 49  demand 272
+(1003,1738)  serv_cost 131  trav_cost 21  demand 119
+(305,281)  serv_cost 319  trav_cost 49  demand 273
+(1739,68)  serv_cost 272  trav_cost 42  demand 231
+(381,101)  serv_cost 143  trav_cost 23  demand 128
+(427,112)  serv_cost 142  trav_cost 22  demand 120
+(134,1741)  serv_cost 213  trav_cost 33  demand 184
+(1742,1580)  serv_cost 143  trav_cost 23  demand 127
+(593,231)  serv_cost 118  trav_cost 18  demand 100
+(1604,219)  serv_cost 379  trav_cost 59  demand 327
+(759,1743)  serv_cost 142  trav_cost 22  demand 122
+(23,13)  serv_cost 237  trav_cost 37  demand 207
+(431,122)  serv_cost 83  trav_cost 13  demand 74
+(1747,635)  serv_cost 190  trav_cost 30  demand 165
+(1748,663)  serv_cost 330  trav_cost 50  demand 280
+(375,1749)  serv_cost 96  trav_cost 16  demand 89
+(775,1750)  serv_cost 94  trav_cost 14  demand 80
+(1751,727)  serv_cost 449  trav_cost 69  demand 386
+(1752,436)  serv_cost 96  trav_cost 16  demand 88
+(820,1753)  serv_cost 96  trav_cost 16  demand 88
+(1754,1755)  serv_cost 13  trav_cost 3  demand 15
+(463,1756)  serv_cost 107  trav_cost 17  demand 93
+(562,1745)  serv_cost 96  trav_cost 16  demand 88
+(1630,1757)  serv_cost 225  trav_cost 35  demand 197
+(909,544)  serv_cost 25  trav_cost 5  demand 25
+(530,1758)  serv_cost 131  trav_cost 21  demand 118
+(971,582)  serv_cost 106  trav_cost 16  demand 91
+(1686,1033)  serv_cost 332  trav_cost 52  demand 289
+(865,1615)  serv_cost 438  trav_cost 68  demand 377
+(208,1760)  serv_cost 13  trav_cost 3  demand 18
+(1762,1197)  serv_cost 95  trav_cost 15  demand 85
+(1763,1764)  serv_cost 60  trav_cost 10  demand 54
+(1765,1766)  serv_cost 49  trav_cost 9  demand 47
+(1767,274)  serv_cost 36  trav_cost 6  demand 33
+(1768,1769)  serv_cost 390  trav_cost 60  demand 332
+(656,1770)  serv_cost 165  trav_cost 25  demand 140
+(1771,536)  serv_cost 83  trav_cost 13  demand 72
+(376,742)  serv_cost 24  trav_cost 4  demand 24
+(1772,1414)  serv_cost 118  trav_cost 18  demand 100
+(1773,1774)  serv_cost 142  trav_cost 22  demand 125
+(1775,662)  serv_cost 367  trav_cost 57  demand 316
+(1776,253)  serv_cost 108  trav_cost 18  demand 99
+(716,302)  serv_cost 142  trav_cost 22  demand 124
+(754,371)  serv_cost 37  trav_cost 7  demand 38
+(1780,757)  serv_cost 47  trav_cost 7  demand 40
+(1614,1781)  serv_cost 142  trav_cost 22  demand 123
+(1783,1784)  serv_cost 106  trav_cost 16  demand 90
+(1758,574)  serv_cost 142  trav_cost 22  demand 123
+(691,1668)  serv_cost 107  trav_cost 17  demand 95
+(579,1785)  serv_cost 155  trav_cost 25  demand 136
+(646,1786)  serv_cost 131  trav_cost 21  demand 114
+(1788,1050)  serv_cost 130  trav_cost 20  demand 114
+(965,1789)  serv_cost 166  trav_cost 26  demand 146
+(1738,1066)  serv_cost 319  trav_cost 49  demand 273
+(1790,1015)  serv_cost 142  trav_cost 22  demand 120
+(1075,1012)  serv_cost 319  trav_cost 49  demand 270
+(1077,1791)  serv_cost 131  trav_cost 21  demand 117
+(1792,223)  serv_cost 71  trav_cost 11  demand 60
+(1793,1794)  serv_cost 130  trav_cost 20  demand 113
+(280,226)  serv_cost 213  trav_cost 33  demand 181
+(276,1795)  serv_cost 96  trav_cost 16  demand 88
+(1696,282)  serv_cost 284  trav_cost 44  demand 243
+(99,109)  serv_cost 248  trav_cost 38  demand 211
+(1796,448)  serv_cost 236  trav_cost 36  demand 200
+(125,460)  serv_cost 166  trav_cost 26  demand 143
+(1797,1798)  serv_cost 95  trav_cost 15  demand 85
+(167,1799)  serv_cost 60  trav_cost 10  demand 54
+(167,1800)  serv_cost 119  trav_cost 19  demand 108
+(1801,953)  serv_cost 61  trav_cost 11  demand 59
+(1802,1566)  serv_cost 48  trav_cost 8  demand 47
+(1371,1521)  serv_cost 95  trav_cost 15  demand 85
+(706,1803)  serv_cost 1157  trav_cost 177  demand 982
+(1207,1804)  serv_cost 307  trav_cost 47  demand 263
+(1805,1225)  serv_cost 72  trav_cost 12  demand 65
+(1806,1262)  serv_cost 60  trav_cost 10  demand 55
+(1481,1807)  serv_cost 35  trav_cost 5  demand 30
+(1808,1479)  serv_cost 83  trav_cost 13  demand 73
+(1596,1620)  serv_cost 72  trav_cost 12  demand 65
+(1713,1394)  serv_cost 108  trav_cost 18  demand 98
+(1809,1563)  serv_cost 118  trav_cost 18  demand 100
+(1519,1087)  serv_cost 107  trav_cost 17  demand 95
+(1102,1653)  serv_cost 189  trav_cost 29  demand 160
+(1357,1410)  serv_cost 83  trav_cost 13  demand 70
+(854,840)  serv_cost 260  trav_cost 40  demand 221
+(1059,956)  serv_cost 248  trav_cost 38  demand 210
+(6,1811)  serv_cost 49  trav_cost 9  demand 49
+(267,1812)  serv_cost 72  trav_cost 12  demand 67
+(1813,47)  serv_cost 567  trav_cost 87  demand 482
+(66,58)  serv_cost 106  trav_cost 16  demand 90
+(1814,75)  serv_cost 119  trav_cost 19  demand 106
+(1814,1815)  serv_cost 166  trav_cost 26  demand 146
+(425,1796)  serv_cost 283  trav_cost 43  demand 241
+(171,158)  serv_cost 72  trav_cost 12  demand 69
+(200,1816)  serv_cost 165  trav_cost 25  demand 141
+(1817,551)  serv_cost 308  trav_cost 48  demand 268
+(234,230)  serv_cost 96  trav_cost 16  demand 86
+(757,1819)  serv_cost 25  trav_cost 5  demand 27
+(1820,1821)  serv_cost 261  trav_cost 41  demand 228
+(1647,786)  serv_cost 83  trav_cost 13  demand 75
+(422,1822)  serv_cost 95  trav_cost 15  demand 84
+(1783,1783)  serv_cost 567  trav_cost 87  demand 481
+(910,653)  serv_cost 24  trav_cost 4  demand 25
+(911,1823)  serv_cost 24  trav_cost 4  demand 20
+(576,1824)  serv_cost 48  trav_cost 8  demand 47
+(1825,943)  serv_cost 237  trav_cost 37  demand 207
+(1826,1827)  serv_cost 402  trav_cost 62  demand 344
+(1828,646)  serv_cost 1016  trav_cost 156  demand 865
+(960,963)  serv_cost 60  trav_cost 10  demand 54
+(977,627)  serv_cost 165  trav_cost 25  demand 140
+(1829,1830)  serv_cost 36  trav_cost 6  demand 33
+(689,1831)  serv_cost 25  trav_cost 5  demand 27
+(12,1832)  serv_cost 36  trav_cost 6  demand 32
+(1188,1675)  serv_cost 189  trav_cost 29  demand 160
+(648,1833)  serv_cost 107  trav_cost 17  demand 97
+(1834,1835)  serv_cost 60  trav_cost 10  demand 53
+(1836,1142)  serv_cost 24  trav_cost 4  demand 21
+(1837,1371)  serv_cost 213  trav_cost 33  demand 182
+(1840,1841)  serv_cost 531  trav_cost 81  demand 450
+(1251,1805)  serv_cost 142  trav_cost 22  demand 120
+(1642,1641)  serv_cost 590  trav_cost 90  demand 501
+(1466,1842)  serv_cost 165  trav_cost 25  demand 141
+(1843,1497)  serv_cost 61  trav_cost 11  demand 59
+(1844,1281)  serv_cost 95  trav_cost 15  demand 81
+(1845,1570)  serv_cost 60  trav_cost 10  demand 56
+(1507,1846)  serv_cost 496  trav_cost 76  demand 424
+(211,1849)  serv_cost 165  trav_cost 25  demand 140
+(1850,1214)  serv_cost 83  trav_cost 13  demand 74
+(1461,1323)  serv_cost 568  trav_cost 88  demand 489
+(1284,1485)  serv_cost 71  trav_cost 11  demand 63
+(1853,1854)  serv_cost 189  trav_cost 29  demand 162
+(1420,1855)  serv_cost 260  trav_cost 40  demand 221
+(1856,1857)  serv_cost 142  trav_cost 22  demand 125
+(1504,1858)  serv_cost 153  trav_cost 23  demand 130
+(1620,1499)  serv_cost 71  trav_cost 11  demand 60
+(1859,1657)  serv_cost 460  trav_cost 70  demand 391
+(1386,1860)  serv_cost 389  trav_cost 59  demand 330
+(1416,1861)  serv_cost 154  trav_cost 24  demand 133
+(1862,1863)  serv_cost 273  trav_cost 43  demand 238
+(1267,1806)  serv_cost 60  trav_cost 10  demand 56
+(1499,1864)  serv_cost 83  trav_cost 13  demand 73
+(1866,885)  serv_cost 59  trav_cost 9  demand 50
+(1176,1171)  serv_cost 166  trav_cost 26  demand 142
+(1867,1354)  serv_cost 25  trav_cost 5  demand 28
+(1452,1868)  serv_cost 107  trav_cost 17  demand 93
+(1869,1870)  serv_cost 108  trav_cost 18  demand 98
+(1582,1742)  serv_cost 107  trav_cost 17  demand 93
+(194,1638)  serv_cost 379  trav_cost 59  demand 325
+(1773,1537)  serv_cost 94  trav_cost 14  demand 80
+(236,1871)  serv_cost 106  trav_cost 16  demand 91
+(639,1872)  serv_cost 84  trav_cost 14  demand 77
+(1874,640)  serv_cost 591  trav_cost 91  demand 506
+(300,1875)  serv_cost 48  trav_cost 8  demand 44
+(1584,317)  serv_cost 84  trav_cost 14  demand 79
+(1749,738)  serv_cost 12  trav_cost 2  demand 11
+(1647,1876)  serv_cost 36  trav_cost 6  demand 35
+(784,1614)  serv_cost 745  trav_cost 115  demand 639
+(1781,1684)  serv_cost 177  trav_cost 27  demand 152
+(1877,1878)  serv_cost 37  trav_cost 7  demand 38
+(1756,1879)  serv_cost 24  trav_cost 4  demand 23
+(888,1880)  serv_cost 48  trav_cost 8  demand 44
+(1880,1881)  serv_cost 47  trav_cost 7  demand 40
+(1882,532)  serv_cost 224  trav_cost 34  demand 190
+(941,1883)  serv_cost 59  trav_cost 9  demand 52
+(969,1885)  serv_cost 24  trav_cost 4  demand 22
+(803,799)  serv_cost 37  trav_cost 7  demand 37
+(1660,1886)  serv_cost 83  trav_cost 13  demand 70
+(1692,1047)  serv_cost 354  trav_cost 54  demand 302
+(1887,6)  serv_cost 307  trav_cost 47  demand 260
+(1628,1793)  serv_cost 202  trav_cost 32  demand 176
+(227,1888)  serv_cost 226  trav_cost 36  demand 199
+(306,1889)  serv_cost 36  trav_cost 6  demand 34
+(79,1890)  serv_cost 296  trav_cost 46  demand 254
+(1893,1770)  serv_cost 1416  trav_cost 216  demand 1200
+(882,1637)  serv_cost 154  trav_cost 24  demand 135
+(1894,1059)  serv_cost 166  trav_cost 26  demand 144
+(1065,964)  serv_cost 167  trav_cost 27  demand 149
+(1895,1894)  serv_cost 166  trav_cost 26  demand 143
+(1015,1026)  serv_cost 283  trav_cost 43  demand 242
+(1793,1532)  serv_cost 296  trav_cost 46  demand 253
+(136,1899)  serv_cost 107  trav_cost 17  demand 95
+(665,664)  serv_cost 107  trav_cost 17  demand 93
+(736,1901)  serv_cost 48  trav_cost 8  demand 42
+(749,1902)  serv_cost 49  trav_cost 9  demand 48
+(1903,758)  serv_cost 37  trav_cost 7  demand 38
+(396,1904)  serv_cost 36  trav_cost 6  demand 36
+(1905,396)  serv_cost 47  trav_cost 7  demand 42
+(1906,463)  serv_cost 214  trav_cost 34  demand 188
+(1907,1908)  serv_cost 60  trav_cost 10  demand 57
+(1909,1572)  serv_cost 142  trav_cost 22  demand 125
+(533,1910)  serv_cost 60  trav_cost 10  demand 57
+(1559,1541)  serv_cost 119  trav_cost 19  demand 103
+(1882,532)  serv_cost 225  trav_cost 35  demand 195
+(1911,1809)  serv_cost 273  trav_cost 43  demand 237
+(1834,1912)  serv_cost 60  trav_cost 10  demand 55
+(1517,1913)  serv_cost 119  trav_cost 19  demand 108
+(1408,1419)  serv_cost 142  trav_cost 22  demand 123
+(1211,1568)  serv_cost 319  trav_cost 49  demand 270
+(1451,1914)  serv_cost 84  trav_cost 14  demand 79
+(1915,1467)  serv_cost 83  trav_cost 13  demand 73
+(1916,1474)  serv_cost 37  trav_cost 7  demand 39
+(1917,1918)  serv_cost 154  trav_cost 24  demand 132
+(1919,1920)  serv_cost 48  trav_cost 8  demand 44
+(1733,1578)  serv_cost 308  trav_cost 48  demand 268
+(1301,1289)  serv_cost 25  trav_cost 5  demand 27
+(706,1414)  serv_cost 944  trav_cost 144  demand 802
+(1921,1922)  serv_cost 460  trav_cost 70  demand 391
+(1923,1464)  serv_cost 96  trav_cost 16  demand 89
+(1823,947)  serv_cost 213  trav_cost 33  demand 185
+(515,156)  serv_cost 118  trav_cost 18  demand 101
+(1856,1449)  serv_cost 331  trav_cost 51  demand 283
+(1926,1267)  serv_cost 71  trav_cost 11  demand 60
+(1846,1492)  serv_cost 402  trav_cost 62  demand 344
+(406,1928)  serv_cost 60  trav_cost 10  demand 56
+(446,105)  serv_cost 508  trav_cost 78  demand 434
+(1870,120)  serv_cost 107  trav_cost 17  demand 93
+(150,481)  serv_cost 367  trav_cost 57  demand 318
+(491,1929)  serv_cost 24  trav_cost 4  demand 23
+(537,1530)  serv_cost 307  trav_cost 47  demand 262
+(1816,537)  serv_cost 166  trav_cost 26  demand 143
+(1650,597)  serv_cost 485  trav_cost 75  demand 417
+(673,640)  serv_cost 460  trav_cost 70  demand 390
+(299,1930)  serv_cost 95  trav_cost 15  demand 83
+(726,1874)  serv_cost 119  trav_cost 19  demand 105
+(368,1931)  serv_cost 107  trav_cost 17  demand 95
+(1932,1751)  serv_cost 178  trav_cost 28  demand 154
+(1933,1933)  serv_cost 544  trav_cost 84  demand 466
+(1548,1934)  serv_cost 71  trav_cost 11  demand 63
+(937,924)  serv_cost 37  trav_cost 7  demand 39
+(1935,1936)  serv_cost 354  trav_cost 54  demand 301
+(1937,1033)  serv_cost 684  trav_cost 104  demand 580
+(879,880)  serv_cost 2  trav_cost 2  demand 9
+(1014,1011)  serv_cost 319  trav_cost 49  demand 272
+(1938,283)  serv_cost 260  trav_cost 40  demand 224
+(1939,1098)  serv_cost 107  trav_cost 17  demand 96
+(1127,1940)  serv_cost 84  trav_cost 14  demand 78
+(1201,1197)  serv_cost 166  trav_cost 26  demand 145
+(1200,1423)  serv_cost 261  trav_cost 41  demand 228
+(1941,1443)  serv_cost 284  trav_cost 44  demand 247
+(1857,1250)  serv_cost 95  trav_cost 15  demand 86
+(1942,1308)  serv_cost 83  trav_cost 13  demand 72
+(908,901)  serv_cost 25  trav_cost 5  demand 29
+(1943,1944)  serv_cost 47  trav_cost 7  demand 40
+(1325,1945)  serv_cost 178  trav_cost 28  demand 156
+(677,670)  serv_cost 36  trav_cost 6  demand 36
+(1711,290)  serv_cost 213  trav_cost 33  demand 182
+(909,1630)  serv_cost 37  trav_cost 7  demand 37
+(932,940)  serv_cost 49  trav_cost 9  demand 48
+(1946,1859)  serv_cost 485  trav_cost 75  demand 416
+(1407,1840)  serv_cost 59  trav_cost 9  demand 53
+(1056,1947)  serv_cost 178  trav_cost 28  demand 156
+(1069,1948)  serv_cost 71  trav_cost 11  demand 60
+(9,19)  serv_cost 83  trav_cost 13  demand 70
+(29,217)  serv_cost 344  trav_cost 54  demand 299
+(275,1693)  serv_cost 83  trav_cost 13  demand 73
+LIST_NOREQ_EDGES : 
+(54,1949)  cost 344
+(1535,383)  cost 118
+(218,1644)  cost 71
+(1950,1951)  cost 130
+(252,1952)  cost 60
+(670,1953)  cost 12
+(334,1701)  cost 95
+(735,1954)  cost 72
+(1609,744)  cost 108
+(1955,774)  cost 1
+(407,1956)  cost 201
+(1957,1958)  cost 48
+(1959,508)  cost 355
+(1961,987)  cost 1
+(1090,1963)  cost 71
+(1825,546)  cost 166
+(1964,1484)  cost 60
+(1670,1160)  cost 213
+(1322,1315)  cost 120
+(978,1966)  cost 95
+(1968,1969)  cost 95
+(663,605)  cost 118
+(43,267)  cost 72
+(1970,389)  cost 143
+(1733,1971)  cost 71
+(1723,1362)  cost 47
+(1213,1436)  cost 190
+(1973,1974)  cost 95
+(1478,1617)  cost 178
+(1287,1386)  cost 130
+(1655,1975)  cost 49
+(1976,848)  cost 72
+(489,1685)  cost 650
+(1628,1532)  cost 354
+(1977,1482)  cost 178
+(1978,1979)  cost 285
+(1345,1834)  cost 36
+(1980,1925)  cost 12
+(1982,1204)  cost 84
+(1984,1269)  cost 60
+(231,155)  cost 555
+(1985,1986)  cost 13
+(1109,1616)  cost 165
+(1987,1988)  cost 49
+(1989,1418)  cost 143
+(1441,1990)  cost 154
+(1280,1926)  cost 213
+(1991,1290)  cost 71
+(1992,1047)  cost 142
+(1074,1993)  cost 95
+(1024,1623)  cost 155
+(1791,1076)  cost 273
+(1025,1791)  cost 390
+(69,1768)  cost 118
+(91,1994)  cost 24
+(89,362)  cost 71
+(95,107)  cost 107
+(1995,430)  cost 414
+(1996,517)  cost 225
+(206,176)  cost 212
+(241,633)  cost 106
+(668,235)  cost 237
+(697,251)  cost 119
+(1901,1997)  cost 47
+(354,303)  cost 285
+(722,1998)  cost 131
+(1998,379)  cost 155
+(1782,1999)  cost 59
+(876,1556)  cost 83
+(2000,1828)  cost 142
+(885,2001)  cost 48
+(932,608)  cost 166
+(582,1573)  cost 165
+(1409,1402)  cost 83
+(441,807)  cost 154
+(1955,1586)  cost 390
+(1999,438)  cost 295
+(1828,758)  cost 886
+(1598,892)  cost 272
+(929,1610)  cost 178
+(2005,575)  cost 155
+(2006,632)  cost 60
+(2007,2008)  cost 531
+(684,990)  cost 35
+(1038,827)  cost 154
+(907,2010)  cost 107
+(954,2012)  cost 330
+(973,994)  cost 131
+(1022,1013)  cost 272
+(1693,1533)  cost 108
+(80,2013)  cost 49
+(88,98)  cost 107
+(2014,2015)  cost 285
+(126,431)  cost 177
+(481,126)  cost 367
+(2016,2017)  cost 37
+(195,177)  cost 108
+(2018,1776)  cost 108
+(1743,1703)  cost 119
+(391,755)  cost 106
+(2022,1195)  cost 131
+(2023,2024)  cost 72
+(2025,605)  cost 295
+(864,2026)  cost 331
+(703,269)  cost 177
+(2027,240)  cost 177
+(371,2028)  cost 1
+(1008,1068)  cost 142
+(1093,1086)  cost 107
+(1963,1099)  cost 71
+(1353,1722)  cost 283
+(1217,1763)  cost 83
+(1524,2029)  cost 108
+(2030,1730)  cost 83
+(1512,1300)  cost 60
+(372,2031)  cost 153
+(1751,2033)  cost 201
+(1957,846)  cost 119
+(871,812)  cost 225
+(535,557)  cost 154
+(628,931)  cost 142
+(1709,621)  cost 166
+(866,879)  cost 189
+(2012,1045)  cost 108
+(2035,1009)  cost 143
+(2036,208)  cost 106
+(42,1813)  cost 130
+(384,382)  cost 296
+(1589,538)  cost 106
+(565,170)  cost 59
+(219,206)  cost 119
+(1509,1732)  cost 13
+(2042,638)  cost 354
+(2043,2044)  cost 59
+(1379,1135)  cost 47
+(1424,1415)  cost 36
+(817,1955)  cost 166
+(2045,1376)  cost 1
+(721,319)  cost 1
+(733,2046)  cost 355
+(2047,702)  cost 94
+(1517,2049)  cost 13
+(1473,1505)  cost 898
+(2050,1197)  cost 72
+(2051,1423)  cost 202
+(1222,2052)  cost 48
+(262,2053)  cost 815
+(2054,732)  cost 437
+(751,2054)  cost 248
+(822,825)  cost 60
+(812,836)  cost 190
+(479,873)  cost 72
+(1745,863)  cost 13
+(894,1659)  cost 107
+(934,648)  cost 25
+(1688,623)  cost 59
+(612,641)  cost 118
+(2056,689)  cost 35
+(845,865)  cost 154
+(1760,2036)  cost 95
+(50,41)  cost 95
+(360,323)  cost 131
+(1694,2057)  cost 107
+(77,73)  cost 95
+(110,399)  cost 131
+(431,2058)  cost 166
+(1606,1542)  cost 213
+(176,539)  cost 213
+(194,599)  cost 119
+(1748,2025)  cost 95
+(752,1669)  cost 272
+(881,882)  cost 131
+(2046,295)  cost 166
+(2059,1457)  cost 25
+(1734,1216)  cost 94
+(2060,1268)  cost 60
+(1092,1089)  cost 213
+(1717,1251)  cost 84
+(2061,1845)  cost 83
+(385,94)  cost 60
+(603,1950)  cost 72
+(1327,1469)  cost 319
+(1489,1283)  cost 71
+(1023,2035)  cost 201
+(2062,1781)  cost 744
+(2063,1996)  cost 83
+(593,2064)  cost 189
+(2065,1636)  cost 131
+(2066,1085)  cost 107
+(1344,2067)  cost 143
+(1616,2068)  cost 84
+(1147,1364)  cost 154
+(1841,2069)  cost 143
+(2070,1500)  cost 35
+(1475,1294)  cost 1
+(1593,1502)  cost 49
+(529,2072)  cost 166
+(512,625)  cost 143
+(955,965)  cost 273
+(974,1060)  cost 190
+(1070,1003)  cost 142
+(28,217)  cost 119
+(1888,2073)  cost 72
+(265,2074)  cost 95
+(61,324)  cost 130
+(308,42)  cost 437
+(2058,387)  cost 61
+(525,1530)  cost 166
+(197,189)  cost 95
+(1537,2075)  cost 72
+(662,2076)  cost 355
+(352,2047)  cost 106
+(1583,714)  cost 84
+(742,734)  cost 61
+(753,2077)  cost 36
+(1669,351)  cost 603
+(774,776)  cost 155
+(2078,421)  cost 49
+(433,2079)  cost 48
+(868,558)  cost 283
+(915,904)  cost 166
+(547,917)  cost 37
+(655,976)  cost 12
+(660,970)  cost 95
+(2080,656)  cost 83
+(986,977)  cost 166
+(2081,1911)  cost 449
+(2082,1640)  cost 107
+(1346,1963)  cost 426
+(1142,1111)  cost 36
+(2083,1363)  cost 84
+(1181,1944)  cost 72
+(1457,2084)  cost 83
+(2085,1719)  cost 155
+(1369,2086)  cost 331
+(1187,1305)  cost 945
+(2087,1270)  cost 59
+(927,1788)  cost 48
+(291,372)  cost 190
+(323,72)  cost 166
+(1812,266)  cost 83
+(1597,2089)  cost 119
+(81,388)  cost 260
+(2091,386)  cost 307
+(1869,153)  cost 544
+(250,229)  cost 225
+(246,637)  cost 355
+(318,2093)  cost 47
+(1931,1609)  cost 130
+(2094,750)  cost 189
+(2095,771)  cost 36
+(770,2096)  cost 36
+(1707,1636)  cost 48
+(1558,1784)  cost 84
+(682,1961)  cost 35
+(801,1028)  cost 213
+(883,1040)  cost 177
+(1992,2097)  cost 378
+(2098,2099)  cost 60
+(851,1754)  cost 59
+(1157,2100)  cost 213
+(2101,1982)  cost 107
+(1455,1234)  cost 261
+(1087,1084)  cost 107
+(1985,2102)  cost 71
+(1134,1145)  cost 213
+(1180,2103)  cost 83
+(1204,2104)  cost 95
+(1212,1641)  cost 484
+(1320,1842)  cost 190
+(1230,2105)  cost 189
+(2106,1264)  cost 84
+(666,249)  cost 95
+(416,249)  cost 226
+(761,2109)  cost 36
+(814,1933)  cost 107
+(901,2110)  cost 71
+(1559,905)  cost 213
+(555,931)  cost 201
+(950,2111)  cost 1
+(622,2112)  cost 154
+(2006,1573)  cost 166
+(1827,626)  cost 178
+(1019,1008)  cost 142
+(7,2113)  cost 60
+(46,1812)  cost 59
+(281,2114)  cost 25
+(324,2115)  cost 190
+(380,1815)  cost 107
+(430,114)  cost 177
+(550,551)  cost 142
+(2064,592)  cost 791
+(1683,2116)  cost 342
+(2117,980)  cost 213
+(169,519)  cost 119
+(509,474)  cost 143
+(2118,1285)  cost 95
+(1596,1991)  cost 71
+(783,2119)  cost 154
+(2120,2121)  cost 202
+(1400,2122)  cost 83
+(1058,1801)  cost 155
+(1652,1065)  cost 249
+(386,96)  cost 415
+(445,114)  cost 461
+(149,480)  cost 331
+(198,170)  cost 413
+(204,200)  cost 166
+(2123,1682)  cost 48
+(243,221)  cost 60
+(730,1583)  cost 118
+(345,1612)  cost 332
+(2125,2126)  cost 142
+(1750,369)  cost 178
+(2127,770)  cost 36
+(1754,2129)  cost 108
+(1828,2023)  cost 319
+(499,816)  cost 366
+(490,534)  cost 36
+(1676,2130)  cost 36
+(2131,1002)  cost 284
+(1094,2067)  cost 107
+(1098,1103)  cost 273
+(1122,2132)  cost 59
+(1986,1107)  cost 177
+(1171,2133)  cost 272
+(2134,1861)  cost 48
+(1279,1617)  cost 72
+(2135,1480)  cost 83
+(1298,1619)  cost 59
+(336,2136)  cost 96
+(747,765)  cost 284
+(367,752)  cost 118
+(1427,1988)  cost 153
+(283,53)  cost 108
+(702,2137)  cost 72
+(2138,1970)  cost 143
+(162,1797)  cost 178
+(970,971)  cost 271
+(1037,1023)  cost 118
+(146,1772)  cost 910
+(1115,2139)  cost 1
+(52,2140)  cost 119
+(95,87)  cost 108
+(1716,2141)  cost 166
+(514,152)  cost 155
+(2143,2144)  cost 178
+(1638,193)  cost 106
+(1775,1748)  cost 118
+(1776,677)  cost 25
+(1702,294)  cost 130
+(2146,345)  cost 295
+(333,732)  cost 119
+(754,2147)  cost 36
+(1704,815)  cost 106
+(2062,444)  cost 154
+(2148,1999)  cost 59
+(2149,2149)  cost 496
+(2150,901)  cost 107
+(531,553)  cost 83
+(1688,2152)  cost 36
+(979,1649)  cost 165
+(2010,1788)  cost 179
+(1801,1054)  cost 59
+(1633,1064)  cost 120
+(1794,223)  cost 25
+(223,2154)  cost 83
+(27,21)  cost 71
+(216,214)  cost 72
+(1695,2155)  cost 95
+(1540,86)  cost 120
+(1306,1924)  cost 12
+(795,1787)  cost 37
+(2156,594)  cost 107
+(221,597)  cost 60
+(1862,1254)  cost 237
+(2158,1147)  cost 106
+(1416,1762)  cost 106
+(1561,2159)  cost 48
+(1271,1468)  cost 107
+(2160,1465)  cost 95
+(1843,2161)  cost 59
+(1560,1980)  cost 343
+(1243,1206)  cost 60
+(484,147)  cost 238
+(552,1531)  cost 120
+(567,168)  cost 119
+(1588,596)  cost 107
+(231,568)  cost 178
+(664,2163)  cost 120
+(244,665)  cost 118
+(234,2164)  cost 130
+(1821,766)  cost 272
+(2165,2166)  cost 48
+(419,810)  cost 13
+(1556,2169)  cost 177
+(875,2171)  cost 143
+(918,1707)  cost 84
+(2172,1825)  cost 107
+(2007,656)  cost 130
+(2173,1961)  cost 36
+(1002,647)  cost 319
+(1615,1677)  cost 130
+(136,117)  cost 95
+(2176,2177)  cost 36
+(2178,56)  cost 366
+(383,1814)  cost 236
+(2179,1294)  cost 60
+(2180,2066)  cost 414
+(1084,1329)  cost 189
+(1944,1184)  cost 308
+(1140,1149)  cost 36
+(289,1411)  cost 1205
+(2181,1207)  cost 49
+(1214,2182)  cost 142
+(1225,2183)  cost 154
+(1592,1235)  cost 60
+(2184,1974)  cost 72
+(2185,1481)  cost 71
+(1596,2186)  cost 331
+(1907,2187)  cost 71
+(2188,1007)  cost 130
+(1696,1938)  cost 96
+(893,1907)  cost 237
+(1662,894)  cost 95
+(869,911)  cost 273
+(1631,576)  cost 12
+(1826,1827)  cost 320
+(654,2190)  cost 36
+(1709,977)  cost 319
+(978,2191)  cost 249
+(1829,679)  cost 60
+(2192,1965)  cost 414
+(1886,854)  cost 166
+(1637,883)  cost 201
+(2010,927)  cost 165
+(1048,1055)  cost 130
+(1059,953)  cost 166
+(1894,955)  cost 248
+(1895,1529)  cost 248
+(1003,1790)  cost 343
+(1026,1679)  cost 225
+(1811,1710)  cost 214
+(2193,211)  cost 142
+(55,1813)  cost 142
+(106,1177)  cost 142
+(1177,102)  cost 12
+(520,2143)  cost 238
+(527,173)  cost 166
+(177,2194)  cost 95
+(734,730)  cost 154
+(1612,748)  cost 118
+(409,2094)  cost 59
+(1780,730)  cost 401
+(786,398)  cost 131
+(2195,815)  cost 84
+(2196,2197)  cost 213
+(998,1738)  cost 166
+(367,1820)  cost 153
+(1184,1621)  cost 165
+(1227,2200)  cost 84
+(2071,1486)  cost 71
+(2180,1085)  cost 602
+(1132,1836)  cost 72
+(1129,2201)  cost 37
+(1153,1853)  cost 190
+(1715,1171)  cost 155
+(1422,1427)  cost 96
+(1420,2202)  cost 48
+(1219,2203)  cost 72
+(2204,1282)  cost 95
+(1595,2205)  cost 425
+(1090,1336)  cost 84
+(1111,2206)  cost 131
+(1372,2158)  cost 366
+(1762,2208)  cost 213
+(2165,2209)  cost 48
+(2210,1877)  cost 131
+(1756,1957)  cost 96
+(2211,862)  cost 179
+(478,2212)  cost 60
+(904,1706)  cost 142
+(2008,2213)  cost 36
+(925,2214)  cost 96
+(689,686)  cost 36
+(2215,1002)  cost 24
+(2097,1041)  cost 95
+(1062,1054)  cost 649
+(1887,1811)  cost 59
+(276,279)  cost 142
+(82,84)  cost 190
+(121,1697)  cost 107
+(137,1798)  cost 520
+(180,165)  cost 60
+(200,187)  cost 131
+(597,204)  cost 119
+(1950,2217)  cost 214
+(236,2218)  cost 131
+(1451,2220)  cost 84
+(724,2221)  cost 60
+(15,1849)  cost 48
+(2139,1118)  cost 96
+(403,785)  cost 131
+(1249,1856)  cost 107
+(1568,1211)  cost 143
+(1467,1845)  cost 60
+(1274,2222)  cost 83
+(1289,2223)  cost 84
+(1360,1374)  cost 95
+(861,2225)  cost 118
+(875,2226)  cost 107
+(2227,550)  cost 189
+(1816,525)  cost 307
+(188,172)  cost 142
+(1774,592)  cost 83
+(1874,2228)  cost 178
+(2229,1711)  cost 177
+(1932,2165)  cost 48
+(436,2231)  cost 24
+(449,470)  cost 84
+(1548,466)  cost 47
+(2001,494)  cost 48
+(564,2233)  cost 25
+(940,949)  cost 36
+(2234,688)  cost 36
+(1886,802)  cost 261
+(857,853)  cost 307
+(2235,1064)  cost 201
+(1794,33)  cost 556
+(50,257)  cost 295
+(1938,61)  cost 118
+(1890,1695)  cost 142
+(2236,83)  cost 36
+(92,1535)  cost 71
+(114,2058)  cost 378
+(1796,448)  cost 543
+(150,1995)  cost 130
+(317,299)  cost 71
+(1328,2237)  cost 698
+(1657,1095)  cost 24
+(1939,1353)  cost 273
+(1094,1837)  cost 720
+(2201,1122)  cost 59
+(1946,1378)  cost 686
+(1253,1803)  cost 732
+(1202,1205)  cost 108
+(1807,1527)  cost 224
+(1730,1288)  cost 71
+(1738,1014)  cost 166
+(806,823)  cost 106
+(1205,1982)  cost 84
+(2239,1806)  cost 83
+(1081,2240)  cost 697
+(1101,2180)  cost 107
+(1312,2241)  cost 391
+(2242,1148)  cost 24
+(2103,1182)  cost 189
+(1240,1200)  cost 155
+(1983,1223)  cost 190
+(1483,1846)  cost 237
+(1948,1652)  cost 249
+(100,2015)  cost 130
+(389,82)  cost 993
+(1918,1606)  cost 142
+(101,1918)  cost 107
+(1530,1178)  cost 332
+(2244,2184)  cost 71
+(1531,155)  cost 426
+(2245,523)  cost 108
+(2156,195)  cost 212
+(1871,1774)  cost 106
+(669,233)  cost 366
+(2246,677)  cost 61
+(2228,287)  cost 390
+(701,2018)  cost 71
+(293,2047)  cost 130
+(729,347)  cost 83
+(2021,763)  cost 13
+(412,1932)  cost 155
+(2247,822)  cost 12
+(495,1548)  cost 37
+(493,2248)  cost 59
+(2249,2250)  cost 189
+(906,890)  cost 60
+(2251,903)  cost 72
+(2252,555)  cost 48
+(2172,511)  cost 378
+(1833,582)  cost 95
+(2253,619)  cost 25
+(1178,1995)  cost 249
+(1965,1625)  cost 189
+(1677,844)  cost 154
+(2201,2254)  cost 48
+(1854,1158)  cost 379
+(147,2256)  cost 49
+(2064,2257)  cost 71
+(256,289)  cost 130
+(261,248)  cost 366
+(2258,285)  cost 402
+(712,288)  cost 177
+(749,733)  cost 49
+(809,791)  cost 119
+(1976,489)  cost 72
+(933,1959)  cost 249
+(895,910)  cost 165
+(548,2259)  cost 13
+(2260,937)  cost 119
+(2261,588)  cost 83
+(1686,1000)  cost 1169
+(1069,996)  cost 167
+(12,19)  cost 72
+(207,2154)  cost 130
+(28,2262)  cost 60
+(55,60)  cost 496
+(128,1870)  cost 402
+(1563,1337)  cost 236
+(1114,1946)  cost 355
+(1213,2263)  cost 48
+(1655,2264)  cost 59
+(1316,1862)  cost 249
+(1555,2265)  cost 24
+(790,390)  cost 379
+(946,1049)  cost 307
+(222,198)  cost 59
+(2266,131)  cost 59
+(2171,1758)  cost 107
+(1841,1840)  cost 201
+(2267,1478)  cost 61
+(1685,868)  cost 213
+(902,1909)  cost 130
+(541,919)  cost 71
+(1970,2268)  cost 60
+(1728,1434)  cost 60
+(1226,1717)  cost 60
+(1305,1729)  cost 804
+(2269,1494)  cost 83
+(2270,564)  cost 49
+(1770,966)  cost 166
+(23,2271)  cost 49
+(1949,59)  cost 131
+(1768,66)  cost 84
+(165,1996)  cost 107
+(185,179)  cost 213
+(2272,1589)  cost 237
+(252,203)  cost 260
+(636,601)  cost 108
+(2025,1683)  cost 119
+(638,639)  cost 95
+(703,2258)  cost 343
+(2273,1650)  cost 531
+(718,271)  cost 165
+(313,728)  cost 12
+(354,724)  cost 201
+(767,2274)  cost 366
+(436,2275)  cost 142
+(513,587)  cost 179
+(490,494)  cost 83
+(1925,1381)  cost 202
+(1244,2276)  cost 72
+(1313,1489)  cost 355
+(539,1725)  cost 71
+(578,1785)  cost 721
+(1334,1979)  cost 201
+(78,98)  cost 118
+(2119,1780)  cost 24
+(1345,2278)  cost 83
+(1639,1145)  cost 95
+(1888,29)  cost 96
+(2089,305)  cost 106
+(309,54)  cost 119
+(1815,76)  cost 379
+(827,2279)  cost 354
+(1290,1274)  cost 61
+(519,1585)  cost 331
+(397,402)  cost 143
+(850,871)  cost 107
+(889,2281)  cost 118
+(1919,541)  cost 342
+(2282,908)  cost 130
+(896,579)  cost 284
+(2112,628)  cost 237
+(658,644)  cost 555
+(1041,845)  cost 107
+(2283,866)  cost 201
+(1529,964)  cost 261
+(1011,1066)  cost 166
+(1928,104)  cost 95
+(1995,445)  cost 166
+(127,483)  cost 108
+(566,1601)  cost 331
+(568,157)  cost 449
+(351,355)  cost 131
+(1710,2285)  cost 95
+(68,84)  cost 108
+(956,1789)  cost 296
+(1621,2286)  cost 343
+(1258,2287)  cost 60
+(2288,2087)  cost 95
+(2289,2290)  cost 60
+(1945,2240)  cost 237
+(2291,1089)  cost 437
+(1434,1220)  cost 60
+(846,2211)  cost 119
+(499,478)  cost 48
+(1463,2184)  cost 71
+(371,2292)  cost 24
+(1634,600)  cost 107
+(1034,2293)  cost 189
+(1854,2294)  cost 154
+(1337,1100)  cost 119
+(2043,1116)  cost 47
+(2295,2295)  cost 331
+(459,1715)  cost 497
+(1861,1424)  cost 249
+(1217,2296)  cost 59
+(1480,1279)  cost 60
+(2297,1295)  cost 83
+(1238,1524)  cost 59
+(567,1581)  cost 355
+(294,270)  cost 237
+(278,2146)  cost 224
+(290,329)  cost 249
+(775,368)  cost 118
+(392,1778)  cost 37
+(790,1665)  cost 190
+(791,783)  cost 83
+(466,2299)  cost 71
+(473,2300)  cost 155
+(477,497)  cost 84
+(546,511)  cost 106
+(536,1577)  cost 142
+(950,2301)  cost 36
+(2302,2007)  cost 94
+(797,800)  cost 120
+(1686,1035)  cost 96
+(926,907)  cost 214
+(1073,2235)  cost 320
+(8,2303)  cost 37
+(267,2304)  cost 48
+(51,2115)  cost 224
+(1769,1694)  cost 118
+(1536,2155)  cost 167
+(1714,80)  cost 154
+(1540,99)  cost 108
+(122,1928)  cost 120
+(67,1739)  cost 450
+(1668,585)  cost 118
+(1763,1941)  cost 95
+(1468,2305)  cost 25
+(569,166)  cost 202
+(1849,2193)  cost 83
+(1578,2098)  cost 72
+(2306,1722)  cost 118
+(1977,1595)  cost 851
+(2289,2307)  cost 83
+(202,566)  cost 131
+(245,2308)  cost 119
+(2107,2042)  cost 13
+(277,261)  cost 143
+(729,2309)  cost 49
+(350,751)  cost 60
+(2125,715)  cost 342
+(2119,395)  cost 107
+(785,2265)  cost 167
+(2311,2312)  cost 142
+(1877,2211)  cost 60
+(1782,508)  cost 108
+(496,895)  cost 166
+(2313,2251)  cost 154
+(2151,613)  cost 131
+(967,621)  cost 319
+(626,645)  cost 165
+(985,1709)  cost 166
+(845,1035)  cost 413
+(1052,859)  cost 225
+(1057,1053)  cost 118
+(1947,1057)  cost 143
+(20,2314)  cost 119
+(87,111)  cost 342
+(1899,2315)  cost 95
+(2272,175)  cost 96
+(1088,1336)  cost 108
+(1347,1352)  cost 284
+(1126,2316)  cost 120
+(1988,1421)  cost 177
+(1222,1728)  cost 59
+(1250,1592)  cost 84
+(1765,1237)  cost 60
+(1494,2317)  cost 83
+(311,715)  cost 60
+(476,850)  cost 24
+(1936,507)  cost 166
+(2154,1760)  cost 84
+(2195,407)  cost 36
+(1045,907)  cost 201
+(1491,1492)  cost 178
+(1343,1344)  cost 330
+(1389,2318)  cost 189
+(173,2103)  cost 367
+(1440,1439)  cost 379
+(1055,2012)  cost 166
+(997,1894)  cost 71
+(995,974)  cost 142
+(1010,1679)  cost 48
+(1032,1076)  cost 143
+(212,209)  cost 59
+(71,77)  cost 118
+(101,388)  cost 107
+(156,460)  cost 295
+(158,2319)  cost 95
+(2320,637)  cost 166
+(1997,334)  cost 71
+(1875,365)  cost 130
+(1680,1955)  cost 131
+(405,787)  cost 1
+(1598,2322)  cost 71
+(2281,1919)  cost 107
+(2249,2149)  cost 214
+(2002,929)  cost 95
+(2008,657)  cost 107
+(2112,2252)  cost 153
+(1785,643)  cost 48
+(621,627)  cost 308
+(2081,1978)  cost 107
+(1097,1658)  cost 24
+(1182,1670)  cost 201
+(1804,1244)  cost 84
+(1448,1805)  cost 71
+(1842,1460)  cost 155
+(2323,1926)  cost 83
+(1502,1310)  cost 178
+(201,1887)  cost 83
+(1937,1034)  cost 155
+(1836,2324)  cost 106
+(1124,1120)  cost 49
+(1377,1376)  cost 130
+(1156,1153)  cost 485
+(1408,1254)  cost 225
+(1439,1642)  cost 96
+(1458,2325)  cost 36
+(1675,1502)  cost 131
+(1512,2326)  cost 83
+(361,1768)  cost 84
+(1697,427)  cost 106
+(1742,186)  cost 72
+(2327,2063)  cost 143
+(196,573)  cost 84
+(601,571)  cost 107
+(350,332)  cost 248
+(378,759)  cost 261
+(771,2328)  cost 37
+(2329,1821)  cost 72
+(1820,1752)  cost 237
+(444,1976)  cost 84
+(1959,507)  cost 330
+(497,896)  cost 166
+(920,544)  cost 36
+(1824,2330)  cost 96
+(1833,1882)  cost 48
+(949,1646)  cost 24
+(1646,2331)  cost 178
+(2332,2333)  cost 71
+(649,2334)  cost 83
+(983,647)  cost 25
+(835,800)  cost 296
+(856,853)  cost 237
+(1031,1016)  cost 131
+(1296,2335)  cost 131
+(1601,1581)  cost 83
+(1604,205)  cost 119
+(2163,598)  cost 83
+(813,2336)  cost 378
+(288,2107)  cost 154
+(237,230)  cost 190
+(945,1992)  cost 354
+(13,11)  cost 24
+(2338,272)  cost 13
+(2057,1949)  cost 154
+(362,85)  cost 131
+(86,2339)  cost 296
+(94,2236)  cost 83
+(1585,151)  cost 118
+(199,569)  cost 189
+(634,218)  cost 60
+(229,204)  cost 248
+(238,239)  cost 225
+(248,2320)  cost 354
+(714,1874)  cost 379
+(777,1820)  cost 390
+(353,778)  cost 343
+(418,1555)  cost 84
+(2342,2311)  cost 202
+(2343,496)  cost 142
+(2344,986)  cost 60
+(1678,795)  cost 225
+(1332,1093)  cost 614
+(1653,1348)  cost 48
+(1394,1398)  cost 94
+(1411,1304)  cost 119
+(1433,1430)  cost 61
+(2346,1249)  cost 190
+(1269,2347)  cost 60
+(2348,1278)  cost 71
+(1991,1292)  cost 95
+(1351,2349)  cost 49
+(2350,1239)  cost 332
+(690,1676)  cost 13
+(2001,2351)  cost 47
+(512,2000)  cost 131
+(2121,2352)  cost 178
+(2352,344)  cost 71
+(109,111)  cost 248
+(787,2353)  cost 202
+(2026,750)  cost 343
+(1441,1438)  cost 449
+(1498,1655)  cost 60
+(1053,877)  cost 509
+(266,39)  cost 72
+(257,275)  cost 414
+(1769,78)  cost 131
+(1542,2138)  cost 460
+(447,119)  cost 224
+(481,430)  cost 166
+(2017,2017)  cost 237
+(523,1585)  cost 108
+(178,528)  cost 83
+(1629,2063)  cost 249
+(595,2354)  cost 72
+(637,1603)  cost 154
+(239,240)  cost 73
+(253,251)  cost 84
+(2018,2355)  cost 94
+(299,2356)  cost 155
+(1669,2054)  cost 130
+(2311,449)  cost 425
+(1909,1667)  cost 248
+(533,583)  cost 60
+(947,951)  cost 24
+(967,1825)  cost 165
+(618,2358)  cost 13
+(1332,2081)  cost 107
+(1364,1370)  cost 106
+(1968,1310)  cost 108
+(1116,1986)  cost 60
+(919,1610)  cost 83
+(2014,2359)  cost 83
+(2015,2014)  cost 60
+(2210,2361)  cost 61
+(1135,2295)  cost 13
+(446,1176)  cost 165
+(1198,1190)  cost 119
+(1227,1451)  cost 59
+(1807,1280)  cost 83
+(2362,1570)  cost 83
+(1196,1421)  cost 260
+(1136,1377)  cost 24
+(2364,777)  cost 48
+(2365,1903)  cost 190
+(778,414)  cost 166
+(1551,606)  cost 24
+(2332,2366)  cost 61
+(618,616)  cost 36
+(681,1829)  cost 59
+(2367,686)  cost 37
+(1789,1049)  cost 166
+(1016,1006)  cost 131
+(1026,1075)  cost 273
+(1076,1020)  cost 131
+(209,207)  cost 108
+(53,51)  cost 155
+(96,1714)  cost 248
+(129,137)  cost 177
+(157,125)  cost 461
+(598,1773)  cost 190
+(2258,2027)  cost 130
+(284,2258)  cost 285
+(725,716)  cost 36
+(97,76)  cost 95
+(373,1680)  cost 60
+(2347,1464)  cost 48
+(1285,1486)  cost 83
+(228,199)  cost 190
+(1544,1405)  cost 37
+(1329,1092)  cost 36
+(1304,1357)  cost 48
+(1146,1372)  cost 107
+(1232,1430)  cost 237
+(1238,2369)  cost 36
+(1295,1303)  cost 13
+(1317,1314)  cost 24
+(2255,1521)  cost 37
+(1689,2370)  cost 119
+(1300,1275)  cost 120
+(153,515)  cost 118
+(168,2245)  cost 331
+(1778,409)  cost 49
+(2252,918)  cost 107
+(560,1824)  cost 96
+(2073,2372)  cost 83
+(495,2373)  cost 25
+(800,1615)  cost 142
+(837,1678)  cost 179
+(1042,877)  cost 37
+(1068,1633)  cost 131
+(1009,2235)  cost 260
+(48,274)  cost 142
+(72,1597)  cost 366
+(107,110)  cost 272
+(2138,2374)  cost 96
+(2016,2375)  cost 12
+(516,2376)  cost 48
+(522,149)  cost 296
+(528,2377)  cost 106
+(170,527)  cost 120
+(1644,191)  cost 96
+(600,570)  cost 107
+(1603,634)  cost 343
+(2120,2146)  cost 366
+(2031,300)  cost 36
+(750,746)  cost 60
+(469,2379)  cost 48
+(493,2380)  cost 190
+(625,1826)  cost 238
+(612,2332)  cost 36
+(2334,631)  cost 119
+(649,631)  cost 367
+(910,658)  cost 851
+(2240,1331)  cost 390
+(1347,1939)  cost 107
+(1120,2043)  cost 48
+(103,2133)  cost 402
+(1193,1241)  cost 154
+(1319,1735)  cost 83
+(1456,2381)  cost 225
+(1292,1474)  cost 60
+(1593,2382)  cost 214
+(1083,1945)  cost 108
+(2383,11)  cost 48
+(398,780)  cost 130
+(2171,540)  cost 178
+(1410,1356)  cost 96
+(1016,1018)  cost 213
+(1863,1863)  cost 236
+(1468,1484)  cost 47
+(1753,420)  cost 13
+(2197,438)  cost 36
+(455,2210)  cost 72
+(848,489)  cost 25
+(1906,851)  cost 72
+(510,1707)  cost 118
+(1663,1906)  cost 307
+(623,2384)  cost 36
+(963,969)  cost 37
+(801,2385)  cost 119
+(2386,1044)  cost 236
+(1065,1071)  cost 36
+(998,1063)  cost 319
+(68,338)  cost 143
+(384,2091)  cost 107
+(1899,134)  cost 96
+(186,180)  cost 237
+(175,538)  cost 237
+(197,188)  cost 95
+(190,172)  cost 166
+(1817,1682)  cost 25
+(2387,2156)  cost 119
+(2053,244)  cost 118
+(248,269)  cost 119
+(325,330)  cost 36
+(2121,747)  cost 154
+(396,770)  cost 47
+(1978,1911)  cost 224
+(655,2389)  cost 37
+(2067,2066)  cost 248
+(1859,1242)  cost 355
+(1136,1126)  cost 59
+(1419,1406)  cost 95
+(1426,1510)  cost 863
+(1433,1716)  cost 60
+(2390,1463)  cost 71
+(1492,1369)  cost 543
+(1619,2391)  cost 59
+(2339,1890)  cost 107
+(1784,2322)  cost 237
+(1541,1558)  cost 71
+(2392,90)  cost 47
+(744,376)  cost 47
+(1449,1857)  cost 95
+(235,2393)  cost 273
+(303,1543)  cost 154
+(2395,753)  cost 49
+(1821,1612)  cost 154
+(2342,403)  cost 47
+(1750,2396)  cost 273
+(898,498)  cost 165
+(2334,2397)  cost 47
+(805,1660)  cost 142
+(855,841)  cost 96
+(859,2097)  cost 201
+(1052,1992)  cost 142
+(2398,2098)  cost 118
+(214,2176)  cost 61
+(39,227)  cost 107
+(306,281)  cost 166
+(145,2338)  cost 615
+(2178,359)  cost 166
+(152,491)  cost 71
+(166,521)  cost 108
+(1582,2245)  cost 84
+(191,2272)  cost 106
+(2291,1346)  cost 107
+(1158,2399)  cost 49
+(1188,1253)  cost 756
+(2400,1762)  cost 48
+(2401,1206)  cost 72
+(1527,1277)  cost 84
+(1465,1264)  cost 60
+(1497,2402)  cost 59
+(1979,1809)  cost 107
+(1349,1104)  cost 25
+(1388,74)  cost 284
+(945,1692)  cost 143
+(315,713)  cost 13
+(2403,1576)  cost 48
+(581,560)  cost 214
+(1470,1096)  cost 461
+(1362,1837)  cost 107
+(1803,1413)  cost 343
+(1494,1730)  cost 71
+(1138,2404)  cost 72
+(784,2062)  cost 142
+(956,946)  cost 166
+(2089,2405)  cost 142
+(395,412)  cost 213
+(2023,2365)  cost 201
+(2406,847)  cost 119
+(2169,464)  cost 59
+(2248,503)  cost 143
+(1880,2407)  cost 1
+(2408,503)  cost 143
+(897,1574)  cost 155
+(657,2172)  cost 48
+(1573,1935)  cost 154
+(2358,2409)  cost 25
+(2358,960)  cost 71
+(661,2006)  cost 260
+(2117,992)  cost 72
+(884,2283)  cost 119
+(972,1051)  cost 602
+(1021,1016)  cost 177
+(2176,2410)  cost 36
+(1533,32)  cost 190
+(75,360)  cost 107
+(484,1869)  cost 107
+(192,1588)  cost 59
+(669,666)  cost 108
+(287,673)  cost 142
+(2120,2352)  cost 189
+(333,1702)  cost 283
+(366,1998)  cost 732
+(2365,2412)  cost 72
+(1443,2413)  cost 24
+(1458,1689)  cost 49
+(2414,2347)  cost 95
+(2251,2249)  cost 119
+(547,510)  cost 165
+(1631,581)  cost 48
+(265,67)  cost 260
+(676,2163)  cost 319
+(1308,2289)  cost 60
+(843,477)  cost 107
+(1030,1029)  cost 1
+(1607,2415)  cost 37
+(866,1677)  cost 379
+(1046,1571)  cost 108
+(1948,1895)  cost 167
+(182,201)  cost 237
+(2193,2416)  cost 48
+(1888,2314)  cost 603
+(2073,2417)  cost 36
+(2115,2089)  cost 260
+(309,2057)  cost 84
+(1536,2178)  cost 108
+(2143,2227)  cost 272
+(193,2227)  cost 261
+(1747,1634)  cost 107
+(701,2418)  cost 94
+(310,710)  cost 579
+(764,2274)  cost 155
+(2420,789)  cost 131
+(453,861)  cost 238
+(1884,629)  cost 83
+(615,1649)  cost 319
+(652,2117)  cost 154
+(1658,1114)  cost 355
+(1179,459)  cost 131
+(1419,1415)  cost 72
+(1201,2421)  cost 49
+(1220,1221)  cost 95
+(1974,2087)  cost 59
+(1482,1261)  cost 450
+(2290,1511)  cost 94
+(1103,1723)  cost 284
+(249,237)  cost 189
+(270,277)  cost 308
+(881,1040)  cost 355
+(1871,2422)  cost 237
+(973,944)  cost 602
+(2035,1024)  cost 213
+(1791,1075)  cost 143
+(131,129)  cost 143
+(2423,1817)  cost 36
+(205,222)  cost 71
+(241,1747)  cost 119
+(245,2053)  cost 342
+(1584,2424)  cost 166
+(2274,1931)  cost 166
+(344,765)  cost 94
+(748,367)  cost 143
+(440,1607)  cost 60
+(2197,2148)  cost 261
+(876,862)  cost 107
+(2248,542)  cost 143
+(1574,1936)  cost 165
+(606,615)  cost 25
+(2000,645)  cost 838
+(1770,985)  cost 319
+(1039,856)  cost 84
+(1692,1947)  cost 25
+(2314,1312)  cost 260
+(2155,307)  cost 214
+(1333,1325)  cost 284
+(1640,2291)  cost 214
+(2426,1351)  cost 48
+(1352,2306)  cost 261
+(2427,1193)  cost 225
+(1941,2428)  cost 72
+(1457,1765)  cost 189
+(1977,2429)  cost 249
+(2290,2430)  cost 83
+(1504,2431)  cost 201
+(117,1741)  cost 107
+(420,1752)  cost 83
+(2320,2027)  cost 118
+(987,2433)  cost 25
+(799,1893)  cost 37
+(1055,2283)  cost 225
+(997,1058)  cost 167
+(996,1895)  cost 71
+(1007,1008)  cost 202
+(2036,15)  cost 96
+(212,2434)  cost 108
+(307,56)  cost 107
+(93,2339)  cost 107
+(1741,425)  cost 84
+(1798,2435)  cost 143
+(520,2016)  cost 71
+(1580,161)  cost 354
+(286,2228)  cost 367
+(292,2046)  cost 213
+(318,325)  cost 25
+(732,351)  cost 142
+(766,780)  cost 59
+(807,2436)  cost 13
+(2281,2169)  cost 48
+(1659,893)  cost 72
+(2438,941)  cost 12
+(1611,2439)  cost 154
+(643,615)  cost 155
+(1324,1333)  cost 108
+(1389,1913)  cost 107
+(2440,1804)  cost 96
+(1641,1440)  cost 95
+(1469,2441)  cost 532
+(1503,2442)  cost 178
+(1327,1326)  cost 118
+(1354,1985)  cost 25
+(2100,1852)  cost 37
+(1422,1195)  cost 142
+(159,1180)  cost 118
+(2100,1491)  cost 603
+(1275,1843)  cost 71
+(1500,1968)  cost 83
+(141,142)  cost 2
+(221,222)  cost 46
+(296,297)  cost 9
+(302,296)  cost 27
+(303,304)  cost 8
+(315,316)  cost 10
+(316,320)  cost 10
+(334,335)  cost 38
+(357,358)  cost 20
+(363,364)  cost 59
+(378,302)  cost 74
+(409,410)  cost 37
+(415,416)  cost 178
+(443,444)  cost 19
+(451,442)  cost 9
+(451,452)  cost 9
+(474,475)  cost 32
+(485,135)  cost 32
+(487,488)  cost 15
+(500,501)  cost 14
+(502,500)  cost 4
+(505,506)  cost 11
+(586,587)  cost 117
+(608,609)  cost 32
+(610,611)  cost 13
+(609,650)  cost 49
+(652,653)  cost 104
+(695,696)  cost 3
+(416,221)  cost 155
+(256,699)  cost 31
+(716,717)  cost 50
+(718,719)  cost 33
+(328,723)  cost 24
+(736,737)  cost 10
+(740,741)  cost 3
+(768,769)  cost 5
+(772,773)  cost 12
+(778,779)  cost 99
+(787,788)  cost 18
+(798,799)  cost 13
+(799,804)  cost 12
+(849,842)  cost 1
+(869,870)  cost 12
+(874,502)  cost 4
+(899,900)  cost 63
+(911,912)  cost 80
+(922,923)  cost 20
+(933,934)  cost 83
+(947,948)  cost 81
+(951,610)  cost 5
+(611,957)  cost 12
+(983,984)  cost 25
+(999,1000)  cost 20
+(1071,1072)  cost 92
+(1095,1097)  cost 151
+(1118,1119)  cost 40
+(1159,1160)  cost 54
+(1185,1186)  cost 18
+(1253,1254)  cost 401
+(1255,1256)  cost 53
+(1327,1080)  cost 44
+(1330,1327)  cost 54
+(1374,1375)  cost 30
+(1384,1381)  cost 64
+(1385,1386)  cost 30
+(104,1393)  cost 198
+(1412,1473)  cost 65
+(1521,1341)  cost 171
+(1528,957)  cost 9
+(1545,1546)  cost 9
+(838,1571)  cost 103
+(1586,443)  cost 1
+(392,1605)  cost 31
+(405,1626)  cost 23
+(543,608)  cost 17
+(363,357)  cost 5
+(768,772)  cost 2
+(498,1706)  cost 26
+(1385,1713)  cost 168
+(1725,1183)  cost 41
+(1181,1725)  cost 39
+(1473,1729)  cost 54
+(1553,900)  cost 42
+(1684,1744)  cost 27
+(1745,1746)  cost 15
+(222,565)  cost 59
+(738,1777)  cost 45
+(1778,1779)  cost 20
+(444,1684)  cost 109
+(1782,860)  cost 44
+(999,740)  cost 189
+(793,1787)  cost 2
+(220,700)  cost 121
+(711,1818)  cost 21
+(1838,1385)  cost 87
+(316,1847)  cost 5
+(1665,1848)  cost 10
+(1115,1851)  cost 35
+(142,518)  cost 24
+(1405,1873)  cost 6
+(860,474)  cost 50
+(255,1900)  cost 8
+(1860,1562)  cost 90
+(1927,1838)  cost 41
+(442,1586)  cost 5
+(984,1962)  cost 7
+(1000,1965)  cost 214
+(501,467)  cost 23
+(746,1967)  cost 6
+(653,849)  cost 58
+(1185,1981)  cost 4
+(1256,1657)  cost 59
+(957,586)  cost 11
+(693,652)  cost 34
+(561,951)  cost 65
+(650,2009)  cost 14
+(923,2011)  cost 100
+(1701,2019)  cost 13
+(327,2020)  cost 11
+(1648,2021)  cost 60
+(1004,1528)  cost 24
+(518,220)  cost 101
+(562,2034)  cost 9
+(1543,2039)  cost 11
+(2040,768)  cost 18
+(375,2041)  cost 10
+(725,2048)  cost 32
+(374,2055)  cost 24
+(1740,141)  cost 145
+(1404,1384)  cost 31
+(271,696)  cost 11
+(2107,2108)  cost 6
+(1921,273)  cost 35
+(1339,1255)  cost 41
+(755,2124)  cost 7
+(2026,2128)  cost 33
+(451,415)  cost 23
+(2108,2145)  cost 21
+(488,2065)  cost 11
+(506,874)  cost 3
+(989,693)  cost 14
+(2128,2153)  cost 18
+(1360,2157)  cost 25
+(2167,2168)  cost 17
+(475,487)  cost 8
+(2189,1545)  cost 4
+(1571,1071)  cost 128
+(472,2198)  cost 9
+(1823,2199)  cost 18
+(264,2216)  cost 60
+(1749,2219)  cost 8
+(327,2230)  cost 17
+(789,2040)  cost 12
+(587,378)  cost 91
+(2167,2232)  cost 2
+(2090,64)  cost 22
+(1392,2238)  cost 21
+(1838,2243)  cost 13
+(1160,1181)  cost 45
+(842,451)  cost 18
+(1183,1412)  cost 49
+(1256,1095)  cost 57
+(1962,989)  cost 5
+(1797,2142)  cost 10
+(1744,1782)  cost 87
+(1413,1185)  cost 3
+(2277,922)  cost 91
+(404,2280)  cost 14
+(2042,2284)  cost 48
+(1562,1521)  cost 121
+(1097,1921)  cost 20
+(700,1648)  cost 46
+(772,2298)  cost 5
+(2094,2310)  cost 6
+(1787,838)  cost 61
+(694,2215)  cost 4
+(2011,1004)  cost 249
+(696,2321)  cost 11
+(2021,1744)  cost 63
+(863,2167)  cost 18
+(1706,505)  cost 52
+(296,2337)  cost 16
+(2108,2340)  cost 5
+(712,2341)  cost 9
+(900,561)  cost 83
+(2345,2139)  cost 54
+(713,2357)  cost 25
+(1744,933)  cost 37
+(471,543)  cost 68
+(741,798)  cost 114
+(391,2360)  cost 41
+(1384,1155)  cost 9
+(739,2363)  cost 9
+(2065,498)  cost 36
+(934,983)  cost 68
+(1072,1651)  cost 67
+(259,2368)  cost 17
+(302,1253)  cost 174
+(2128,2371)  cost 44
+(135,104)  cost 182
+(1901,2378)  cost 38
+(2009,1000)  cost 13
+(357,2388)  cost 35
+(1395,2238)  cost 5
+(739,2394)  cost 3
+(452,843)  cost 46
+(843,471)  cost 12
+(2215,1027)  cost 60
+(1729,1860)  cost 76
+(1395,1392)  cost 16
+(1254,2004)  cost 97
+(1965,2313)  cost 155
+(271,2411)  cost 8
+(1544,1545)  cost 18
+(411,2419)  cost 17
+(2125,363)  cost 2
+(864,2425)  cost 9
+(2313,1553)  cost 55
+(1997,2432)  cost 47
+(1962,694)  cost 12
+(565,1725)  cost 63
+(2040,2437)  cost 7
+LIST_REQ_ARCS : 
+(4,5)  serv_cost 25  trav_cost 5  demand 28
+(64,65)  serv_cost 118  trav_cost 18  demand 100
+(69,70)  serv_cost 119  trav_cost 19  demand 104
+(310,301)  serv_cost 48  trav_cost 8  demand 45
+(338,339)  serv_cost 25  trav_cost 5  demand 27
+(342,343)  serv_cost 12  trav_cost 2  demand 13
+(420,419)  serv_cost 72  trav_cost 12  demand 66
+(442,415)  serv_cost 177  trav_cost 27  demand 75
+(442,415)  serv_cost 177  trav_cost 27  demand 75
+(614,613)  serv_cost 36  trav_cost 6  demand 32
+(613,620)  serv_cost 84  trav_cost 14  demand 79
+(693,694)  serv_cost 155  trav_cost 25  demand 70
+(693,694)  serv_cost 155  trav_cost 25  demand 70
+(823,824)  serv_cost 108  trav_cost 18  demand 98
+(831,823)  serv_cost 155  trav_cost 25  demand 137
+(832,831)  serv_cost 12  trav_cost 2  demand 12
+(824,833)  serv_cost 48  trav_cost 8  demand 45
+(842,443)  serv_cost 179  trav_cost 29  demand 80
+(842,443)  serv_cost 179  trav_cost 29  demand 80
+(902,903)  serv_cost 13  trav_cost 3  demand 17
+(905,906)  serv_cost 24  trav_cost 4  demand 23
+(935,936)  serv_cost 12  trav_cost 2  demand 12
+(610,586)  serv_cost 202  trav_cost 32  demand 88
+(610,586)  serv_cost 202  trav_cost 32  demand 88
+(984,989)  serv_cost 59  trav_cost 9  demand 26
+(984,989)  serv_cost 59  trav_cost 9  demand 26
+(1106,1107)  serv_cost 25  trav_cost 5  demand 27
+(1129,1128)  serv_cost 13  trav_cost 3  demand 16
+(1139,1140)  serv_cost 131  trav_cost 21  demand 114
+(1150,1151)  serv_cost 13  trav_cost 3  demand 18
+(1151,1156)  serv_cost 24  trav_cost 4  demand 24
+(1167,1168)  serv_cost 71  trav_cost 11  demand 31
+(1167,1168)  serv_cost 71  trav_cost 11  demand 31
+(1172,1173)  serv_cost 24  trav_cost 4  demand 21
+(1174,1175)  serv_cost 1  trav_cost 1  demand 4
+(1174,1175)  serv_cost 1  trav_cost 1  demand 4
+(1202,1203)  serv_cost 35  trav_cost 5  demand 30
+(1232,1233)  serv_cost 48  trav_cost 8  demand 43
+(1208,1234)  serv_cost 36  trav_cost 6  demand 32
+(1313,1314)  serv_cost 24  trav_cost 4  demand 25
+(1317,1318)  serv_cost 130  trav_cost 20  demand 110
+(1319,1320)  serv_cost 36  trav_cost 6  demand 34
+(1321,1322)  serv_cost 24  trav_cost 4  demand 22
+(1323,1257)  serv_cost 36  trav_cost 6  demand 32
+(1365,1366)  serv_cost 2  trav_cost 2  demand 9
+(1162,1387)  serv_cost 131  trav_cost 21  demand 117
+(1398,1399)  serv_cost 308  trav_cost 48  demand 265
+(1203,1429)  serv_cost 35  trav_cost 5  demand 30
+(1448,1447)  serv_cost 13  trav_cost 3  demand 17
+(1452,1453)  serv_cost 13  trav_cost 3  demand 14
+(1453,1246)  serv_cost 13  trav_cost 3  demand 14
+(1429,1506)  serv_cost 25  trav_cost 5  demand 27
+(1510,1435)  serv_cost 36  trav_cost 6  demand 34
+(1318,1317)  serv_cost 119  trav_cost 19  demand 108
+(1435,1444)  serv_cost 25  trav_cost 5  demand 28
+(1520,1340)  serv_cost 49  trav_cost 9  demand 24
+(1520,1340)  serv_cost 49  trav_cost 9  demand 24
+(1534,342)  serv_cost 106  trav_cost 16  demand 92
+(417,1555)  serv_cost 24  trav_cost 4  demand 23
+(1246,1561)  serv_cost 13  trav_cost 3  demand 15
+(1257,1565)  serv_cost 25  trav_cost 5  demand 27
+(1522,1566)  serv_cost 24  trav_cost 4  demand 23
+(1624,1625)  serv_cost 37  trav_cost 7  demand 38
+(1639,1368)  serv_cost 13  trav_cost 3  demand 14
+(935,1645)  serv_cost 153  trav_cost 23  demand 131
+(1656,1172)  serv_cost 49  trav_cost 9  demand 47
+(1662,1663)  serv_cost 13  trav_cost 3  demand 19
+(1664,338)  serv_cost 189  trav_cost 29  demand 162
+(343,69)  serv_cost 119  trav_cost 19  demand 104
+(1625,590)  serv_cost 36  trav_cost 6  demand 34
+(1366,1128)  serv_cost 12  trav_cost 2  demand 12
+(1113,1106)  serv_cost 12  trav_cost 2  demand 14
+(1314,1719)  serv_cost 24  trav_cost 4  demand 24
+(1726,1398)  serv_cost 142  trav_cost 22  demand 121
+(1734,1735)  serv_cost 25  trav_cost 5  demand 26
+(1392,1761)  serv_cost 25  trav_cost 5  demand 15
+(1392,1761)  serv_cost 25  trav_cost 5  demand 15
+(70,1664)  serv_cost 12  trav_cost 2  demand 13
+(590,1624)  serv_cost 24  trav_cost 4  demand 22
+(1342,1338)  serv_cost 83  trav_cost 13  demand 37
+(1342,1338)  serv_cost 83  trav_cost 13  demand 37
+(1839,1656)  serv_cost 1  trav_cost 1  demand 2
+(1839,1656)  serv_cost 1  trav_cost 1  demand 2
+(1445,1248)  serv_cost 36  trav_cost 6  demand 32
+(1852,1802)  serv_cost 166  trav_cost 26  demand 147
+(1166,1403)  serv_cost 119  trav_cost 19  demand 104
+(1234,1446)  serv_cost 36  trav_cost 6  demand 32
+(1437,1865)  serv_cost 24  trav_cost 4  demand 20
+(1884,614)  serv_cost 37  trav_cost 7  demand 36
+(810,1753)  serv_cost 72  trav_cost 12  demand 66
+(1523,1365)  serv_cost 12  trav_cost 2  demand 14
+(1140,1139)  serv_cost 130  trav_cost 20  demand 114
+(1173,1397)  serv_cost 37  trav_cost 7  demand 20
+(1173,1397)  serv_cost 37  trav_cost 7  demand 20
+LIST_NOREQ_ARCS : 
+(1972,1365)  cost 12
+(1403,1726)  cost 47
+(1209,1245)  cost 36
+(1724,1639)  cost 13
+(1656,1396)  cost 12
+(1656,1396)  cost 12
+(1983,1448)  cost 36
+(1566,1522)  cost 48
+(1387,1202)  cost 25
+(1320,1445)  cost 25
+(2002,2003)  cost 13
+(2003,936)  cost 153
+(339,1534)  cost 48
+(903,905)  cost 13
+(1567,1734)  cost 48
+(1107,1113)  cost 12
+(1366,1129)  cost 13
+(721,393)  cost 59
+(5,4)  cost 37
+(2071,1313)  cost 24
+(1565,1321)  cost 13
+(1506,1387)  cost 12
+(1561,1452)  cost 13
+(1687,935)  cost 24
+(1156,1380)  cost 24
+(1322,1323)  cost 25
+(591,2151)  cost 24
+(2162,1850)  cost 14
+(1850,1437)  cost 37
+(1169,2207)  cost 118
+(1169,2207)  cost 118
+(1528,611)  cost 96
+(1528,611)  cost 96
+(798,803)  cost 84
+(2031,1875)  cost 48
+(419,2078)  cost 37
+(620,1884)  cost 25
+(1446,1252)  cost 36
+(1972,1523)  cost 12
+(1565,2255)  cost 177
+(1396,1174)  cost 12
+(1396,1174)  cost 12
+(1245,1232)  cost 83
+(2003,1645)  cost 1
+(1404,1726)  cost 35
+(1447,1983)  cost 24
+(1338,1520)  cost 59
+(1338,1520)  cost 59
+(2255,1321)  cost 177
+(2238,1164)  cost 13
+(2238,1164)  cost 13
+(1735,1567)  cost 25
+(1929,1698)  cost 25
+(2242,1367)  cost 143
+(1316,2162)  cost 165
+(1233,1727)  cost 47
+(1645,1662)  cost 13
+(1155,1165)  cost 37
+(1155,1165)  cost 37
+(936,591)  cost 24
+(1175,1839)  cost 12
+(1175,1839)  cost 12
+(1719,2071)  cost 25
+(1248,1319)  cost 36
+(1459,2059)  cost 154
+(2090,1534)  cost 37
+(1444,1510)  cost 25
+(452,849)  cost 153
+(452,849)  cost 153
+(1380,1150)  cost 24
+(1506,1161)  cost 131
+(1802,1852)  cost 167
+(1865,2162)  cost 13
+(1368,1724)  cost 25
+(2078,810)  cost 36
+(1663,2002)  cost 24
+(1340,1342)  cost 59
+(1340,1342)  cost 59
+(1252,1208)  cost 35
+(906,902)  cost 1
+(2151,1687)  cost 13
+(804,1893)  cost 83
+(1699,1929)  cost 95
+(1373,1972)  cost 1
+(2059,1459)  cost 142
+(2265,417)  cost 25
+(1367,2242)  cost 143
+(1865,1315)  cost 165
+(1173,1396)  cost 35
+(999,2009)  cost 167
+(999,2009)  cost 167
+(1727,1209)  cost 36
+(1128,1373)  cost 1
+(0,1)  cost 13
+(2,3)  cost 67
+(17,18)  cost 6
+(24,25)  cost 23
+(30,31)  cost 68
+(34,35)  cost 63
+(36,37)  cost 8
+(25,62)  cost 193
+(115,116)  cost 8
+(123,124)  cost 122
+(139,140)  cost 18
+(143,144)  cost 7
+(183,184)  cost 361
+(225,30)  cost 29
+(232,225)  cost 11
+(35,37)  cost 4
+(37,247)  cost 1
+(312,313)  cost 307
+(321,322)  cost 55
+(337,65)  cost 26
+(340,341)  cost 15
+(124,340)  cost 46
+(457,458)  cost 134
+(461,139)  cost 6
+(467,468)  cost 30
+(138,141)  cost 66
+(141,485)  cost 36
+(793,741)  cost 33
+(1027,740)  cost 43
+(1078,1079)  cost 14
+(1,1080)  cost 57
+(1154,1155)  cost 10
+(1163,1164)  cost 7
+(1165,1166)  cost 29
+(1169,1170)  cost 8
+(1306,1307)  cost 37
+(1338,1339)  cost 10
+(1340,1341)  cost 10
+(1341,1342)  cost 15
+(1154,1165)  cost 10
+(1168,1163)  cost 3
+(1170,1390)  cost 1
+(1391,1392)  cost 8
+(1163,1395)  cost 3
+(1175,1169)  cost 49
+(1396,1397)  cost 3
+(1403,1404)  cost 8
+(1508,1509)  cost 23
+(1514,1515)  cost 14
+(1539,232)  cost 5
+(3,1514)  cost 501
+(1330,1338)  cost 26
+(0,1599)  cost 5
+(1079,1674)  cost 515
+(1699,1698)  cost 16
+(1705,832)  cost 2
+(741,1027)  cost 43
+(18,183)  cost 3
+(247,34)  cost 1
+(70,1740)  cost 52
+(142,486)  cost 66
+(1759,2)  cost 96
+(37,1539)  cost 3
+(1390,1168)  cost 6
+(1599,1810)  cost 14
+(1159,1174)  cost 9
+(1891,1892)  cost 6
+(1515,1896)  cost 7
+(1897,1898)  cost 5
+(1924,1925)  cost 153
+(1393,1391)  cost 19
+(468,1705)  cost 5
+(1960,874)  cost 65
+(1732,1508)  cost 24
+(1399,1170)  cost 2
+(1892,123)  cost 7
+(2004,1340)  cost 8
+(31,17)  cost 29
+(144,1891)  cost 18
+(1761,1167)  cost 7
+(314,2032)  cost 306
+(2037,2038)  cost 6
+(1898,24)  cost 5
+(1080,1759)  cost 56
+(1399,1839)  cost 56
+(2088,36)  cost 20
+(339,2090)  cost 8
+(2092,312)  cost 11
+(1167,1390)  cost 9
+(337,64)  cost 18
+(486,1699)  cost 22
+(1698,2142)  cost 29
+(1397,1159)  cost 6
+(1960,505)  cost 68
+(501,2170)  cost 64
+(2174,2175)  cost 88
+(1390,1166)  cost 2
+(2142,138)  cost 68
+(1507,1924)  cost 37
+(2224,115)  cost 10
+(1980,1306)  cost 154
+(1339,1520)  cost 14
+(62,2037)  cost 4
+(322,2088)  cost 19
+(1307,1732)  cost 18
+(342,337)  cost 7
+(313,1960)  cost 134
+(65,2216)  cost 17
+(1664,342)  cost 2
+(1391,1761)  cost 7
+(502,2170)  cost 61
+(1342,1330)  cost 32
+(341,321)  cost 6
+(1740,1664)  cost 52
+(485,142)  cost 36
+(833,467)  cost 32
+(116,0)  cost 22
+(2216,343)  cost 50
+(1674,2174)  cost 79
+(1520,2004)  cost 11
+(1166,1399)  cost 1
+(740,793)  cost 33
+(1896,1897)  cost 361
+(1925,1154)  cost 24
+(343,70)  cost 2
+(2038,457)  cost 51
+(1810,2)  cost 84
+(184,1078)  cost 8
+(2032,143)  cost 10
+(458,461)  cost 7
+(2170,314)  cost 138
+(140,2092)  cost 5
+(2207,1393)  cost 28
+(1164,1980)  cost 47
+(1509,1507)  cost 18
+(1170,2207)  cost 13
+(2175,2224)  cost 5
+(1,1759)  cost 5
+DEPOT : 2277

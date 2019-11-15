@@ -1,0 +1,387 @@
+NAME : egl-g1-A_IF.txt
+NODES : 255
+REQ_EDGES : 347
+NOREQ_EDGES : 28
+REQ_ARCS : 0
+NOREQ_ARCS : 0
+VEHICLES : 20
+CAPACITY : 28600
+DUMPING_COST : 0
+LIST_REQ_EDGES :
+(1,5)   serv_cost 1860   trave_cost 1860   demand 1860
+(5,6)   serv_cost 556   trave_cost 556   demand 556
+(6,7)   serv_cost 821   trave_cost 821   demand 821
+(7,8)   serv_cost 606   trave_cost 606   demand 606
+(8,9)   serv_cost 2195   trave_cost 2195   demand 2195
+(10,9)   serv_cost 282   trave_cost 282   demand 282
+(10,11)   serv_cost 1834   trave_cost 1834   demand 1834
+(11,12)   serv_cost 1109   trave_cost 1109   demand 1109
+(12,13)   serv_cost 591   trave_cost 591   demand 591
+(13,14)   serv_cost 3357   trave_cost 3357   demand 3357
+(14,15)   serv_cost 1922   trave_cost 1922   demand 1922
+(16,5)   serv_cost 390   trave_cost 390   demand 390
+(16,17)   serv_cost 221   trave_cost 221   demand 221
+(17,18)   serv_cost 318   trave_cost 318   demand 318
+(18,6)   serv_cost 429   trave_cost 429   demand 429
+(18,19)   serv_cost 717   trave_cost 717   demand 717
+(19,7)   serv_cost 503   trave_cost 503   demand 503
+(16,20)   serv_cost 960   trave_cost 960   demand 960
+(20,21)   serv_cost 669   trave_cost 669   demand 669
+(19,21)   serv_cost 460   trave_cost 460   demand 460
+(20,22)   serv_cost 519   trave_cost 519   demand 519
+(22,23)   serv_cost 463   trave_cost 463   demand 463
+(21,23)   serv_cost 985   trave_cost 985   demand 985
+(22,24)   serv_cost 528   trave_cost 528   demand 528
+(23,24)   serv_cost 479   trave_cost 479   demand 479
+(24,25)   serv_cost 1561   trave_cost 1561   demand 1561
+(21,26)   serv_cost 681   trave_cost 681   demand 681
+(26,8)   serv_cost 1063   trave_cost 1063   demand 1063
+(255,7)   serv_cost 991   trave_cost 991   demand 991
+(26,27)   serv_cost 969   trave_cost 969   demand 969
+(23,28)   serv_cost 1471   trave_cost 1471   demand 1471
+(27,28)   serv_cost 590   trave_cost 590   demand 590
+(27,29)   serv_cost 720   trave_cost 720   demand 720
+(28,29)   serv_cost 819   trave_cost 819   demand 819
+(29,9)   serv_cost 794   trave_cost 794   demand 794
+(255,9)   serv_cost 637   trave_cost 637   demand 637
+(10,30)   serv_cost 498   trave_cost 498   demand 498
+(29,31)   serv_cost 559   trave_cost 559   demand 559
+(30,31)   serv_cost 383   trave_cost 383   demand 383
+(31,32)   serv_cost 1671   trave_cost 1671   demand 1671
+(32,33)   serv_cost 420   trave_cost 420   demand 420
+(30,33)   serv_cost 1373   trave_cost 1373   demand 1373
+(11,33)   serv_cost 130   trave_cost 130   demand 130
+(32,34)   serv_cost 546   trave_cost 546   demand 546
+(34,35)   serv_cost 510   trave_cost 510   demand 510
+(35,36)   serv_cost 363   trave_cost 363   demand 363
+(33,36)   serv_cost 424   trave_cost 424   demand 424
+(12,36)   serv_cost 673   trave_cost 673   demand 673
+(35,37)   serv_cost 894   trave_cost 894   demand 894
+(13,37)   serv_cost 226   trave_cost 226   demand 226
+(38,39)   serv_cost 2022   trave_cost 2022   demand 2022
+(39,40)   serv_cost 747   trave_cost 747   demand 747
+(39,41)   serv_cost 2431   trave_cost 2431   demand 2431
+(34,41)   serv_cost 2533   trave_cost 2533   demand 2533
+(39,42)   serv_cost 3644   trave_cost 3644   demand 3644
+(42,43)   serv_cost 605   trave_cost 605   demand 605
+(41,43)   serv_cost 3742   trave_cost 3742   demand 3742
+(43,44)   serv_cost 666   trave_cost 666   demand 666
+(37,44)   serv_cost 5067   trave_cost 5067   demand 5067
+(14,44)   serv_cost 3407   trave_cost 3407   demand 3407
+(15,45)   serv_cost 1414   trave_cost 1414   demand 1414
+(45,46)   serv_cost 2781   trave_cost 2781   demand 2781
+(46,47)   serv_cost 844   trave_cost 844   demand 844
+(46,48)   serv_cost 774   trave_cost 774   demand 774
+(48,49)   serv_cost 553   trave_cost 553   demand 553
+(46,49)   serv_cost 1231   trave_cost 1231   demand 1231
+(49,50)   serv_cost 1041   trave_cost 1041   demand 1041
+(50,51)   serv_cost 1486   trave_cost 1486   demand 1486
+(51,52)   serv_cost 1190   trave_cost 1190   demand 1190
+(52,53)   serv_cost 1254   trave_cost 1254   demand 1254
+(53,54)   serv_cost 468   trave_cost 468   demand 468
+(54,55)   serv_cost 230   trave_cost 230   demand 230
+(42,55)   serv_cost 1871   trave_cost 1871   demand 1871
+(53,55)   serv_cost 662   trave_cost 662   demand 662
+(44,54)   serv_cost 1559   trave_cost 1559   demand 1559
+(53,56)   serv_cost 545   trave_cost 545   demand 545
+(56,57)   serv_cost 341   trave_cost 341   demand 341
+(57,58)   serv_cost 422   trave_cost 422   demand 422
+(56,58)   serv_cost 332   trave_cost 332   demand 332
+(58,59)   serv_cost 324   trave_cost 324   demand 324
+(52,59)   serv_cost 502   trave_cost 502   demand 502
+(59,60)   serv_cost 358   trave_cost 358   demand 358
+(51,60)   serv_cost 1076   trave_cost 1076   demand 1076
+(57,61)   serv_cost 368   trave_cost 368   demand 368
+(61,62)   serv_cost 376   trave_cost 376   demand 376
+(62,63)   serv_cost 1669   trave_cost 1669   demand 1669
+(60,64)   serv_cost 1123   trave_cost 1123   demand 1123
+(64,65)   serv_cost 520   trave_cost 520   demand 520
+(65,66)   serv_cost 2332   trave_cost 2332   demand 2332
+(4,66)   serv_cost 2562   trave_cost 2562   demand 2562
+(4,50)   serv_cost 2191   trave_cost 2191   demand 2191
+(4,48)   serv_cost 874   trave_cost 874   demand 874
+(68,69)   serv_cost 1781   trave_cost 1781   demand 1781
+(69,70)   serv_cost 1101   trave_cost 1101   demand 1101
+(69,71)   serv_cost 563   trave_cost 563   demand 563
+(70,71)   serv_cost 984   trave_cost 984   demand 984
+(63,70)   serv_cost 2931   trave_cost 2931   demand 2931
+(71,72)   serv_cost 1613   trave_cost 1613   demand 1613
+(72,73)   serv_cost 2954   trave_cost 2954   demand 2954
+(73,74)   serv_cost 577   trave_cost 577   demand 577
+(62,74)   serv_cost 3309   trave_cost 3309   demand 3309
+(74,75)   serv_cost 543   trave_cost 543   demand 543
+(73,75)   serv_cost 588   trave_cost 588   demand 588
+(42,75)   serv_cost 2479   trave_cost 2479   demand 2479
+(75,76)   serv_cost 3247   trave_cost 3247   demand 3247
+(76,77)   serv_cost 1169   trave_cost 1169   demand 1169
+(40,77)   serv_cost 1022   trave_cost 1022   demand 1022
+(76,78)   serv_cost 3457   trave_cost 3457   demand 3457
+(78,79)   serv_cost 342   trave_cost 342   demand 342
+(78,80)   serv_cost 4719   trave_cost 4719   demand 4719
+(80,81)   serv_cost 212   trave_cost 212   demand 212
+(72,81)   serv_cost 283   trave_cost 283   demand 283
+(81,82)   serv_cost 1725   trave_cost 1725   demand 1725
+(71,82)   serv_cost 1274   trave_cost 1274   demand 1274
+(82,83)   serv_cost 422   trave_cost 422   demand 422
+(83,84)   serv_cost 1671   trave_cost 1671   demand 1671
+(80,84)   serv_cost 1294   trave_cost 1294   demand 1294
+(84,85)   serv_cost 2384   trave_cost 2384   demand 2384
+(85,86)   serv_cost 1607   trave_cost 1607   demand 1607
+(84,87)   serv_cost 1479   trave_cost 1479   demand 1479
+(86,87)   serv_cost 1041   trave_cost 1041   demand 1041
+(86,88)   serv_cost 8010   trave_cost 8010   demand 8010
+(88,89)   serv_cost 602   trave_cost 602   demand 602
+(89,90)   serv_cost 895   trave_cost 895   demand 895
+(255,89)   serv_cost 883   trave_cost 883   demand 883
+(83,91)   serv_cost 2892   trave_cost 2892   demand 2892
+(91,92)   serv_cost 450   trave_cost 450   demand 450
+(92,93)   serv_cost 863   trave_cost 863   demand 863
+(93,94)   serv_cost 509   trave_cost 509   demand 509
+(92,94)   serv_cost 393   trave_cost 393   demand 393
+(68,94)   serv_cost 2070   trave_cost 2070   demand 2070
+(94,95)   serv_cost 2463   trave_cost 2463   demand 2463
+(68,95)   serv_cost 1390   trave_cost 1390   demand 1390
+(3,95)   serv_cost 5069   trave_cost 5069   demand 5069
+(3,96)   serv_cost 3831   trave_cost 3831   demand 3831
+(96,97)   serv_cost 1948   trave_cost 1948   demand 1948
+(93,97)   serv_cost 3062   trave_cost 3062   demand 3062
+(91,99)   serv_cost 762   trave_cost 762   demand 762
+(98,99)   serv_cost 4437   trave_cost 4437   demand 4437
+(97,98)   serv_cost 400   trave_cost 400   demand 400
+(100,96)   serv_cost 3661   trave_cost 3661   demand 3661
+(100,2)   serv_cost 1562   trave_cost 1562   demand 1562
+(101,87)   serv_cost 1423   trave_cost 1423   demand 1423
+(101,102)   serv_cost 715   trave_cost 715   demand 715
+(102,103)   serv_cost 572   trave_cost 572   demand 572
+(103,104)   serv_cost 2681   trave_cost 2681   demand 2681
+(104,105)   serv_cost 1298   trave_cost 1298   demand 1298
+(105,106)   serv_cost 1451   trave_cost 1451   demand 1451
+(105,107)   serv_cost 982   trave_cost 982   demand 982
+(107,108)   serv_cost 497   trave_cost 497   demand 497
+(106,108)   serv_cost 630   trave_cost 630   demand 630
+(108,109)   serv_cost 1268   trave_cost 1268   demand 1268
+(107,109)   serv_cost 1078   trave_cost 1078   demand 1078
+(109,110)   serv_cost 1724   trave_cost 1724   demand 1724
+(102,111)   serv_cost 436   trave_cost 436   demand 436
+(103,111)   serv_cost 212   trave_cost 212   demand 212
+(101,112)   serv_cost 3207   trave_cost 3207   demand 3207
+(112,113)   serv_cost 580   trave_cost 580   demand 580
+(113,114)   serv_cost 1204   trave_cost 1204   demand 1204
+(111,114)   serv_cost 2014   trave_cost 2014   demand 2014
+(104,114)   serv_cost 3092   trave_cost 3092   demand 3092
+(113,115)   serv_cost 2331   trave_cost 2331   demand 2331
+(112,99)   serv_cost 2533   trave_cost 2533   demand 2533
+(115,99)   serv_cost 1971   trave_cost 1971   demand 1971
+(115,116)   serv_cost 304   trave_cost 304   demand 304
+(116,117)   serv_cost 4996   trave_cost 4996   demand 4996
+(106,118)   serv_cost 1300   trave_cost 1300   demand 1300
+(117,118)   serv_cost 2279   trave_cost 2279   demand 2279
+(118,119)   serv_cost 3922   trave_cost 3922   demand 3922
+(117,119)   serv_cost 691   trave_cost 691   demand 691
+(119,120)   serv_cost 7060   trave_cost 7060   demand 7060
+(117,121)   serv_cost 3157   trave_cost 3157   demand 3157
+(121,122)   serv_cost 2760   trave_cost 2760   demand 2760
+(122,123)   serv_cost 843   trave_cost 843   demand 843
+(116,123)   serv_cost 4529   trave_cost 4529   demand 4529
+(122,124)   serv_cost 910   trave_cost 910   demand 910
+(123,124)   serv_cost 542   trave_cost 542   demand 542
+(124,125)   serv_cost 1486   trave_cost 1486   demand 1486
+(125,126)   serv_cost 490   trave_cost 490   demand 490
+(126,127)   serv_cost 1720   trave_cost 1720   demand 1720
+(127,98)   serv_cost 3483   trave_cost 3483   demand 3483
+(127,128)   serv_cost 904   trave_cost 904   demand 904
+(128,129)   serv_cost 304   trave_cost 304   demand 304
+(129,130)   serv_cost 708   trave_cost 708   demand 708
+(130,131)   serv_cost 2233   trave_cost 2233   demand 2233
+(100,131)   serv_cost 506   trave_cost 506   demand 506
+(100,132)   serv_cost 572   trave_cost 572   demand 572
+(131,132)   serv_cost 305   trave_cost 305   demand 305
+(132,133)   serv_cost 2066   trave_cost 2066   demand 2066
+(133,134)   serv_cost 272   trave_cost 272   demand 272
+(133,135)   serv_cost 1588   trave_cost 1588   demand 1588
+(135,136)   serv_cost 1753   trave_cost 1753   demand 1753
+(136,137)   serv_cost 1378   trave_cost 1378   demand 1378
+(130,137)   serv_cost 547   trave_cost 547   demand 547
+(137,138)   serv_cost 224   trave_cost 224   demand 224
+(138,139)   serv_cost 251   trave_cost 251   demand 251
+(129,138)   serv_cost 424   trave_cost 424   demand 424
+(128,139)   serv_cost 589   trave_cost 589   demand 589
+(139,140)   serv_cost 772   trave_cost 772   demand 772
+(140,141)   serv_cost 1138   trave_cost 1138   demand 1138
+(140,142)   serv_cost 394   trave_cost 394   demand 394
+(141,142)   serv_cost 1308   trave_cost 1308   demand 1308
+(142,143)   serv_cost 9647   trave_cost 9647   demand 9647
+(143,144)   serv_cost 2703   trave_cost 2703   demand 2703
+(143,145)   serv_cost 1451   trave_cost 1451   demand 1451
+(145,146)   serv_cost 3385   trave_cost 3385   demand 3385
+(136,146)   serv_cost 604   trave_cost 604   demand 604
+(146,147)   serv_cost 1812   trave_cost 1812   demand 1812
+(135,147)   serv_cost 1406   trave_cost 1406   demand 1406
+(147,148)   serv_cost 1533   trave_cost 1533   demand 1533
+(148,149)   serv_cost 697   trave_cost 697   demand 697
+(145,148)   serv_cost 796   trave_cost 796   demand 796
+(141,150)   serv_cost 547   trave_cost 547   demand 547
+(126,150)   serv_cost 842   trave_cost 842   demand 842
+(125,150)   serv_cost 881   trave_cost 881   demand 881
+(150,151)   serv_cost 364   trave_cost 364   demand 364
+(150,255)   serv_cost 477   trave_cost 477   demand 477
+(151,152)   serv_cost 736   trave_cost 736   demand 736
+(125,152)   serv_cost 971   trave_cost 971   demand 971
+(151,153)   serv_cost 1253   trave_cost 1253   demand 1253
+(152,153)   serv_cost 636   trave_cost 636   demand 636
+(153,154)   serv_cost 500   trave_cost 500   demand 500
+(152,155)   serv_cost 2376   trave_cost 2376   demand 2376
+(121,155)   serv_cost 4308   trave_cost 4308   demand 4308
+(155,156)   serv_cost 2120   trave_cost 2120   demand 2120
+(156,157)   serv_cost 1295   trave_cost 1295   demand 1295
+(154,157)   serv_cost 3174   trave_cost 3174   demand 3174
+(154,158)   serv_cost 1764   trave_cost 1764   demand 1764
+(158,159)   serv_cost 334   trave_cost 334   demand 334
+(158,160)   serv_cost 1652   trave_cost 1652   demand 1652
+(159,160)   serv_cost 1090   trave_cost 1090   demand 1090
+(159,161)   serv_cost 5318   trave_cost 5318   demand 5318
+(156,162)   serv_cost 1937   trave_cost 1937   demand 1937
+(120,162)   serv_cost 528   trave_cost 528   demand 528
+(162,163)   serv_cost 2444   trave_cost 2444   demand 2444
+(157,163)   serv_cost 2208   trave_cost 2208   demand 2208
+(157,161)   serv_cost 4163   trave_cost 4163   demand 4163
+(161,164)   serv_cost 650   trave_cost 650   demand 650
+(164,165)   serv_cost 783   trave_cost 783   demand 783
+(161,165)   serv_cost 567   trave_cost 567   demand 567
+(165,166)   serv_cost 1114   trave_cost 1114   demand 1114
+(166,167)   serv_cost 1191   trave_cost 1191   demand 1191
+(163,167)   serv_cost 638   trave_cost 638   demand 638
+(167,168)   serv_cost 906   trave_cost 906   demand 906
+(163,168)   serv_cost 1474   trave_cost 1474   demand 1474
+(164,169)   serv_cost 6561   trave_cost 6561   demand 6561
+(120,170)   serv_cost 3454   trave_cost 3454   demand 3454
+(170,171)   serv_cost 971   trave_cost 971   demand 971
+(171,172)   serv_cost 886   trave_cost 886   demand 886
+(172,173)   serv_cost 430   trave_cost 430   demand 430
+(171,255)   serv_cost 1041   trave_cost 1041   demand 1041
+(170,174)   serv_cost 4804   trave_cost 4804   demand 4804
+(166,175)   serv_cost 696   trave_cost 696   demand 696
+(175,176)   serv_cost 859   trave_cost 859   demand 859
+(168,176)   serv_cost 271   trave_cost 271   demand 271
+(176,177)   serv_cost 1324   trave_cost 1324   demand 1324
+(175,177)   serv_cost 1596   trave_cost 1596   demand 1596
+(166,178)   serv_cost 3419   trave_cost 3419   demand 3419
+(178,179)   serv_cost 1982   trave_cost 1982   demand 1982
+(179,180)   serv_cost 2073   trave_cost 2073   demand 2073
+(177,180)   serv_cost 1362   trave_cost 1362   demand 1362
+(180,181)   serv_cost 957   trave_cost 957   demand 957
+(177,181)   serv_cost 2086   trave_cost 2086   demand 2086
+(181,182)   serv_cost 748   trave_cost 748   demand 748
+(174,182)   serv_cost 1231   trave_cost 1231   demand 1231
+(179,183)   serv_cost 1316   trave_cost 1316   demand 1316
+(179,184)   serv_cost 1731   trave_cost 1731   demand 1731
+(178,185)   serv_cost 2259   trave_cost 2259   demand 2259
+(185,186)   serv_cost 3109   trave_cost 3109   demand 3109
+(186,187)   serv_cost 1269   trave_cost 1269   demand 1269
+(187,188)   serv_cost 3112   trave_cost 3112   demand 3112
+(190,194)   serv_cost 3251   trave_cost 3251   demand 3251
+(194,195)   serv_cost 376   trave_cost 376   demand 376
+(195,196)   serv_cost 292   trave_cost 292   demand 292
+(195,197)   serv_cost 301   trave_cost 301   demand 301
+(186,197)   serv_cost 3261   trave_cost 3261   demand 3261
+(197,198)   serv_cost 309   trave_cost 309   demand 309
+(196,198)   serv_cost 206   trave_cost 206   demand 206
+(198,199)   serv_cost 3240   trave_cost 3240   demand 3240
+(196,199)   serv_cost 3076   trave_cost 3076   demand 3076
+(199,200)   serv_cost 2518   trave_cost 2518   demand 2518
+(200,201)   serv_cost 950   trave_cost 950   demand 950
+(200,202)   serv_cost 937   trave_cost 937   demand 937
+(201,202)   serv_cost 402   trave_cost 402   demand 402
+(202,203)   serv_cost 1544   trave_cost 1544   demand 1544
+(203,204)   serv_cost 2782   trave_cost 2782   demand 2782
+(203,251)   serv_cost 5204   trave_cost 5204   demand 5204
+(204,252)   serv_cost 1611   trave_cost 1611   demand 1611
+(204,205)   serv_cost 2263   trave_cost 2263   demand 2263
+(201,206)   serv_cost 883   trave_cost 883   demand 883
+(205,206)   serv_cost 2489   trave_cost 2489   demand 2489
+(205,207)   serv_cost 1895   trave_cost 1895   demand 1895
+(207,208)   serv_cost 2848   trave_cost 2848   demand 2848
+(209,210)   serv_cost 1518   trave_cost 1518   demand 1518
+(210,211)   serv_cost 364   trave_cost 364   demand 364
+(210,212)   serv_cost 4722   trave_cost 4722   demand 4722
+(207,212)   serv_cost 5738   trave_cost 5738   demand 5738
+(206,213)   serv_cost 1700   trave_cost 1700   demand 1700
+(213,214)   serv_cost 1250   trave_cost 1250   demand 1250
+(213,215)   serv_cost 1561   trave_cost 1561   demand 1561
+(214,215)   serv_cost 1265   trave_cost 1265   demand 1265
+(214,216)   serv_cost 6400   trave_cost 6400   demand 6400
+(216,217)   serv_cost 2285   trave_cost 2285   demand 2285
+(218,219)   serv_cost 1659   trave_cost 1659   demand 1659
+(219,220)   serv_cost 1320   trave_cost 1320   demand 1320
+(216,219)   serv_cost 1346   trave_cost 1346   demand 1346
+(215,221)   serv_cost 4667   trave_cost 4667   demand 4667
+(224,225)   serv_cost 545   trave_cost 545   demand 545
+(224,226)   serv_cost 745   trave_cost 745   demand 745
+(223,225)   serv_cost 1070   trave_cost 1070   demand 1070
+(223,227)   serv_cost 1133   trave_cost 1133   demand 1133
+(227,228)   serv_cost 3200   trave_cost 3200   demand 3200
+(223,229)   serv_cost 2680   trave_cost 2680   demand 2680
+(229,230)   serv_cost 418   trave_cost 418   demand 418
+(230,231)   serv_cost 326   trave_cost 326   demand 326
+(229,231)   serv_cost 220   trave_cost 220   demand 220
+(231,232)   serv_cost 1412   trave_cost 1412   demand 1412
+(232,233)   serv_cost 4093   trave_cost 4093   demand 4093
+(233,234)   serv_cost 4007   trave_cost 4007   demand 4007
+(233,255)   serv_cost 354   trave_cost 354   demand 354
+(232,234)   serv_cost 7275   trave_cost 7275   demand 7275
+(230,235)   serv_cost 3445   trave_cost 3445   demand 3445
+(235,236)   serv_cost 1645   trave_cost 1645   demand 1645
+(236,237)   serv_cost 1063   trave_cost 1063   demand 1063
+(236,238)   serv_cost 1669   trave_cost 1669   demand 1669
+(193,238)   serv_cost 901   trave_cost 901   demand 901
+(238,239)   serv_cost 1077   trave_cost 1077   demand 1077
+(235,239)   serv_cost 1426   trave_cost 1426   demand 1426
+(241,242)   serv_cost 1248   trave_cost 1248   demand 1248
+(192,242)   serv_cost 403   trave_cost 403   demand 403
+(242,243)   serv_cost 1690   trave_cost 1690   demand 1690
+(241,243)   serv_cost 1217   trave_cost 1217   demand 1217
+(243,244)   serv_cost 1580   trave_cost 1580   demand 1580
+(243,245)   serv_cost 1752   trave_cost 1752   demand 1752
+(244,245)   serv_cost 620   trave_cost 620   demand 620
+(194,244)   serv_cost 1198   trave_cost 1198   demand 1198
+(245,246)   serv_cost 5203   trave_cost 5203   demand 5203
+(215,246)   serv_cost 1326   trave_cost 1326   demand 1326
+(246,247)   serv_cost 2680   trave_cost 2680   demand 2680
+(247,248)   serv_cost 2068   trave_cost 2068   demand 2068
+(245,248)   serv_cost 2904   trave_cost 2904   demand 2904
+(248,249)   serv_cost 624   trave_cost 624   demand 624
+(240,249)   serv_cost 876   trave_cost 876   demand 876
+(249,250)   serv_cost 1840   trave_cost 1840   demand 1840
+(247,250)   serv_cost 1432   trave_cost 1432   demand 1432
+(229,250)   serv_cost 812   trave_cost 812   demand 812
+(222,247)   serv_cost 2857   trave_cost 2857   demand 2857
+LIST_NOREQ_EDGES :
+(1,25)   cost 2841
+(25,38)   cost 709
+(64,67)   cost 3301
+(66,67)   cost 4023
+(67,68)   cost 4409
+(174,183)   cost 783
+(184,185)   cost 1499
+(185,253)   cost 3422
+(184,187)   cost 1452
+(174,188)   cost 2136
+(188,189)   cost 755
+(189,190)   cost 2565
+(189,191)   cost 792
+(191,192)   cost 1231
+(191,193)   cost 1090
+(192,193)   cost 582
+(251,252)   cost 2237
+(208,209)   cost 3369
+(218,254)   cost 1829
+(221,222)   cost 532
+(222,223)   cost 695
+(221,224)   cost 1716
+(222,225)   cost 931
+(235,240)   cost 2205
+(240,241)   cost 2880
+(239,241)   cost 1392
+(212,254)   cost 775
+(217,254)   cost 381
+DEPOT : 1

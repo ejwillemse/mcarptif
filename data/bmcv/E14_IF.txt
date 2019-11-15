@@ -1,0 +1,84 @@
+NAME : E14_IF.txt
+NODES : 53
+REQ_EDGES : 55
+NOREQ_EDGES : 17
+REQ_ARCS : 0
+NOREQ_ARCS : 0
+VEHICLES : 8
+CAPACITY : 300
+DUMPING_COST : 0
+LIST_REQ_EDGES :
+(1,2)   serv_cost 25   trave_cost 25   demand 25
+(2,3)   serv_cost 5   trave_cost 5   demand 5
+(2,26)   serv_cost 20   trave_cost 20   demand 20
+(3,4)   serv_cost 60   trave_cost 60   demand 60
+(3,25)   serv_cost 30   trave_cost 30   demand 30
+(4,10)   serv_cost 30   trave_cost 30   demand 30
+(4,24)   serv_cost 55   trave_cost 55   demand 55
+(5,10)   serv_cost 5   trave_cost 5   demand 5
+(5,6)   serv_cost 5   trave_cost 5   demand 5
+(5,28)   serv_cost 120   trave_cost 120   demand 120
+(6,7)   serv_cost 50   trave_cost 50   demand 50
+(6,18)   serv_cost 60   trave_cost 60   demand 60
+(7,9)   serv_cost 10   trave_cost 10   demand 10
+(7,53)   serv_cost 60   trave_cost 60   demand 60
+(7,17)   serv_cost 45   trave_cost 45   demand 45
+(8,53)   serv_cost 30   trave_cost 30   demand 30
+(15,52)   serv_cost 35   trave_cost 35   demand 35
+(15,53)   serv_cost 25   trave_cost 25   demand 25
+(15,16)   serv_cost 10   trave_cost 10   demand 10
+(16,21)   serv_cost 50   trave_cost 50   demand 50
+(16,43)   serv_cost 150   trave_cost 150   demand 150
+(17,18)   serv_cost 5   trave_cost 5   demand 5
+(17,23)   serv_cost 15   trave_cost 15   demand 15
+(18,19)   serv_cost 15   trave_cost 15   demand 15
+(19,20)   serv_cost 5   trave_cost 5   demand 5
+(19,23)   serv_cost 5   trave_cost 5   demand 5
+(20,31)   serv_cost 25   trave_cost 25   demand 25
+(20,21)   serv_cost 15   trave_cost 15   demand 15
+(21,22)   serv_cost 15   trave_cost 15   demand 15
+(22,53)   serv_cost 50   trave_cost 50   demand 50
+(22,23)   serv_cost 20   trave_cost 20   demand 20
+(27,28)   serv_cost 20   trave_cost 20   demand 20
+(28,29)   serv_cost 25   trave_cost 25   demand 25
+(29,34)   serv_cost 15   trave_cost 15   demand 15
+(29,32)   serv_cost 80   trave_cost 80   demand 80
+(29,30)   serv_cost 70   trave_cost 70   demand 70
+(30,31)   serv_cost 10   trave_cost 10   demand 10
+(31,33)   serv_cost 70   trave_cost 70   demand 70
+(32,35)   serv_cost 80   trave_cost 80   demand 80
+(32,45)   serv_cost 90   trave_cost 90   demand 90
+(32,33)   serv_cost 45   trave_cost 45   demand 45
+(33,44)   serv_cost 115   trave_cost 115   demand 115
+(34,38)   serv_cost 105   trave_cost 105   demand 105
+(34,35)   serv_cost 45   trave_cost 45   demand 45
+(35,36)   serv_cost 65   trave_cost 65   demand 65
+(35,37)   serv_cost 20   trave_cost 20   demand 20
+(36,38)   serv_cost 15   trave_cost 15   demand 15
+(36,37)   serv_cost 65   trave_cost 65   demand 65
+(37,47)   serv_cost 80   trave_cost 80   demand 80
+(37,46)   serv_cost 95   trave_cost 95   demand 95
+(38,39)   serv_cost 20   trave_cost 20   demand 20
+(38,41)   serv_cost 5   trave_cost 5   demand 5
+(40,41)   serv_cost 15   trave_cost 15   demand 15
+(41,42)   serv_cost 65   trave_cost 65   demand 65
+(52,53)   serv_cost 40   trave_cost 40   demand 40
+LIST_NOREQ_EDGES :
+(8,9)   cost 50
+(11,42)   cost 55
+(11,48)   cost 100
+(12,39)   cost 15
+(12,40)   cost 15
+(13,24)   cost 35
+(13,27)   cost 70
+(14,25)   cost 25
+(14,26)   cost 15
+(43,51)   cost 40
+(44,45)   cost 25
+(44,50)   cost 20
+(45,49)   cost 55
+(46,47)   cost 25
+(46,49)   cost 20
+(47,48)   cost 10
+(50,51)   cost 15
+DEPOT : 30

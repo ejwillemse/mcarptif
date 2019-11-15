@@ -1,0 +1,96 @@
+NAME : D21_IF.txt
+NODES : 60
+REQ_EDGES : 76
+NOREQ_EDGES : 8
+REQ_ARCS : 0
+NOREQ_ARCS : 0
+VEHICLES : 4
+CAPACITY : 600
+DUMPING_COST : 0
+LIST_REQ_EDGES :
+(1,2)   serv_cost 50   trave_cost 50   demand 50
+(1,7)   serv_cost 15   trave_cost 15   demand 15
+(2,49)   serv_cost 30   trave_cost 30   demand 30
+(3,50)   serv_cost 15   trave_cost 15   demand 15
+(3,52)   serv_cost 5   trave_cost 5   demand 5
+(4,52)   serv_cost 10   trave_cost 10   demand 10
+(7,10)   serv_cost 60   trave_cost 60   demand 60
+(8,47)   serv_cost 90   trave_cost 90   demand 90
+(8,9)   serv_cost 10   trave_cost 10   demand 10
+(9,10)   serv_cost 30   trave_cost 30   demand 30
+(11,57)   serv_cost 30   trave_cost 30   demand 30
+(11,12)   serv_cost 10   trave_cost 10   demand 10
+(11,13)   serv_cost 25   trave_cost 25   demand 25
+(13,14)   serv_cost 10   trave_cost 10   demand 10
+(13,15)   serv_cost 10   trave_cost 10   demand 10
+(14,15)   serv_cost 10   trave_cost 10   demand 10
+(15,16)   serv_cost 10   trave_cost 10   demand 10
+(15,17)   serv_cost 10   trave_cost 10   demand 10
+(16,22)   serv_cost 15   trave_cost 15   demand 15
+(16,17)   serv_cost 5   trave_cost 5   demand 5
+(17,20)   serv_cost 10   trave_cost 10   demand 10
+(17,18)   serv_cost 15   trave_cost 15   demand 15
+(18,19)   serv_cost 5   trave_cost 5   demand 5
+(18,23)   serv_cost 95   trave_cost 95   demand 95
+(19,20)   serv_cost 5   trave_cost 5   demand 5
+(19,21)   serv_cost 10   trave_cost 10   demand 10
+(19,37)   serv_cost 80   trave_cost 80   demand 80
+(20,22)   serv_cost 5   trave_cost 5   demand 5
+(20,21)   serv_cost 5   trave_cost 5   demand 5
+(21,22)   serv_cost 5   trave_cost 5   demand 5
+(21,53)   serv_cost 65   trave_cost 65   demand 65
+(21,42)   serv_cost 25   trave_cost 25   demand 25
+(22,60)   serv_cost 70   trave_cost 70   demand 70
+(23,37)   serv_cost 60   trave_cost 60   demand 60
+(23,31)   serv_cost 70   trave_cost 70   demand 70
+(23,25)   serv_cost 30   trave_cost 30   demand 30
+(23,24)   serv_cost 50   trave_cost 50   demand 50
+(25,27)   serv_cost 15   trave_cost 15   demand 15
+(25,26)   serv_cost 15   trave_cost 15   demand 15
+(26,27)   serv_cost 15   trave_cost 15   demand 15
+(26,28)   serv_cost 15   trave_cost 15   demand 15
+(27,30)   serv_cost 35   trave_cost 35   demand 35
+(27,29)   serv_cost 25   trave_cost 25   demand 25
+(30,31)   serv_cost 15   trave_cost 15   demand 15
+(30,32)   serv_cost 15   trave_cost 15   demand 15
+(31,34)   serv_cost 25   trave_cost 25   demand 25
+(31,33)   serv_cost 15   trave_cost 15   demand 15
+(31,32)   serv_cost 10   trave_cost 10   demand 10
+(32,33)   serv_cost 25   trave_cost 25   demand 25
+(33,38)   serv_cost 45   trave_cost 45   demand 45
+(34,35)   serv_cost 25   trave_cost 25   demand 25
+(35,37)   serv_cost 10   trave_cost 10   demand 10
+(35,36)   serv_cost 10   trave_cost 10   demand 10
+(36,37)   serv_cost 5   trave_cost 5   demand 5
+(36,38)   serv_cost 65   trave_cost 65   demand 65
+(38,40)   serv_cost 15   trave_cost 15   demand 15
+(38,39)   serv_cost 15   trave_cost 15   demand 15
+(40,41)   serv_cost 140   trave_cost 140   demand 140
+(40,43)   serv_cost 15   trave_cost 15   demand 15
+(41,42)   serv_cost 30   trave_cost 30   demand 30
+(41,51)   serv_cost 85   trave_cost 85   demand 85
+(42,53)   serv_cost 45   trave_cost 45   demand 45
+(43,44)   serv_cost 10   trave_cost 10   demand 10
+(43,45)   serv_cost 5   trave_cost 5   demand 5
+(44,49)   serv_cost 80   trave_cost 80   demand 80
+(44,45)   serv_cost 10   trave_cost 10   demand 10
+(45,47)   serv_cost 75   trave_cost 75   demand 75
+(45,46)   serv_cost 30   trave_cost 30   demand 30
+(47,49)   serv_cost 90   trave_cost 90   demand 90
+(47,48)   serv_cost 10   trave_cost 10   demand 10
+(49,50)   serv_cost 10   trave_cost 10   demand 10
+(50,51)   serv_cost 10   trave_cost 10   demand 10
+(51,52)   serv_cost 5   trave_cost 5   demand 5
+(57,58)   serv_cost 80   trave_cost 80   demand 80
+(58,59)   serv_cost 30   trave_cost 30   demand 30
+(59,60)   serv_cost 15   trave_cost 15   demand 15
+LIST_NOREQ_EDGES :
+(1,5)   cost 40
+(2,3)   cost 5
+(3,4)   cost 10
+(5,6)   cost 10
+(6,56)   cost 35
+(53,54)   cost 15
+(54,55)   cost 100
+(55,56)   cost 20
+DEPOT : 34
