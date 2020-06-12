@@ -86,7 +86,7 @@ from solver.py_reduce_number_trips_rr import Reduce_Trips
 
 from math import floor
 from copy import deepcopy
-from time import clock
+from time import perf_counter as clock
 
 
 def return_arc_position(solution, arc, inv_arc = None):

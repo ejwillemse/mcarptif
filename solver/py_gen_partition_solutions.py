@@ -11,7 +11,7 @@ from py_solution_test  import test_solution # From Dev_SolutionOperators
 import time
 from py_display_solution import display_solution_stats 
 from copy import deepcopy
-from time import clock
+from time import perf_counter as clock
 from py_reduce_number_trips import Reduce_Trips 
 import py_solution_builders
 import evaluatesolutions

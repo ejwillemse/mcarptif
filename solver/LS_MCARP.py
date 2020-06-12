@@ -20,7 +20,7 @@ import calcMoveCost
 import py_display_solution
 from copy import deepcopy
 import pickle
-from time import clock
+from time import perf_counter as clock
 
 class TestLocalSeach(object):
     '''

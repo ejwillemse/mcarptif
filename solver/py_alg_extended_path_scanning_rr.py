@@ -28,7 +28,7 @@ import os
 
 from solver.py_reduce_number_trips import Reduce_Trips
 
-from time import clock
+from time import perf_counter as clock
 from solver.py_display_solution import display_solution_stats
 
 huge = 1e300000

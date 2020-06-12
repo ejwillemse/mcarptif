@@ -19,7 +19,7 @@ import solver.calcMoveCost as calcMoveCost
 import solver.py_display_solution as py_display_solution
 from copy import deepcopy
 import pickle
-from time import clock
+from time import perf_counter as clock
 from solver.py_reduce_number_trips import Reduce_Trips as ReduceRoutes
 from solver.py_solution_builders import build_CLARPIF_dict_correct
 

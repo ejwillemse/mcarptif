@@ -27,7 +27,7 @@ from copy import deepcopy
 from py_solution_test  import test_solution
 from py_reduce_number_trips import Reduce_Trips 
 
-from time import clock
+from time import perf_counter as clock
 
 
 # Populate the c modules with required input data

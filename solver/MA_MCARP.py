@@ -18,7 +18,7 @@ import sys
 sys = sysPath.addInputPaths(sys)
 mainPath = sysPath.returnPath()
 
-from time import clock
+from time import perf_counter as clock
 
 from random import randrange
 from random import random

@@ -31,7 +31,7 @@ from math import ceil
 
 import evaluatesolutions
 import py_solution_builders as build_solution
-from time import clock
+from time import perf_counter as clock
 from py_display_solution import display_solution_stats 
 
 huge = 1e30000 
