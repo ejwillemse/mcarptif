@@ -108,7 +108,7 @@ class ConvertedInputs(object):
                 os.remove(check_file)
 
 
-def load_instance(file_path, display_info=True, cache=True, overwrite=False):
+def load_instance(file_path, display_info=True, cache=True, overwrite=False, name_tuple=True):
     """Load problem instance info required to solve the instance and optionally
     display the solution in the format of the raw input file.
 
@@ -123,13 +123,19 @@ def load_instance(file_path, display_info=True, cache=True, overwrite=False):
             folder as the raw input file.
         overwrite (bool): if converted input data should be overwritten if
             present in the input data folder.
+        name_tuple (bool): if output should be converted to a named tuples. If this is
+            the case, they can't be changed, accidently or otherwise.
 
     Raises:
         FileNotFoundError: raw input file not found.
         FileNotFoundError: partial converted input data found.
 
     Return:
-        info (namedtuple): converted input data stored as a named tuple.
+        info (namedtuplec): converted input data stored as a named tuple.
+
+        OR
+
+        instance (class): input data as class that can be changed.
             Examples with all available fields follows:
 
     Fields and examples of info:
@@ -386,6 +392,11 @@ def load_instance(file_path, display_info=True, cache=True, overwrite=False):
 
     instance.set_required_arc_instance_info('_problem_info.dat')
     instance.set_nn_lists('_nn_list.dat')
+
+    if not name_tuple:
+        instance.d = instance.d_np_req
+        instance.reqInvArcList = instance.reqInvArcL
+        return instance
 
     #  Converted input data is assigned to a named tuple
     Info = collections.namedtuple('info', 'name '
