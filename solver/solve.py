@@ -216,7 +216,7 @@ def solve_instance(file_path, improve=None, reduce_initial_trips=True):
 
 
 def solve_store_instance(file_path, out_path=None, improve=None, reduce_initial_trips=True,
-                         full_output=True, overwrite=True):
+                         full_output=True, overwrite=True, write_results=True, info=None):
     """Solve a specific problem instance and store the partial and full solution
     in the same folder as the raw input data. Two solution files are stored:
     one ending with `_sol_[solver].csv` and `_sol_full_[solver].csv`, where
@@ -251,6 +251,11 @@ def solve_store_instance(file_path, out_path=None, improve=None, reduce_initial_
             stored, as `_sol_full.csv`, with the encoded solution file.
         overwrite (bool): whether existing solution files for the raw input file
             should be overwritten.
+        write_results (bool): whether the solution should be written to a file.
+        info (class): problem info loaded by `load_instance`. Can be used instead
+            of loading the info repeatedly.
+
+    Returns solution_df (pandas df): full or partial solution data frame
 
     Examples:
 
@@ -448,7 +453,11 @@ def solve_store_instance(file_path, out_path=None, improve=None, reduce_initial_
     improvement_ext = {'LS' : '_local_search', 'TS' : '_tabu_search'}
     ext = 'ps'
 
-    info = load_instance(file_path)
+    if info is None:
+        info = load_instance(file_path)
+    else:
+        print('Problem info supplied. Directly proceeding to solve problem.')
+
     solution = gen_solution(info, reduce_initial_trips)
     if improve is not None:
         solution = improve_solution(info, solution, improve)
@@ -461,13 +470,19 @@ def solve_store_instance(file_path, out_path=None, improve=None, reduce_initial_
     else:
         out_path += conv.file_name
 
-    output_file = out_path + '_sol_' + ext + '.csv'
-    print('Writing encoded solution to {0}'.format(output_file))
-    write_solution_df(solution_df, output_file, overwrite)
+    if write_results:
+        output_file = out_path + '_sol_' + ext + '.csv'
+        print('Writing encoded solution to {0}'.format(output_file))
+        write_solution_df(solution_df, output_file, overwrite)
 
     if full_output is True:
         solution_df_full = convert_df_full(info, solution_df)
-        output_file_full = out_path + '_sol_full_' + ext + '.csv'
-        print('Writing full solution to {0}'.format(output_file_full))
-        write_solution_df(solution_df_full, output_file_full, overwrite)
 
+        if write_results:
+            output_file_full = out_path + '_sol_full_' + ext + '.csv'
+            print('Writing full solution to {0}'.format(output_file_full))
+            write_solution_df(solution_df_full, output_file_full, overwrite)
+
+        return solution_df_full
+
+    return solution_df
