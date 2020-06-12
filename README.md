@@ -126,3 +126,7 @@ The speed and waste quantities are a really tricky one. We've been working on a 
 ## Questions
 
 Feel free to create issues or drop me an email at ejwillemse gmail
+
+## Notes
+
+`congestion/` was an idea to model vehicle's as agents and allow them to change their offloads to avoid congestion.
