@@ -158,7 +158,7 @@ LIST_REQ_EDGES :
 (-706,-720)  serv_cost 111  trav_cost 22 demand 100
 (-1028,-1030)  serv_cost 112  trav_cost 24 demand 100
 (-720,-722)  serv_cost 78  trav_cost 16 demand 70
-(-1022,-1040)  serv_cost 117  trav_cost 15 demand 110
+(-1022,-1040)  serb_cost 117  trav_cost 15 demand 110
 (-694,-708)  serv_cost 33  trav_cost 6 demand 30
 LIST_NOREQ_EDGES : 
 (-796,-802)  cost 6
