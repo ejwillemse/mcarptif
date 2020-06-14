@@ -40,6 +40,8 @@ are created:
  * `u_orig`: original start vertex
  * `v_orig`: original end vertex
  * `arc_id_orig`: a `u_orig-v_orig-key` key id
+ * `key_orig`: a copy of the original key, it has to be updated for parallel
+  edges.
 
 These columns are then updated for parallel-arcs:
 
@@ -72,6 +74,16 @@ parameters. The distance matrix is reduced to required arcs to reduce memory
 requirements. The algorithms will have to be updated to take as input
 required-arcs and edges lists.
 
+Currently, only two parallel arcs and edges can be processed. A more robust
+approach is to separate ALL parallel arcs, and then connect them back via
+dummy nodes. There are also a few corner cases:
+
+ * a two-way street and one way street is in parallel.
+ * edges are in parallel with identical lengths.
+ * there are more than two parallel edges.
+
+Not yet sure what will happen in the above scenarios:
+
 History:
     Created on 12 June 2020
     @author: Elias J. Willemse
@@ -80,6 +92,7 @@ History:
 from copy import copy
 
 import pandas as pd
+import geopandas as gpd
 import numpy as np
 
 
@@ -229,6 +242,29 @@ class PrepareGraph:
         n_parallel = len(self._df_graph.loc[duplicates])
         return n_parallel > 1
 
+    def _update_parallel_edge_keys(self):
+        """Update keys for parallel edges, so that their opposing arcs have
+        the same key.
+
+        TODO: Figure out what happens with corner cases, more than one
+        parallel arcs, same length parallel arcs, one arc on edge, etc.
+
+        """
+        dups = (self._df_graph.duplicated(subset=['u', 'v'], keep=False)) & \
+               (self._df_graph['oneway'] == False)
+
+        if dups.any():
+            print('Fixing parallel arc keys...')
+            self._df_graph['key_orig'] = self._df_graph['key']
+            gdf_arcs_dups = self._df_graph.loc[dups].copy()
+            gdf_arcs_dups['key'] = 1
+            min_id = gdf_arcs_dups.groupby(['u', 'v']).agg(
+                min_id=('length', 'idxmin')).reset_index()['min_id']
+            gdf_arcs_dups.loc[min_id, 'key'] = 0
+            self._df_graph = pd.concat([self._df_graph.loc[~dups],
+                                        gdf_arcs_dups])
+            print('done')
+
     def _extend_parallel(self):
         """Find arcs and edges with same start and end-nodes (arcs-ids) create
         connected dummy nodes and arcs for them. New `u_orig, v_orig`
@@ -242,6 +278,9 @@ class PrepareGraph:
         just make the dummy u and v negative. If u or v is zero, or if there
         are negative keys, the code will break. So a max key value is
         added.
+
+        TODO: Figure out what happens with corner cases, more than one
+        parallel arcs, same length parallel arcs, one arc on edge, etc.
         """
         # keep track of the original nodes.
         self._df_graph[['u_orig', 'v_orig']] = self._df_graph[['u', 'v']]
@@ -253,7 +292,10 @@ class PrepareGraph:
         df_dups = self._df_graph.loc[duplicates].copy()
 
         # find first occurrence of parallel arcs
-        dup_inter = df_dups.duplicated(subset=['u', 'v'])
+        # dup_inter = df_dups.duplicated(subset=['u', 'v'])
+
+        # find shortest parallel arc pairs.
+        dup_inter = df_dups['key'] == 0
         df_dup_inter = df_dups.loc[dup_inter].copy()
 
         # create new dummy nodes and assign them
@@ -282,38 +324,36 @@ class PrepareGraph:
         self._df_graph = pd.concat([self._df_graph.loc[~duplicates].copy(),
                                     df_dups])
 
-    def _create_ordered_ids(self,
-                            arc_id='arc_id',
-                            arc_id_ordered='arc_id_ordered',
-                            nan_oneway_fill_val=False):
+    def _create_ordered_ids(self, nan_oneway_fill_val=False):
         """Create key-pairs, 'u-v', ordered for edges, unordered for
         arcs. Requires `arc_id` through `self._create_arc_ids`
 
         Args:
-            arc_id (str): name of existing id column
-            arc_id_ordered (str): name of new ordered id column
             nan_oneway_fill_val (bool): value to fill the oneway column with.
         """
-        def ordered_key(df_frame):
-            u_val, v_val = df_frame['u'], df_frame['v']
-            u_ord = min(u_val, v_val)
-            v_ord = max(u_val, v_val)
-            edge_key_ordered = '{}-{}'.format(u_ord, v_ord)
-            return edge_key_ordered
+        self._df_graph['u_ord'] = self._df_graph[['u', 'v']].min(axis=1)
+        self._df_graph['v_ord'] = self._df_graph[['u', 'v']].max(axis=1)
+
+        self._df_graph = create_arc_id(self._df_graph,
+                                       'arc_id_ordered',
+                                       'u_ord',
+                                       'v_ord')
+        self._df_graph = self._df_graph.drop(columns=['u_ord', 'v_ord'])
 
         self._df_graph['oneway'] = self._df_graph['oneway'].fillna(
             value=nan_oneway_fill_val)
-
-        self._df_graph[arc_id_ordered] = self._df_graph.apply(ordered_key,
-                                                              axis=1)
         one_ways = self._df_graph['oneway'] == True
-        self._df_graph.loc[one_ways, arc_id_ordered] = self._df_graph.loc[
-            one_ways][arc_id]
+        self._df_graph.loc[one_ways, 'arc_id_ordered'] = self._df_graph.loc[
+            one_ways]['arc_id']
 
-    def prep_osmnx_graph(self):
+    def prep_osmnx_graph(self, return_graph=True):
         """Complete all graph preparations, including converting required
         columns to int, adding arc keys, and creating dummy arcs for parallel
         arcs with the same start and end nodes.
+
+        Args:
+            return_graph (bool): whether the prepared graph should be
+                returned as an object.
 
         Return:
             df (pd.DataFrame): with all preparations done.
@@ -331,6 +371,7 @@ class PrepareGraph:
 
         self._parallel_arcs = self._check_for_parallel_arcs()
         if self._parallel_arcs:
+            self._update_parallel_edge_keys()
             self._extend_parallel()
 
         self._df_graph = create_arc_id(self._df_graph,
@@ -342,7 +383,18 @@ class PrepareGraph:
 
         if self._check_for_parallel_arcs():
             raise TypeError('Parallel arcs in network')
-        return self._df_graph
+
+        if return_graph:
+            return self._df_graph
+
+    def write_osmnx_graph(self, file, index=False):
+        """Write the prepared OSMNX graph to a file as an CSV.
+
+        Args:
+            file (str): name and path of output file
+            index (bool): if the index row should be stored in the csv.
+        """
+        self._df_graph.to_csv(file, index=index)
 
 
 class PrepareRequiredArcs:
@@ -419,11 +471,92 @@ class PrepareRequiredArcs:
         self._df_graph_req = pd.concat([self._df_graph_req.loc[~edges],
                                         df_edges])
 
-    def prepare_required_arcs(self):
-        """Prepare required arcs for writing."""
+    def prepare_required_arcs(self, return_graph=True):
+        """Prepare required arcs for writing.
+
+        Args:
+            return_graph (bool) whether the graph should be returned.
+        """
         self._test_graph_parameters()
         self._convert_to_int()
         self._consolidate_edges()
+        if return_graph:
+            return self._df_graph_req
+
+    def write_req_osmnx_graph(self, file, index=False):
+
+        """Write the prepared OSMNX graph to a file as an CSV.
+
+        Args:
+            file (str): name and path of output file
+            index (bool): if the index row should be stored in the csv.
+        """
+        self._df_graph_req.to_csv(file, index=index)
+
+
+class PrepareKeyLocations:
+    """Prepare key locations into a lat-lon data-frame"""
+
+    def __init__(self, df_vertices):
+        """Input is the graph_vertices from OSMNX whose x-y (lat-lon)
+        positions, and keys are used.
+
+        Args:
+            df_vertices (pd.DataFrame): graph vertex info, where index is
+                vertex ID, as in the arc graph, and lat-lon coordinates are
+                given as x and y.
+        """
+        self.df_vertices = df_vertices.copy()
+        self.df_vertices['u'] = df_vertices.index
+        test_column_exists(self.df_vertices, 'u', 'x', 'y', 'osmid')
+        self.df_vertices = self.df_vertices.rename(columns={'x': 'lon',
+                                                            'y': 'lat'})
+        self.df_key_locations = None
+
+    def prep_key_locations(self,
+                           df_key_locations,
+                           osmid=True,
+                           return_graph=True):
+        """Prepare key locations, such as depots and intermediate
+        facilities, and store it as a data-frame.
+
+        Args:
+            df_key_locations (pd.DataFrame): key location info with
+                mandatory `u` column or `osmid` to be converted into vertex
+                ids.
+            osmid (bool): whether an osmid column should be used to get
+                vertex ids
+            return_graph (bool): return the df
+
+        Return:
+            df_key_locations (pd.DataFrame): with all info from df_vertices
+                added.
+        """
+        if df_key_locations is not None:
+            self.df_key_locations = df_key_locations.copy()
+
+        if osmid:
+            self.df_key_locations = pd.merge(self.df_key_locations,
+                                             self.df_vertices,
+                                             how='left')
+
+        test_column_exists(self.df_key_locations, 'u')
+        self.df_key_locations = pd.merge(self.df_key_locations,
+                                         self.df_vertices[['u', 'lat',
+                                                           'lon']], how='left')
+
+        if return_graph:
+            return self.df_key_locations
+
+    def write_key_locations(self, file, index=False):
+        """Write key-locations to a file as a CSV. The frame is converted
+        into a normal pandas data-frame, in-case it's a geo-dataframe.
+
+        Args:
+            file (str): name and path of output file
+            index (bool): if the index row should be stored in the csv.
+        """
+        self.df_key_locations.to_csv(file, index=index)
 
 
 class CreateMcarptifFormat:
@@ -432,8 +565,7 @@ class CreateMcarptifFormat:
     def __init__(self,
                  df_graph,
                  df_graph_req,
-                 depot_vertex=None,
-                 if_vertices=None):
+                 df_key_locations=None):
         """Key input data is the full network graph and required network graph.
         They are split for the workflow where the required graph is
         split, updated with changes to demand, service time, etc. Both should
@@ -442,6 +574,10 @@ class CreateMcarptifFormat:
         Args:
             df_graph (pd.DataFrame): data-frame of full network.
             df_graph_req (pd.DataFrame): data-frame with required edges.
+            df_key_locations (pd.DataFrame): data-frame to be used for
+                `depot_vertex` and `if_vertices`, need to have `u` for
+                vertex-id and `type` that has to have one `depot_vertex` and
+                `if_vertex` types.
             depot_vertex (int): vertex of depot
             if_vertices (list <int>): vertices of offload sites.
         """
@@ -461,8 +597,14 @@ class CreateMcarptifFormat:
         self.dumping_cost = 0
         self.max_trip = 0
 
-        self.depot_vertex = depot_vertex
-        self.if_vertices = if_vertices
+        self.depot_vertex = None
+        self.if_vertices = None
+
+        if df_key_locations is not None:
+            self.df_key_locations = df_key_locations.copy()
+            self.set_key_locations(self.df_key_locations)
+        else:
+            self.df_key_locations = None
 
         self._output_str = ''
 
@@ -549,6 +691,32 @@ class CreateMcarptifFormat:
         self.n_req_arcs = len(self._df_graph_req) - self.n_req_edges
         self.n_nonreq_arcs = len(self._df_graph) - self.n_req_arcs - \
                              self.n_req_edges - self.n_nonreq_edges
+
+    def set_key_locations(self, df_key_locations):
+        """Set depot and if-vertices based on key-location data-frame
+
+        Args:
+            df_key_locations (pd.DataFrame): data-frame to be used for
+                `depot_vertex` and `if_vertices`, need to have `u` for
+                vertex-id and `type` that has to have one `depot` and
+                `offload` types.
+        """
+        self.df_key_locations = df_key_locations.copy()
+        test_column_exists(self.df_key_locations, 'type', 'u')
+
+        depot_vertex = self.df_key_locations['u'].loc[self.df_key_locations[
+                                                      'type'] == 'depot']
+        if not len(depot_vertex):
+            raise TypeError('No `depot` entry in `type`.')
+        if len(depot_vertex) > 1:
+            raise TypeError('More than one depot vertex.')
+        self.set_depot(depot_vertex.values[0])
+
+        if_vertices = self.df_key_locations['u'].loc[self.df_key_locations[
+                                                      'type'] == 'offload']
+        if not len(if_vertices):
+            raise TypeError('No `offload` entry in `type`.')
+        self.set_ifs(if_vertices.values)
 
     def set_depot(self, depot_vertex):
         """Set depot vertex from where vehicles will be dispatched.

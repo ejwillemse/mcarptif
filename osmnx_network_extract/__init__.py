@@ -7,3 +7,4 @@ from .create_instance import test_column_exists
 from .create_instance import PrepareRequiredArcs
 from .create_instance import CreateMcarptifFormat
 from .create_instance import PrepareGraph
+from .create_instance import PrepareKeyLocations
