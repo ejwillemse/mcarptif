@@ -30,8 +30,8 @@ LIST_REQ_EDGES :
 (3975116541,3975116542)   serv_cost   63   trav_cost   63   demand   2
 (1881200115,1881200121)   serv_cost   246   trav_cost   246   demand   2
 (8786256830,8786256836)   serv_cost   150   trav_cost   150   demand   2
-(3975116536,3975116542)   serv_cost   223   trav_cost   223   demand   2
-(10880173251,10880173257)   serv_cost   308   trav_cost   308   demand   2
+(10880173251,10880173257)   serv_cost   223   trav_cost   223   demand   2
+(3975116536,3975116542)   serv_cost   308   trav_cost   308   demand   2
 LIST_REQ_ARCS : 
 LIST_NOREQ_EDGES : 
 (1844145159,1844145150)   cost   15
