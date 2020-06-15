@@ -32,13 +32,15 @@ from converter.solution_converter import convert_df_full
 from converter.solution_converter import write_solution_df
 
 
-def gen_solution(info, reduce_trips=True):
+def gen_solution(info, reduce_trips=True, test_solution=False):
     """Generate a feasible solution using a deterministic Path-Scanning
     constructive heuristic.
 
     Arg:
         info (namedtuple): converted input data of a problem instance. See
             help(`converter.load_data.load_instance`) for more info.
+        test_solution (bool): whether the solution should be tested. Can slow
+            down the algorithm but useful for debugging.
 
     Returns:
         solution (dict): standardised solution dictionary for the problem
@@ -47,6 +49,7 @@ def gen_solution(info, reduce_trips=True):
 
     EPS.populate_c_local_search(info, True)
     initial_solver = EPS.EPS_IF(info)
+    initial_solver.testsolutions = test_solution
     initial_solver.c_modules = True
     initial_solver.reduce_all_trips = reduce_trips
     solution = initial_solver.EPS_IF_solver(rule_type='EPS_all_rules')[0][0]
@@ -55,17 +58,19 @@ def gen_solution(info, reduce_trips=True):
     return solution
 
 
-def initiate_local_search(info):
+def initiate_local_search(info, test_solution=False):
     """Initiate the Local Search algorithm with specific parameter values.
 
     Arg:
         info (namedtuple): converted input data of a problem instance. See
             help(`converter.load_data.load_instance`) for more info.
+        test_solution (bool): whether the solution should be tested. Can slow
+            down the algorithm but useful for debugging.
 
     Return:
         improve (class): solution improvement class
     """
-    improve = LS.LS_MCARPTIF(info, info.nn_list, testAll=False,
+    improve = LS.LS_MCARPTIF(info, info.nn_list, testAll=test_solution,
                              autoInvCosts=False)
 
     # Defaults
@@ -88,17 +93,19 @@ def initiate_local_search(info):
     return improve
 
 
-def initiate_tabu_search(info):
+def initiate_tabu_search(info, test_solution):
     """Initiate the Tabu Search algorithm with specific parameter values.
 
     Arg:
         info (namedtuple): converted input data of a problem instance. See
             help(`converter.load_data.load_instance`) for more info.
+        test_solution (bool): whether the solution should be tested. Can slow
+            down the algorithm but useful for debugging.
 
     Return:
         improve (class): solution improvement class
     """
-    improve = LS.TabuSearch_MCARPTIF(info, info.nn_list, testAll=False)
+    improve = LS.TabuSearch_MCARPTIF(info, info.nn_list, testAll=test_solution)
 
     # Defaults
     compoundMoves = True
@@ -130,7 +137,10 @@ def clear_improvement_setup(improvement_procedure):
     improvement_procedure.clearCythonModules()
 
 
-def improve_solution(info, initial_solution, improvement='LS'):
+def improve_solution(info,
+                     initial_solution,
+                     improvement='LS',
+                     test_solution=False):
     """Improve a give initial solution using metaheuristics.
 
     Arg:
@@ -138,6 +148,8 @@ def improve_solution(info, initial_solution, improvement='LS'):
             help(`converter.load_data.load_instance`) for more info.
         initial_solution (dict): standardised solution dictionary for the
             problem instance.
+        test_solution (bool): whether the solution should be tested. Can slow
+            down the algorithm but useful for debugging.
 
     Kwarg:
         improvement (str): improvement procedure to be used to improve the
@@ -148,21 +160,26 @@ def improve_solution(info, initial_solution, improvement='LS'):
             problem instance.
     """
     if improvement == 'LS':
-        improver = initiate_local_search(info)
+        improver = initiate_local_search(info, test_solution)
     if improvement == 'TS':
-        improver = initiate_tabu_search(info)
+        improver = initiate_tabu_search(info, test_solution)
     solution = improver.improveSolution(initial_solution)
     clear_improvement_setup(improver)
 
     return solution
 
 
-def solve_instance(file_path, improve=None, reduce_initial_trips=True):
+def solve_instance(file_path,
+                   improve=None,
+                   reduce_initial_trips=True,
+                   test_solution=False):
     """Generate and improve a solution from a raw instance file.
 
     Arg:
         file_path (str): path to raw text file, in Belenguer et al (2006)
         format.
+        test_solution (bool): whether the solution should be tested. Can slow
+            down the algorithm but useful for debugging.
     Kwarg:
         improve (str): whether the initial solution should be improved with a
             Local Search (='LS'), tabu-search (='TS'), or not all (=None).
@@ -208,15 +225,27 @@ def solve_instance(file_path, improve=None, reduce_initial_trips=True):
 
     """
     info = load_instance(file_path)
-    solution = gen_solution(info, reduce_trips)
+    solution = gen_solution(info,
+                            reduce_initial_trips,
+                            test_solution=test_solution)
     if improve is not None:
-        solution = improve_solution(info, solution, improve)
+        solution = improve_solution(info,
+                                    solution,
+                                    improve,
+                                    test_solution=test_solution)
 
     return solution
 
 
-def solve_store_instance(file_path, out_path=None, improve=None, reduce_initial_trips=True,
-                         full_output=True, overwrite=True, write_results=True, info=None):
+def solve_store_instance(file_path,
+                         out_path=None,
+                         improve=None,
+                         reduce_initial_trips=True,
+                         full_output=True,
+                         overwrite=True,
+                         write_results=True,
+                         info=None,
+                         test_solution=False):
     """Solve a specific problem instance and store the partial and full solution
     in the same folder as the raw input data. Two solution files are stored:
     one ending with `_sol_[solver].csv` and `_sol_full_[solver].csv`, where
@@ -254,6 +283,8 @@ def solve_store_instance(file_path, out_path=None, improve=None, reduce_initial_
         write_results (bool): whether the solution should be written to a file.
         info (class): problem info loaded by `load_instance`. Can be used instead
             of loading the info repeatedly.
+        test_solution (bool): whether the solution should be tested. Can slow
+            down the algorithm but useful for debugging.
 
     Returns solution_df (pandas df): full or partial solution data frame
 
@@ -458,9 +489,11 @@ def solve_store_instance(file_path, out_path=None, improve=None, reduce_initial_
     else:
         print('Problem info supplied. Directly proceeding to solve problem.')
 
-    solution = gen_solution(info, reduce_initial_trips)
+    solution = gen_solution(info, reduce_initial_trips,
+                            test_solution=test_solution)
     if improve is not None:
-        solution = improve_solution(info, solution, improve)
+        solution = improve_solution(info, solution, improve,
+                                    test_solution=test_solution)
         ext += improvement_ext[improve]
 
     solution_df = convert_df(info, solution)
