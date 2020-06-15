@@ -236,10 +236,18 @@ class PrepareGraph:
                                             'travel_cost': int,
                                             'oneway': bool})
 
-    def _check_for_parallel_arcs(self):
-        """Check whether there are any parallel arcs"""
+    def _check_for_parallel_arcs(self, show=False):
+        """Check whether there are any parallel arcs
+
+        Args:
+            show (bool): show parallel arcs.
+        """
         duplicates = self._df_graph.duplicated(subset=['u', 'v'], keep=False)
         n_parallel = len(self._df_graph.loc[duplicates])
+
+        if n_parallel > 1 and show:
+            print(self._df_graph.loc[duplicates])
+
         return n_parallel > 1
 
     def _update_parallel_edge_keys(self):
@@ -346,7 +354,8 @@ class PrepareGraph:
         self._df_graph.loc[one_ways, 'arc_id_ordered'] = self._df_graph.loc[
             one_ways]['arc_id']
 
-    def prep_osmnx_graph(self, return_graph=True):
+    def prep_osmnx_graph(self,
+                         return_graph=True):
         """Complete all graph preparations, including converting required
         columns to int, adding arc keys, and creating dummy arcs for parallel
         arcs with the same start and end nodes.
@@ -354,6 +363,8 @@ class PrepareGraph:
         Args:
             return_graph (bool): whether the prepared graph should be
                 returned as an object.
+            ignore_multiple_parallel (bool): ignore cases where there are
+             multiple parallel arcs.
 
         Return:
             df (pd.DataFrame): with all preparations done.
@@ -381,7 +392,7 @@ class PrepareGraph:
 
         self._create_ordered_ids()
 
-        if self._check_for_parallel_arcs():
+        if self._check_for_parallel_arcs(show=True):
             raise TypeError('Parallel arcs in network')
 
         if return_graph:
@@ -565,7 +576,8 @@ class CreateMcarptifFormat:
     def __init__(self,
                  df_graph,
                  df_graph_req,
-                 df_key_locations=None):
+                 df_key_locations=None,
+                 directed_graph=True):
         """Key input data is the full network graph and required network graph.
         They are split for the workflow where the required graph is
         split, updated with changes to demand, service time, etc. Both should
@@ -578,11 +590,12 @@ class CreateMcarptifFormat:
                 `depot_vertex` and `if_vertices`, need to have `u` for
                 vertex-id and `type` that has to have one `depot_vertex` and
                 `if_vertex` types.
-            depot_vertex (int): vertex of depot
-            if_vertices (list <int>): vertices of offload sites.
+            directed_graph (bool): whether the based graph is directed,
+            in which there will not be any non-req-edges, only non-req-arcs.
         """
         self._df_graph = df_graph.copy()
         self._df_graph_req = df_graph_req.copy()
+        self.directed_graph = directed_graph
 
         self.name = ''
 
@@ -685,12 +698,19 @@ class CreateMcarptifFormat:
 
         self.n_nodes = len(node_keys.unique())
         req_edges = self._df_graph_req['oneway'] == False
-        edges = self._df_graph['oneway'] == False
         self.n_req_edges = len(self._df_graph_req.loc[req_edges])
-        self.n_nonreq_edges = len(self._df_graph.loc[edges]) - self.n_req_edges
         self.n_req_arcs = len(self._df_graph_req) - self.n_req_edges
-        self.n_nonreq_arcs = len(self._df_graph) - self.n_req_arcs - \
-                             self.n_req_edges - self.n_nonreq_edges
+
+        if self.directed_graph:
+            self.n_nonreq_edges = 0
+            self.n_nonreq_arcs = len(self._df_graph_req) - self.n_req_edges - \
+                                 self.n_req_arcs
+        else:
+            edges = self._df_graph['oneway'] == False
+            self.n_nonreq_edges = len(self._df_graph.loc[edges]) - \
+                                  self.n_req_edges
+            self.n_nonreq_arcs = len(self._df_graph) - self.n_req_arcs - \
+                                 self.n_req_edges - self.n_nonreq_edges
 
     def set_key_locations(self, df_key_locations):
         """Set depot and if-vertices based on key-location data-frame
@@ -768,7 +788,7 @@ class CreateMcarptifFormat:
         return out
 
     def _set_dump_str(self):
-        dumpsites_list = str(self.if_vertices).strip('[]').replace(' ', '')
+        dumpsites_list = str(self.if_vertices).strip('[]').replace(' ', ',')
         out = 'DUMPING_SITES : ' + dumpsites_list
         return out
 
@@ -795,29 +815,38 @@ class CreateMcarptifFormat:
 
         non_req_i = ~self._df_graph['arc_id_ordered'].isin(
             self._df_graph_req['arc_id_ordered'])
-        df_graph_nonreq = self._df_graph.loc[non_req_i]
-        edges_i = df_graph_nonreq['oneway'] == False
-        edges = df_graph_nonreq.loc[edges_i]
-        arcs = df_graph_nonreq.loc[~edges_i]
+
+        if self.directed_graph:
+            edges = []
+            arcs = self._df_graph.loc[non_req_i]
+        else:
+            df_graph_nonreq = self._df_graph.loc[non_req_i]
+            edges_i = df_graph_nonreq['oneway'] == False
+            edges = df_graph_nonreq.loc[edges_i]
+            arcs = df_graph_nonreq.loc[~edges_i]
 
         self._output_str = ''
         self._output_str += self._set_header_str()
 
         self._output_str += 'LIST_REQ_EDGES : \n'
-        for out in req_edges['out_str']:
-            self._output_str += out
+        if len(req_edges):
+            for out in req_edges['out_str']:
+                self._output_str += out
 
         self._output_str += 'LIST_REQ_ARCS : \n'
-        for out in req_arcs['out_str']:
-            self._output_str += out
+        if len(req_arcs):
+            for out in req_arcs['out_str']:
+                self._output_str += out
 
         self._output_str += 'LIST_NOREQ_EDGES : \n'
-        for out in edges['out_str']:
-            self._output_str += out
+        if len(edges):
+            for out in edges['out_str']:
+                self._output_str += out
 
         self._output_str += 'LIST_NOREQ_ARCS : \n'
-        for out in arcs['out_str']:
-            self._output_str += out
+        if len(arcs):
+            for out in arcs['out_str']:
+                self._output_str += out
 
         self._output_str += self._set_depot_str()
         self._output_str += self._set_dump_str()
@@ -827,6 +856,8 @@ class CreateMcarptifFormat:
 
         Args:
             check_inputs (bool): if inputs should be checked.
+            non_req_arc (bool): if the underlying graph is directed, and all
+                non-req entries will arcs.
         """
 
         if check_inputs:
