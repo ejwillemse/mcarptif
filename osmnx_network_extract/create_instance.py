@@ -258,8 +258,12 @@ class PrepareGraph:
         parallel arcs, same length parallel arcs, one arc on edge, etc.
 
         """
-        dups = (self._df_graph.duplicated(subset=['u', 'v'], keep=False)) & \
-               (self._df_graph['oneway'] == False)
+        #TODO: the below code creates issues for parallel one-way arcs. They
+        # are skipped.
+        # dups = (self._df_graph.duplicated(subset=['u', 'v'], keep=False)) & \
+        #       (self._df_graph['oneway'] == False)
+
+        dups = (self._df_graph.duplicated(subset=['u', 'v'], keep=False))
 
         if dups.any():
             print('Fixing parallel arc keys...')
@@ -788,7 +792,8 @@ class CreateMcarptifFormat:
         return out
 
     def _set_dump_str(self):
-        dumpsites_list = str(self.if_vertices).strip('[]').replace(' ', ',')
+        #dumpsites_list = str(self.if_vertices).strip('[]').replace(' ', ',')
+        dumpsites_list = ','.join(map(str, self.if_vertices))
         out = 'DUMPING_SITES : ' + dumpsites_list
         return out
 
