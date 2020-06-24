@@ -92,8 +92,8 @@ History:
 from copy import copy
 
 import pandas as pd
-import geopandas as gpd
 import numpy as np
+import logging
 
 
 def test_column_exists(df, *column_names):
@@ -198,43 +198,50 @@ class PrepareGraph:
     MCARPTIF solver.
     """
 
-    def __init__(self, df_graph):
+    def __init__(self, df_graph, full_convert=True):
         """Key input data is the full network graph.
 
         Args:
             df_graph (pd.DataFrame): data-frame of full network.
+            full_convert (bool): if the full MCARPTIF network should be
+                converted with travel cost info, or just the basic stuff, like
+                `u`, `v` and `key`.
         """
         self._df_graph = df_graph.copy()
         self._parallel_arcs = True
         self.dummy_arcs = None  # data-frame of dummy arcs
+        self.full_convert = full_convert
 
     def _test_graph_parameters(self):
         """Test if the graph meets column name requirements."""
         test_column_exists(self._df_graph,
                            'u',
                            'v',
-                           'k',
+                           'key',
                            'travel_cost',
                            'oneway')
 
-    def _convert_to_int(self, fix_columns_int=True):
+    def _convert_to_int(self, fix_columns_int=True,):
         """
         Args:
             fix_columns_int (bool): convert all number columns to int.
         """
+        if self.full_convert is True:
+            int_list = ['u', 'v', 'key', 'travel_cost']
+        else:
+            int_list = ['u', 'v', 'key']
 
         if fix_columns_int:
             self._df_graph = convert_to_int(self._df_graph,
-                                            'u',
-                                            'v',
-                                            'key',
-                                            'travel_cost')
+                                            int_list)
 
         test_column_type(self._df_graph, **{'u': int,
                                             'v': int,
                                             'key': int,
-                                            'travel_cost': int,
                                             'oneway': bool})
+
+        if self.full_convert is True:
+            test_column_type(self._df_graph, **{'travel_cost': int})
 
     def _check_for_parallel_arcs(self, show=False):
         """Check whether there are any parallel arcs
@@ -324,8 +331,11 @@ class PrepareGraph:
         new_arcs_u = u_nodes.append(v_dummy)
         new_arcs_v = u_dummy.append(v_nodes)
         dummy_arcs = pd.DataFrame.from_dict({'u': new_arcs_u, 'v': new_arcs_v})
+
         self.dummy_arcs = dummy_arcs.copy()
-        dummy_arcs['travel_cost'] = 0  # since they are dummy arcs, this is
+
+        if 'travel_cost' in dummy_arcs.columns:
+            dummy_arcs['travel_cost'] = 0  # since they are dummy arcs, this is
         # zero.
 
         # these are all the parallel arcs, with their nodes updated.
@@ -359,7 +369,8 @@ class PrepareGraph:
             one_ways]['arc_id']
 
     def prep_osmnx_graph(self,
-                         return_graph=True):
+                         return_graph=True,
+                         duplicates_error=True):
         """Complete all graph preparations, including converting required
         columns to int, adding arc keys, and creating dummy arcs for parallel
         arcs with the same start and end nodes.
@@ -369,6 +380,9 @@ class PrepareGraph:
                 returned as an object.
             ignore_multiple_parallel (bool): ignore cases where there are
              multiple parallel arcs.
+            duplicates_error (bool): whether the presence of duplicates
+                should raise an error or just a warning.
+
 
         Return:
             df (pd.DataFrame): with all preparations done.
@@ -397,7 +411,10 @@ class PrepareGraph:
         self._create_ordered_ids()
 
         if self._check_for_parallel_arcs(show=True):
-            raise TypeError('Parallel arcs in network')
+            if duplicates_error:
+                raise TypeError('Parallel arcs in network')
+            else:
+                logging.warning('Parallel arcs in network')
 
         if return_graph:
             return self._df_graph
@@ -417,13 +434,16 @@ class PrepareRequiredArcs:
     compatible with MCARPTIF solver.
     """
 
-    def __init__(self, df_graph_req):
+    def __init__(self, df_graph_req, full_convert=True):
         """Inputs is the required arcs network graph, formatted using
 
         Args:
             df_graph_req (pd.DataFrame): data-frame with required arcs.
+            full_convert (bool): whether the full MCARPTIF problem should be
+                converted.
         """
         self._df_graph_req = df_graph_req.copy()
+        self._full_convert = full_convert
 
     def _test_graph_parameters(self):
         """Test if the graph meets column name requirements."""
@@ -471,7 +491,7 @@ class PrepareRequiredArcs:
         elif len(self._df_graph_req.loc[zero_cost]):
             raise ValueError('`service_cost` cannot be zero')
 
-    def _consolidate_edges(self):
+    def consolidate_edges(self):
         """Consolidate the demand and service cost of edges into one arc.
         This is required since demand is assigned to one of the two arcs.
         For now, the first found ordered arc occurrence is used."""
@@ -494,7 +514,7 @@ class PrepareRequiredArcs:
         """
         self._test_graph_parameters()
         self._convert_to_int()
-        self._consolidate_edges()
+        self.consolidate_edges()
         if return_graph:
             return self._df_graph_req
 
