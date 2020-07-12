@@ -298,6 +298,9 @@ class PrepareGraph:
         are negative keys, the code will break. So a max key value is
         added.
 
+        There may be multiple parallel arcs. So all the parallel arcs are
+        removed, assigned new keys and connected back into the network.
+
         TODO: Figure out what happens with corner cases, more than one
         parallel arcs, same length parallel arcs, one arc on edge, etc.
         """
@@ -334,8 +337,11 @@ class PrepareGraph:
 
         self.dummy_arcs = dummy_arcs.copy()
 
-        if 'travel_cost' in dummy_arcs.columns:
+        if 'travel_cost' in self._df_graph.columns:
             dummy_arcs['travel_cost'] = 0  # since they are dummy arcs, this is
+        else:
+            raise TypeError('`travel_cost` not in frame will results in NaNs '
+                            'and create issues later on...')
         # zero.
 
         # these are all the parallel arcs, with their nodes updated.

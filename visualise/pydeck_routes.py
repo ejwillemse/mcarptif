@@ -69,7 +69,10 @@ class CreateRoutesGeo:
                                        how='left')
 
         solution_traversals = pd.merge(solution_traversals, self._df_arcs[
-            ['arc_id_orig', 'geometry', 'name', 'highway', 'length']], how='left')
+            ['arc_id_orig', 'geometry', 'name', 'highway', 'length']],
+                                       how='left')
+
+        solution_traversals = solution_traversals.dropna(subset=['geometry'])
 
         solution_keypoints = self.solution[~traversals].copy()
 
