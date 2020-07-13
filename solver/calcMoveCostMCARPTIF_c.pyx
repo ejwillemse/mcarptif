@@ -1,4 +1,4 @@
-'''
+b'''
 Created on 03 Jun 2015
 
 @author: eliaswillemse

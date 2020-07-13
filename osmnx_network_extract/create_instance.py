@@ -93,6 +93,7 @@ from copy import copy
 
 import pandas as pd
 import numpy as np
+import networkx as nx
 import logging
 
 
@@ -187,6 +188,10 @@ def convert_to_int(df, *keys):
         *keys (column name): names of columns to convert to int.
 
     Return df (pd.DataFrame): data-frame with columns not int.
+
+    TODO:check the impact of oneway='True'/'False' string, vs True/False bool.
+    osmnx returns it as strings, but if saved and loaded then it becomes bool.
+    should have a bool check, or just an auto convert?
     """
     for key in keys:
         df[key] = df[key].astype(int)
@@ -198,7 +203,11 @@ class PrepareGraph:
     MCARPTIF solver.
     """
 
-    def __init__(self, df_graph, full_convert=True):
+    def __init__(self,
+                 df_graph,
+                 full_convert=True,
+                 convert_oneway=True,
+                 test_connectivity=True):
         """Key input data is the full network graph.
 
         Args:
@@ -206,11 +215,29 @@ class PrepareGraph:
             full_convert (bool): if the full MCARPTIF network should be
                 converted with travel cost info, or just the basic stuff, like
                 `u`, `v` and `key`.
+            convert_oneway (bool): convert oneway into bool, can be redundant,
+                but better safe than sorry.
+            test_connectivity (bool): test whether the network is fully
+                connected.
         """
         self._df_graph = df_graph.copy()
         self._parallel_arcs = True
         self.dummy_arcs = None  # data-frame of dummy arcs
         self.full_convert = full_convert
+        self.test_connectivity = test_connectivity
+        if convert_oneway is True:
+            self._df_graph['oneway'] = self._df_graph['oneway'].astype(bool)
+
+        self.test_network_connectivity()
+
+    def test_network_connectivity(self):
+        if self.test_connectivity is True:
+            arcs = np.vstack((self._df_graph['u'].values,
+                              self._df_graph['v'].values)).T
+            G = nx.DiGraph()
+            G.add_edges_from(arcs)
+            if nx.is_strongly_connected(G) is False:
+                logging.warning('Network is not strongly connected!')
 
     def _test_graph_parameters(self):
         """Test if the graph meets column name requirements."""
@@ -278,7 +305,7 @@ class PrepareGraph:
             gdf_arcs_dups = self._df_graph.loc[dups].copy()
             gdf_arcs_dups['key'] = 1
             min_id = gdf_arcs_dups.groupby(['u', 'v']).agg(
-                min_id=('length', 'idxmin')).reset_index()['min_id']
+                min_id=('travel_cost', 'idxmin')).reset_index()['min_id']
             gdf_arcs_dups.loc[min_id, 'key'] = 0
             self._df_graph = pd.concat([self._df_graph.loc[~dups],
                                         gdf_arcs_dups])
@@ -374,9 +401,155 @@ class PrepareGraph:
         self._df_graph.loc[one_ways, 'arc_id_ordered'] = self._df_graph.loc[
             one_ways]['arc_id']
 
-    def prep_osmnx_graph(self,
-                         return_graph=True,
-                         duplicates_error=True):
+    def create_orig_ids(self):
+        """
+        Create all ids, including original ids and unordered ids.
+        """
+        self._convert_to_int()
+        self._df_graph = create_arc_id(self._df_graph,
+                                       'arc_id',
+                                       'u',
+                                       'v',
+                                       'key')
+
+        self._df_graph['arc_id_orig'] = self._df_graph['arc_id']
+
+        self._df_graph['u_orig'] = self._df_graph['u'].copy()
+        self._df_graph['v_orig'] = self._df_graph['v'].copy()
+        self._create_ordered_ids()
+        self._df_graph['arc_id_ordered_orig'] = self._df_graph[
+            'arc_id_ordered']
+
+    def create_ids(self):
+        """
+        Create all ids, including original ids and unordered ids.
+        """
+        self._convert_to_int()
+        self._df_graph = create_arc_id(self._df_graph,
+                                       'arc_id',
+                                       'u',
+                                       'v')
+        self._create_ordered_ids()
+
+    def extend_duplicates(self):
+        """Assign parallel arcs with new u v keys and add them back to the
+        network.
+
+        Find arcs and edges with same start and end-nodes (arcs-ids) create
+        connected dummy nodes and arcs for them. New `u_orig, v_orig`
+        columns are created to keep track of where the dummy arcs where
+        assigned and where they came from.
+
+        We remove all parallel arcs, update their u and v to new unique keys,
+        and then create dummy arcs, connect the original u and v to the new
+        ones.
+
+        There may be multiple parallel arcs. So all the parallel arcs are
+        removed, assigned new keys and connected back into the network.
+        """
+
+        def fix_duplicates(df):
+            """Check for duplicates and make sure edges have the same alt u
+            and vs."""
+            df = df.copy()
+
+            # Find parallel arcs and update their flag
+            parallel = ~((df.shape[0] == 1) | ((df.shape[1] == 2) & (
+                ~df.oneway.any())))
+
+            df['parallel'] = parallel
+
+            if not parallel:
+                return df[['arc_id_orig', 'alt_u', 'alt_v']]
+
+            processed = []
+            for _, p in df.iterrows():
+                arc_id_orig = p['arc_id_orig']
+                arc_id_ordered_orig = p['arc_id_ordered_orig']
+
+                new_u = p['alt_u']
+                new_v = p['alt_v']
+
+                if arc_id_orig in processed:
+                    continue
+
+                # If any are oneways, their opposing arc needs to be found
+                oneway = p['oneway']
+                if oneway is False:
+                    #  If multiple arcs have the same tavel_cost then we are
+                    #  screwed.
+                    opposing_bool = (df['arc_id_ordered_orig'] ==
+                                     arc_id_ordered_orig) & \
+                                    (df['travel_cost'] == p['travel_cost']) & \
+                                    (df['arc_id_orig'] != arc_id_orig)
+
+                    # update their alternate keys
+                    df.loc[opposing_bool, ['alt_u', 'alt_v']] = [new_v, new_u]
+                    if df.loc[opposing_bool].shape[0] != 1:
+                        raise ValueError(
+                            'Opposing arcs is not 1 it is {}'.format(
+                                df.loc[opposing_bool].shape[0]))
+                    processed.append(df.loc[opposing_bool][
+                                         'arc_id_orig'].values[0])
+            return df[['arc_id_orig', 'alt_u', 'alt_v']]
+
+        # step create alternate unique u and v for all arcs, in case they are
+        # duplicates.
+
+        max_uv = max([self._df_graph['u'].max(), self._df_graph['v'].max()])
+        # noinspection PyTypeChecker
+        self._df_graph['alt_u'] = max_uv * 10 + list(
+            range(self._df_graph.shape[0]))
+        # noinspection PyTypeChecker
+        self._df_graph['alt_v'] = self._df_graph['alt_u'].max() * 10 + list(
+            range(self._df_graph.shape[0]))
+
+        duplicates = self._df_graph.duplicated(['u', 'v'], keep=False)
+        oneway = self._df_graph['oneway']
+        self._df_graph['parallel'] = duplicates
+        df_dup = self._df_graph.loc[duplicates & ~oneway].copy()
+        df_dup_oneways = self._df_graph.loc[duplicates & oneway].copy()
+        self._df_graph = self._df_graph.copy().loc[~duplicates]
+
+        # check for parallel arcs and update oneway alternative keys
+        if df_dup.shape[0] > 0:
+            new_alt = df_dup.groupby(['arc_id_ordered_orig']).apply(
+                fix_duplicates).reset_index()
+            new_alt = new_alt.drop(columns=['level_1', 'arc_id_ordered_orig'])
+
+            df_dup = df_dup.drop(columns=['alt_u', 'alt_v'])
+            df_dup = df_dup.merge(new_alt)
+        df_dup = pd.concat([df_dup, df_dup_oneways])
+
+        print('Number of parallel arcs is: {}'.format(df_dup.shape[0]))
+
+        # create new dummy arcs, linking to the new u and vs
+        new_arcs = df_dup.copy()
+        new_arcs_1 = new_arcs.copy()
+        new_arcs_2 = new_arcs.copy()
+        new_arcs_1['v'] = new_arcs['alt_u']
+        new_arcs_2['u'] = new_arcs['alt_v']
+        new_arcs_1 = new_arcs_1[['u', 'v', 'oneway']]
+        new_arcs_2 = new_arcs_2[['u', 'v', 'oneway']]
+        new_arcs = pd.concat([new_arcs_1, new_arcs_2])
+        new_arcs['travel_cost'] = 0
+        new_arcs['key'] = 0
+
+        # update alter
+        df_dup['u'] = df_dup['alt_u']
+        df_dup['v'] = df_dup['alt_v']
+
+        df_dup = pd.concat([df_dup, new_arcs])
+
+        self._df_graph = pd.concat([self._df_graph, df_dup])
+        self._df_graph = self._df_graph.drop(columns=['alt_u', 'alt_v'])
+
+        duplicates = df_dup.duplicated(subset=['u', 'v'], keep=False)
+        if duplicates.any():
+            raise ValueError('Alas, there are still duplicates...')
+        self.test_network_connectivity()
+
+    def prep_osmnx_graph(self, return_graph=True):
         """Complete all graph preparations, including converting required
         columns to int, adding arc keys, and creating dummy arcs for parallel
         arcs with the same start and end nodes.
@@ -394,34 +567,10 @@ class PrepareGraph:
             df (pd.DataFrame): with all preparations done.
         """
         self._convert_to_int()
-
-        self._df_graph = create_arc_id(self._df_graph,
-                                       'arc_id_orig',
-                                       'u',
-                                       'v',
-                                       'key')
-
-        self._df_graph['u_orig'] = self._df_graph['u'].copy()
-        self._df_graph['v_orig'] = self._df_graph['v'].copy()
-
-        self._parallel_arcs = self._check_for_parallel_arcs()
-        if self._parallel_arcs:
-            self._update_parallel_edge_keys()
-            self._extend_parallel()
-
-        self._df_graph = create_arc_id(self._df_graph,
-                                       'arc_id',
-                                       'u',
-                                       'v')
-
-        self._create_ordered_ids()
-
-        if self._check_for_parallel_arcs(show=True):
-            if duplicates_error:
-                raise TypeError('Parallel arcs in network')
-            else:
-                logging.warning('Parallel arcs in network')
-
+        self._test_graph_parameters()
+        self.create_orig_ids()
+        self.extend_duplicates()
+        self.create_ids()
         if return_graph:
             return self._df_graph
 
@@ -440,16 +589,20 @@ class PrepareRequiredArcs:
     compatible with MCARPTIF solver.
     """
 
-    def __init__(self, df_graph_req, full_convert=True):
+    def __init__(self, df_graph_req, full_convert=True, convert_oneway=False):
         """Inputs is the required arcs network graph, formatted using
 
         Args:
             df_graph_req (pd.DataFrame): data-frame with required arcs.
             full_convert (bool): whether the full MCARPTIF problem should be
                 converted.
+            convert_oneway (bool): convert oneway into bool.
         """
         self._df_graph_req = df_graph_req.copy()
         self._full_convert = full_convert
+        if convert_oneway is True:
+            self._df_graph_req['oneway'] = self._df_graph_req[
+                'oneway'].astype(bool)
 
     def _test_graph_parameters(self):
         """Test if the graph meets column name requirements."""
@@ -607,7 +760,8 @@ class CreateMcarptifFormat:
                  df_graph,
                  df_graph_req,
                  df_key_locations=None,
-                 directed_graph=True):
+                 directed_graph=True,
+                 convert_oneway=False):
         """Key input data is the full network graph and required network graph.
         They are split for the workflow where the required graph is
         split, updated with changes to demand, service time, etc. Both should
@@ -622,6 +776,7 @@ class CreateMcarptifFormat:
                 `if_vertex` types.
             directed_graph (bool): whether the based graph is directed,
             in which there will not be any non-req-edges, only non-req-arcs.
+            convert_oneway (bool): convert oneway into bool.
         """
         self._df_graph = df_graph.copy()
         self._df_graph_req = df_graph_req.copy()
@@ -650,6 +805,12 @@ class CreateMcarptifFormat:
             self.df_key_locations = None
 
         self._output_str = ''
+
+        if convert_oneway is True:
+            self._df_graph['oneway'] = self._df_graph_req[
+                'oneway'].astype(bool)
+            self._df_graph_req['oneway'] = self._df_graph_req[
+                'oneway'].astype(bool)
 
     def _check_graph_parameters(self):
         test_column_exists(self._df_graph,

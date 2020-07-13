@@ -323,7 +323,7 @@ class ArcConvertLists(ArcInfo):
             for i, k in enumerate(self.endL): #Every arc and its endnode
                 tempsucArcL = [] 
                 for j, l in enumerate(self.beginL):#every arc and its begin node
-                    if (k == l)&(i!=self.invArcL[j]):
+                    if (k == l) and (i!=self.invArcL[j]):
                         tempsucArcL.append(j)#check if arc j's begin node is same as arc i's end node and add to list
                 self.sucArcL.append(tempsucArcL[:])
         else:
