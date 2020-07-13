@@ -328,8 +328,7 @@ class PrepareGraph:
         There may be multiple parallel arcs. So all the parallel arcs are
         removed, assigned new keys and connected back into the network.
 
-        TODO: Figure out what happens with corner cases, more than one
-        parallel arcs, same length parallel arcs, one arc on edge, etc.
+        This is depreciated.
         """
         # keep track of the original nodes.
         self._df_graph[['u_orig', 'v_orig']] = self._df_graph[['u', 'v']]
