@@ -580,3 +580,4 @@ def SP_IFs_complete2(cL, sL, reqArcList, dumpCost, depotArc, IFarcsnewkey = None
     free(d_req_if)
     
     return(d_np, p_np, d_np_req, ifc_np_req, if_np_req)
+

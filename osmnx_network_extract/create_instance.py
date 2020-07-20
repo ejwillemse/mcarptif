@@ -208,7 +208,8 @@ class PrepareGraph:
                  full_convert=True,
                  convert_oneway=True,
                  test_connectivity=True):
-        """Key input data is the full network graph.
+        """Key input data is the full network graph. Note that `length` is
+        needed to identify opposing arcs.
 
         Args:
             df_graph (pd.DataFrame): data-frame of full network.
@@ -238,6 +239,8 @@ class PrepareGraph:
             G.add_edges_from(arcs)
             if nx.is_strongly_connected(G) is False:
                 logging.warning('Network is not strongly connected!')
+            else:
+                logging.debug('Network is strongly connected!')
 
     def _test_graph_parameters(self):
         """Test if the graph meets column name requirements."""
@@ -246,7 +249,8 @@ class PrepareGraph:
                            'v',
                            'key',
                            'travel_cost',
-                           'oneway')
+                           'oneway',
+                           'length')
 
     def _convert_to_int(self, fix_columns_int=True,):
         """
@@ -479,22 +483,29 @@ class PrepareGraph:
                     #  screwed.
                     opposing_bool = (df['arc_id_ordered_orig'] ==
                                      arc_id_ordered_orig) & \
-                                    (df['travel_cost'] == p['travel_cost']) & \
+                                    (df['length'] == p['length']) & \
                                     (df['arc_id_orig'] != arc_id_orig)
 
                     # update their alternate keys
                     df.loc[opposing_bool, ['alt_u', 'alt_v']] = [new_v, new_u]
-                    if df.loc[opposing_bool].shape[0] != 1:
+                    if df.loc[opposing_bool].shape[0] > 1:
+                        logging.error(df)
                         raise ValueError(
                             'Opposing arcs is not 1 it is {}'.format(
                                 df.loc[opposing_bool].shape[0]))
+                    elif df.loc[opposing_bool].shape[0] == 0:
+                        logging.warning(
+                            'Opposing arcs is not 1 it is {}'.format(
+                                df.loc[opposing_bool].shape[0]))
+                        logging.warning(df)
                     processed.append(df.loc[opposing_bool][
                                          'arc_id_orig'].values[0])
             return df[['arc_id_orig', 'alt_u', 'alt_v']]
 
         # step create alternate unique u and v for all arcs, in case they are
         # duplicates.
-
+        self._df_graph['length'] = self._df_graph['length'].round(3)
+        logging.info('Extending duplicate arcs:')
         max_uv = max([self._df_graph['u'].max(), self._df_graph['v'].max()])
         # noinspection PyTypeChecker
         self._df_graph['alt_u'] = max_uv * 10 + list(
@@ -512,15 +523,23 @@ class PrepareGraph:
 
         # check for parallel arcs and update oneway alternative keys
         if df_dup.shape[0] > 0:
+            logging.info('Number of duplicate two way arcs: {}'.format(
+                df_dup.shape[
+                                                                   0]))
             new_alt = df_dup.groupby(['arc_id_ordered_orig']).apply(
-                fix_duplicates).reset_index()
-            new_alt = new_alt.drop(columns=['level_1', 'arc_id_ordered_orig'])
+                fix_duplicates)
+            #TODO:this will break stuff
+            #logging.debug(new_alt)
+            #new_alt = new_alt.reset_index()
+            #logging.debug(new_alt)
+            #new_alt = new_alt.drop(columns=['level_1', 'arc_id_ordered_orig'])
 
             df_dup = df_dup.drop(columns=['alt_u', 'alt_v'])
             df_dup = df_dup.merge(new_alt)
         df_dup = pd.concat([df_dup, df_dup_oneways])
 
-        print('Number of parallel arcs is: {}'.format(df_dup.shape[0]))
+        logging.info('Number of parallel arcs is: {}'.format(df_dup.shape[
+                                                                   0]))
 
         # create new dummy arcs, linking to the new u and vs
         new_arcs = df_dup.copy()
@@ -531,8 +550,10 @@ class PrepareGraph:
         new_arcs_1 = new_arcs_1[['u', 'v', 'oneway']]
         new_arcs_2 = new_arcs_2[['u', 'v', 'oneway']]
         new_arcs = pd.concat([new_arcs_1, new_arcs_2])
-        new_arcs['travel_cost'] = 0
+        if 'travel_cost' in new_arcs.columns:
+            new_arcs['travel_cost'] = 0
         new_arcs['key'] = 0
+        new_arcs['length'] = 0
 
         # update alter
         df_dup['u'] = df_dup['alt_u']
@@ -547,6 +568,22 @@ class PrepareGraph:
         if duplicates.any():
             raise ValueError('Alas, there are still duplicates...')
         self.test_network_connectivity()
+
+    def prep_basic_osmnx_graph(self, return_graph=True):
+        """Basic conversion of u, v and extending parallel arcs.
+
+        Args:
+            return_graph (bool): whether the prepared graph should be
+                returned as an object.
+
+        Return:
+            df (pd.DataFrame): with all preparations done.
+        """
+        self.create_orig_ids()
+        self.extend_duplicates()
+        self.create_ids()
+        if return_graph:
+            return self._df_graph
 
     def prep_osmnx_graph(self, return_graph=True):
         """Complete all graph preparations, including converting required

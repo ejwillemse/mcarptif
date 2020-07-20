@@ -28,12 +28,15 @@ class CreateRoutesGeo:
         df_key_locations (pd.DataFrame): OSMNX based data-frame of key
             locations, must include the depot and offload facilities.
         solution (pd.DataFrame): data-frame of full solution
+        cost (str): how cost is measured, default is distance, other options
+            are time and money.
     """
 
     def __init__(self,
                  df_arcs,
                  df_key_locations,
-                 solution):
+                 solution,
+                 cost='distance'):
 
         test_column_exists(df_arcs,
                            'geometry',
@@ -50,6 +53,9 @@ class CreateRoutesGeo:
         self._df_arcs = df_arcs
         self._df_key_locations = df_key_locations
         self.solution = solution.copy()
+
+        if 'bins' not in self._df_arcs.columns:
+            self._df_arcs.columns['bins'] = 0
 
     def _merge_solution(self):
         """Merge arc and key-location info into solution frame"""
@@ -69,8 +75,11 @@ class CreateRoutesGeo:
                                        how='left')
 
         solution_traversals = pd.merge(solution_traversals, self._df_arcs[
-            ['arc_id_orig', 'geometry', 'name', 'highway', 'length']],
+            ['arc_id_orig', 'geometry', 'name', 'highway', 'length', 'bins']],
                                        how='left')
+
+        solution_traversals.loc[solution_traversals['activity_type'] !=
+                                'collect', 'bins'] = 0
 
         solution_traversals = solution_traversals.dropna(subset=['geometry'])
 
@@ -230,6 +239,62 @@ class CreateRoutesGeo:
                              'time_const_dur': 'Time (cons dur)'}
         self.solution = self.solution.rename(columns=rename_values)
 
+    def add_distance_columns(self):
+        """Add distance columns based on `length` of arcs"""
+        self.solution['distance'] = self.solution['length']
+        self.solution['distance'] = self.solution['distance'].fillna(0)
+        self.solution['cum_distance'] = self.solution.groupby(['route'])[
+            'length'].cumsum()
+        self.solution['cum_distance'] = self.solution['cum_distance'].fillna(0)
+        self.solution['cum_distance'] = self.solution[
+                                            'cum_distance'].astype(int)
+
+    def add_bin_columns(self):
+        """Add bins served columns"""
+        self.solution['cum_bins'] = self.solution.groupby(['route'])[
+            'bins'].cumsum()
+        self.solution['bins'] = self.solution['bins'].fillna(0)
+        self.solution['bins'] = self.solution['bins'].astype(int)
+
+    def prettify_columns_time(self,
+                              rename_values=None,
+                              time_units='sec',
+                              demand_units='kg'):
+        """Prettify column names when cost is distance.
+
+        Args:
+            rename_values (dict <str:str>): from and to names.
+            distance_units (str): units for distance.
+            demand_units (str): units for demand.
+        """
+
+        if rename_values is None:
+            rename_values = {'route': 'Vehicle ID',
+                             'subroute': 'Sub-route',
+                             'activity_type': 'Activity',
+                             'activity_time': 'Duration ({})'.format(
+                                 time_units),
+                             'distance': 'Activity distance (m)',
+                             'activity_demand': 'Demand ({})'.format(
+                                 demand_units),
+                             'bins': 'Bins served',
+                             'cum_demand': 'Total demand collected on '
+                                           'sub-route '
+                                           '({})'.format(demand_units),
+                             'cum_bins': 'Total bins served',
+                             'remaining_capacity': 'Remaining capacity '
+                                                   '({})'.format(demand_units),
+                             'cum_time': 'Total duration of route '
+                                         '({})'.format(time_units),
+                             'remaining_time': 'Remaining time available '
+                                               '({})'.format(time_units),
+                             'cum_distance': 'Total distance travelled (m)',
+                             'highway': 'Road-type',
+                             'name': 'Name (road or location)',
+                             'time': 'Time',
+                             'time_const_dur': 'Time (cons dur)'}
+        self.solution = self.solution.rename(columns=rename_values)
+
     def prepare_solution(self):
         """Prepare solution file. A bunch of other stuff can be done in
         addition to this"""
@@ -243,3 +308,63 @@ class CreateRoutesGeo:
         """
 
         self.solution.to_csv(file, index=False)
+
+
+def summarise_routes(df):
+    """Summarise the solution dictionary, generating stats per route.
+    """
+    summary = df.groupby(['Vehicle ID']).agg(
+        properties_served=('Demand (kg)', 'sum'),
+        distance_travelled=('Activity distance (m)', 'sum'),
+        start=('Time', 'min'),
+        end=('Time', 'max'),
+        duration_h=('Duration (seconds)', 'sum'),
+        bins_served=('Bins served', 'sum')).reset_index()
+
+    summary['duration'] = summary['end'] - summary['start']
+    summary['duration'] = summary['duration']  # .astype('timedelta64[h]')
+    summary['duration'] = summary['duration'].astype(str).str[-18:-10]
+    summary['distance_travelled'] = summary['distance_travelled'] / 1000
+    summary['distance_travelled'] = summary['distance_travelled'].round(2)
+    summary['duration_h'] = (summary['duration_h'] / 3600).round(2)
+
+    summary = summary.rename(columns={'duration': 'Route duration (h:m:s)',
+                                      'duration_h': 'Route duration (h)',
+                                      'properties_served': 'Total demand collected (kg)',
+                                      'start': 'Start date and time',
+                                      'end': 'End date and time',
+                                      'distance_travelled': 'Total distance travelled (km)',
+                                      'bins_served': 'Total bins served'})
+    summary = summary[
+        ['Vehicle ID', 'Total demand collected (kg)', 'Total bins served',
+         'Total distance travelled (km)', 'Route duration (h)',
+         'Route duration (h:m:s)']]
+
+    return summary
+
+
+def summarise_routes_and_activities(df):
+    """Summarise the route with columns linked to activities"""
+    full_sum = summarise_routes(df)
+    service_sum = summarise_routes(df.loc[df['Activity'] == 'collect'])
+    service_sum = service_sum[['Vehicle ID', 'Total distance travelled (km)',
+                               'Route duration (h)']]
+
+    new_cols = ['Vehicle ID',
+                'Service total distance travelled (km)',
+                'Service duration (h)']
+    service_sum.columns = new_cols
+
+    travel_sum = summarise_routes(df.loc[df['Activity'] != 'collect'])
+    travel_sum = travel_sum[['Vehicle ID', 'Total distance travelled (km)',
+                             'Route duration (h)']]
+    new_cols = ['Vehicle ID',
+                'Non-service total distance travelled (km)',
+                'Non-service duration (h)']
+    travel_sum.columns = new_cols
+
+    full_sum = full_sum.merge(service_sum)
+    full_sum = full_sum.merge(travel_sum)
+    full_sum = full_sum.sort_values(['Vehicle ID'])
+
+    return full_sum

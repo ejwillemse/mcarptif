@@ -194,6 +194,32 @@ class Converter(object):
         with open(output_file_path, 'wb') as output_file:
             pickle.dump(data, output_file)
 
+    def extract_inputs(self, check_inputs=True):
+        """Extract inputs from raw text file
+
+        Args:
+            check_inputs (bool): check whether inputs should be checked for
+                consistency.
+
+        Returns:
+            info_list_dict (dict): dictionary with key problem inputs.
+        """
+        if check_inputs is True:
+            self._check_basic_inputs()
+
+        self._set_output_folder()
+        self._pad_folders()
+        self._extract_key()
+
+        if check_inputs:
+            self._check_output_files_exist()
+
+        # Generate, return and write general arc info lists
+        pprint('Converting {0}...'.format(self._instance_path))
+        info_list = data_write.ArcConvertLists(self._instance_path)
+        info_list_dict = info_list.return_data_dict()
+        return info_list_dict
+
     def convert_instance(self, check_inputs=True):
         """Converts the set input file, and stores the results
 

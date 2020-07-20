@@ -8,12 +8,15 @@
 # p. 159-185.
 # Specifically pages 161-162.
 
+
 import pyximport
 import numpy
 pyximport.install(setup_args={"include_dirs":numpy.get_include()})
 
+from copy import copy
 import pickle
 import os
+import pandas as pd
 
 #NB! Find and fix memory leak
 #import c_alg_shortest_paths
@@ -333,7 +336,19 @@ class ArcConvertLists(ArcInfo):
                     if k == l:
                         tempsucArcL.append(j)#check if arc j's begin node is same as arc i's end node and add to list
                 self.sucArcL.append(tempsucArcL[:])
-                
+
+    def genSuccessorArcsDF(self):
+        """
+        Generate successor arc using pandas dataframe functions, instead of
+        iterating through everything.
+        """
+        pd_keys = pd.DataFrame(
+            {'u': self.beginL, 'v': self.endL})
+        pd_keys['i'] = pd_keys.index
+        sucArcL = list(pd_keys['v'].apply(
+            lambda x: list(pd_keys.loc[pd_keys['u'] == x]['i'].values)))
+        self.sucArcL = copy(sucArcL)
+
     def generateLists(self):
         '''
         Gnerate all the required dictionaries by calling each of gen 
@@ -374,7 +389,8 @@ class ArcConvertLists(ArcInfo):
                 self.addRequiredData(key1, edge) # add required edge info to each arc
                 self.reqEdgesPure.append(len(self.reqArcList)-1)
                 self.addRequiredData(key2, edge)
-        self.genSuccesorArcs()
+        #self.genSuccesorArcs()
+        self.genSuccessorArcsDF()
 
     def return_data(self):
         self.generateLists()
@@ -403,6 +419,40 @@ class ArcConvertLists(ArcInfo):
                     self.depotnewkey,
                     self.IFarcsnewkey,
                     self.ACarcsnewkey)
+        return data
+
+    def return_data_dict(self):
+        """Return a dictionary with all key problem info.
+        
+        Most import for SP calculations are:
+            beginL: ()
+        """
+        self.generateLists()
+        data = {'name': self.name,
+                'capacity': self.capacity,
+                'maxTrip': self.maxTrip,
+                'dumpCost': self.dumpCost,
+                'nArcs': self.nArcs,
+                'depotArc': self.depotArc,
+                'IFarcs': self.IFarcs,
+                'ACarcs': self.ACarcs, # not used, access arcs.
+                'beginL': self.beginL,
+                'endL': self.endL,
+                'serveCostL': self.serveCostL,
+                'travelCostL': self.travelCostL,
+                'demandL': self.demandL,
+                'invArcL': self.invArcL,
+                'sucArcL': self.sucArcL,
+                'allIndexD': self.allIndexD,
+                'reqArcList': self.reqArcList,
+                'reqArcListActual': self.reqArcListActual,
+                'reqArcs_map': self.reqArcs_map,
+                'reqEdgesPure': self.reqEdgesPure,
+                'reqArcsPure': self.reqArcsPure,
+                'reqInvArcL': self.reqInvArcL,
+                'depotnewkey': self.depotnewkey,
+                'IFarcsnewkey': self.IFarcsnewkey,
+                'ACarcsnewkey': self.ACarcsnewkey}
         return data
 
     def write_info_lists(self, outPutFolder = None, name = None):
@@ -566,10 +616,10 @@ class WriteSpIfInputData(object):
         IFarcsnewkey = self.RD.IFarcsnewkey
         depotArc = self.RD.depotnewkey
         if self.pre_calc:
-            (self.d_np, 
-             self.p_np, 
-             self.d_np_req, 
-             self.if_cost_np, 
+            (self.d_np,
+             self.p_np,
+             self.d_np_req,
+             self.if_cost_np,
              self.if_arc_np) = c_alg_shortest_paths.SP_IFs_complete(cL, sL, reqArcList, dumpCost, depotArc, IFarcsnewkey)
         else:
             (self.d_np, 
@@ -691,4 +741,3 @@ if __name__ == "__main__":
     wrt = WriteAllData(outPutFolder, inputDirectory, file)
     wrt.execute()
     print('Done with test')
-        
