@@ -108,7 +108,7 @@ class Network:
             generate_successor_list (np.array <np.array>): multi-dimensional
                 array with the successor arc indices (in an array) of each
                 arc, again, per index.
-            secondary_key (np.array): ptional secondary key, for tracing the
+            secondary_key (np.array): optional secondary key, for tracing the
                 arcs back to their origins.
 
         All of the above can be stored in a pytable object.
@@ -133,7 +133,8 @@ class Network:
 
         self.second_key = second_key
         if second_key:
-            self.secondary_arc_key = self.network_df['second_key']
+            self.secondary_arc_key = self.network_df[second_key].values.copy()
+            self.secondary_arc_key = self.secondary_arc_key.astype(str)
         else:
             self.secondary_arc_key = None
 

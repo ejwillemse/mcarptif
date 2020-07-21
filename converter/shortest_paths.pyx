@@ -204,9 +204,10 @@ def SP_pytable(arc_cost,
             d_np[i, j] = d[i][j]
             p_np[i, j] = p[i][j]
             if d[i][j] < 0:
-                raise ValueError('Not all paths calculated: i {} j {} d {}'.format(i,j, d[i][j]))
+                logging.warning('Not all paths calculated: i {} j '
+                                          '{} d {}'.format(i,j, d[i][j]))
             if p[i][j] < 0:
-                raise ValueError('Not all paths calculated: i {} j {} d {}'.format(i,j, d[i][j]))
+                logging.warning('Not all paths calculated: i {} j {} d {}'.format(i,j, d[i][j]))
         cost_matrix[i, :] = d_np[i, :]
         predecessor_matrix[i, :] = p_np[i, :]
 
