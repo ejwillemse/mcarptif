@@ -405,6 +405,8 @@ def convert_df_full(info, solution_df):
 
     solution_list.append(list(solution_df.iloc[i + 1]))
 
+    #print(solution_list)
+
     solution_df_full = solution_lists_to_df(solution_list)
 
     node_start = [info.allIndexD[u][0] for u in solution_df_full['activity_id']]

@@ -194,6 +194,7 @@ def convert_to_int(df, *keys):
     should have a bool check, or just an auto convert?
     """
     for key in keys:
+        df[key] = df[key].fillna(0)
         df[key] = df[key].astype(int)
     return df
 
@@ -530,9 +531,9 @@ class PrepareGraph:
                 fix_duplicates)
             #TODO:this will break stuff
             #logging.debug(new_alt)
-            #new_alt = new_alt.reset_index()
+            new_alt = new_alt.reset_index()
             #logging.debug(new_alt)
-            #new_alt = new_alt.drop(columns=['level_1', 'arc_id_ordered_orig'])
+            new_alt = new_alt.drop(columns=['level_1', 'arc_id_ordered_orig'])
 
             df_dup = df_dup.drop(columns=['alt_u', 'alt_v'])
             df_dup = df_dup.merge(new_alt)
