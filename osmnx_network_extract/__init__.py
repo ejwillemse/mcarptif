@@ -1,4 +1,5 @@
-__all__ = ['create_instance', 'load_osm_network']
+__all__ = ['create_instance', 'load_osm_network', 'extract_mcarptif',
+           'network_code']
 
 from .create_instance import create_arc_id
 from .create_instance import convert_to_int
