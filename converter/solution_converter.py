@@ -250,7 +250,7 @@ def convert_df(info, solution):
     return solution_df
 
 
-def convert_df_full(info, solution_df):
+def convert_df_full(info, solution_df, p_full=None):
     """Covert the solution into a user-friendly pandas data frame (df) that
     corresponds to the original raw input file
 
@@ -381,6 +381,7 @@ def convert_df_full(info, solution_df):
         See pandas help files and documentation on more information on working
         with pandas data frames.
     """
+    solution_df = solution_df.copy()
     solution_df['activity_id'] = [info.reqArcList[u] for u in
                                   solution_df['activity_id']]
     real_arcs = solution_df['activity_id']
@@ -391,7 +392,10 @@ def convert_df_full(info, solution_df):
         solution_list.append(current_arc_list)
 
         v = real_arcs[i + 1]
-        activity_id = shortest_path.sp_full(info.p_full, u, v)
+        if p_full is None:
+            activity_id = shortest_path.sp_full(info.p_full, u, v)
+        else:
+            activity_id = shortest_path.sp_full(p_full, u, v)
 
         for inter_u in activity_id:
             solution_list.append(deepcopy(current_arc_list))
@@ -404,8 +408,6 @@ def convert_df_full(info, solution_df):
             solution_list[-1][10] = solution_list[-2][10] + solution_list[-1][5]
 
     solution_list.append(list(solution_df.iloc[i + 1]))
-
-    #print(solution_list)
 
     solution_df_full = solution_lists_to_df(solution_list)
 

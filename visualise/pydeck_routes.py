@@ -97,6 +97,46 @@ class CreateRoutesGeo:
         self.solution = pd.concat([solution_keypoints, solution_traversals])
         self.solution = self.solution.sort_values(['index'])
 
+    def _merge_custom_solution(self):
+        """Merge arc and key-location info into solution frame"""
+        traversals = self.solution['activity_type'].isin(['traversal',
+                                                          'collect'])
+        solution_traversals = self.solution.loc[traversals].copy()
+
+        solution_traversals = create_arc_id(solution_traversals,
+                                            'arc_id',
+                                            'arc_start_node',
+                                            'arc_end_node')
+
+        solution_traversals = pd.merge(solution_traversals,
+                                       self._df_arcs[['arc_id',
+                                                      'arc_id_orig'
+                                                      ]],
+                                       how='left')
+
+        solution_traversals = pd.merge(solution_traversals, self._df_arcs[
+            ['arc_id_orig', 'geometry', 'name', 'highway', 'length', 'bins']],
+                                       how='left')
+
+        solution_traversals.loc[solution_traversals['activity_type'] !=
+                                'collect', 'bins'] = 0
+
+        solution_traversals = solution_traversals.dropna(subset=['geometry'])
+
+        solution_keypoints = self.solution[~traversals].copy()
+
+        solution_keypoints = pd.merge(solution_keypoints,
+                                      self._df_key_locations[['geometry',
+                                                              'highway',
+                                                              'u']],
+                                      how='left', left_on='arc_start_node',
+                                      right_on='u')
+
+        solution_keypoints = solution_keypoints.drop(columns=['u'])
+        solution_traversals = solution_traversals.sort_values(['index'])
+        self.solution = pd.concat([solution_keypoints, solution_traversals])
+        self.solution = self.solution.sort_values(['index'])
+
     def add_custom_duration(self, speed_df):
         """Add custom duration based on speed formula, if `activity_time` and
         `activity_speed` is in a length or cost unit. The time is set as `t`.

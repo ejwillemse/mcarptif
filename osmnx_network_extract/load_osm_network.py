@@ -103,3 +103,12 @@ def load_network(location='Singapore'):
     custom_filter = return_customer_filter()
     G = ox.graph_from_place(query='Singapore', custom_filter=custom_filter)
     return G
+
+
+def format_graph(G):
+    """Format loaded graph and add index and node attributes.
+
+    Arg:
+        G (ox.graph): graph loaded using networkx.
+    """
+    pass
