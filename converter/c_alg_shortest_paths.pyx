@@ -289,7 +289,7 @@ def SP_IFs_complete(cL, sL, reqArcList, dumpCost, depotArc, IFarcsnewkey = None)
         for j from 0 <= j < nArcs:
             if i == j: 
                 d[i][j] = 0# Distance from an arc to itself is zero   
-                p[i][j] = 0
+                p[i][j] = i #TODO: fixed!
             else: 
                 d[i][j] = huge
                 p[i][j] = -1

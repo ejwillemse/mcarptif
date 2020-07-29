@@ -118,7 +118,7 @@ class Reduce_Trips(object):
                 arc_loads.append([-self.demandL[arc], arc])
             arc_loads.sort()
             arc_np = np.array(arc_loads)
-            arcs_insert = arc_np[:,1]
+            arcs_insert = arc_np[:,1].astype(int)
             (change, solution_lists_new) = self.insert_multiple_arcs.insert_multiple_arcs_clarpif(solution_lists_new, arcs_insert) 
             if change: return(change, solution_lists_new)
             else: return(change, solution_lists)
@@ -169,8 +169,8 @@ class Reduce_Trips(object):
                     arc_loads.append([-self.demandL[arc], arc])
                 arc_loads.sort()
                 arc_np = np.array(arc_loads)
-                arcs_insert = arc_np[:,1]
-                (change, solution_lists_new) = self.insert_multiple_arcs.insert_multiple_arcs_clarpif(solution_lists_new, arcs_insert) 
+                arcs_insert = arc_np[:,1].astype(int)
+                (change, solution_lists_new) = self.insert_multiple_arcs.insert_multiple_arcs_clarpif(solution_lists_new, arcs_insert)
                 if change: return(change, solution_lists_new)
                 else: k += 1
             else: k += 1

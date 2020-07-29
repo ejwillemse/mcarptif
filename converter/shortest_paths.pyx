@@ -59,7 +59,7 @@ def SP(cL, sL, huge=None):
         for j from 0 <= j < nArcs:
             if i == j:
                 d[i][j] = 0# Distance from an arc to itself is zero
-                p[i][j] = 0
+                p[i][j] = i #TODO: fixed from previous error.
             else:
                 d[i][j] = huge
                 p[i][j] = -1

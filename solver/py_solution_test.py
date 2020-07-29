@@ -1,4 +1,5 @@
 from copy import deepcopy
+import logging
 
 class TestCARPSolution(object):
     
@@ -41,32 +42,32 @@ class TestCARPSolution(object):
             self.costError = True
             self.errorFound = True
             if self.print_output:
-                print('Cost Error')
-                print('Incorrect route cost - Actual: %i \t Specified: %i' %(cost, route_solution['Cost']))
+                logging.error('Cost Error')
+                logging.error('Incorrect route cost - Actual: %i \t Specified: %i' %(cost, route_solution['Cost']))
         if route_solution['Deadhead'] != deadhead  and self.deadheading:
             self.costError = True
             self.errorFound = True
             if self.print_output:
-                print('Cost Error')
-                print('Incorrect route deadheading cost - Actual: %i \t Specified: %i' %(deadhead, route_solution['Deadhead']))
+                logging.error('Cost Error')
+                logging.error('Incorrect route deadheading cost - Actual: %i \t Specified: %i' %(deadhead, route_solution['Deadhead']))
         if route_solution['Service'] != servicecost and self.deadheading:
             self.costError = True
             self.errorFound = True
             if self.print_output:
-                print('Cost Error')
-                print('Incorrect route service cost - Actual: %i \t Specified: %i' %(servicecost, route_solution['Service']))
+                logging.error('Cost Error')
+                logging.error('Incorrect route service cost - Actual: %i \t Specified: %i' %(servicecost, route_solution['Service']))
         if route_solution['Load'] != load:
             self.costError = True    
             self.errorFound = True
             if self.print_output:  
-                print('Cost Error')
-                print('Incorrect route load - Actual: %i \t Specified: %i' %(load, route_solution['Load']))
+                logging.error('Cost Error')
+                logging.error('Incorrect route load - Actual: %i \t Specified: %i' %(load, route_solution['Load']))
         if route_solution['Load'] > self.info.capacity: 
             self.costError = True      
             self.errorFound = True
             if self.print_output:
-                print('Constraint Error')
-                print('Load is more than vehicle capacity - Actual: %i \t Limit: %i' %(route_solution['Load'], self.info.capacity)) 
+                logging.error('Constraint Error')
+                logging.error('Load is more than vehicle capacity - Actual: %i \t Limit: %i' %(route_solution['Load'], self.info.capacity)) 
         
         return(total_cost)
         
@@ -84,26 +85,26 @@ class TestCARPSolution(object):
                 self.serviceError = True
                 self.errorFound = True
                 if self.print_output:
-                    print('Service Error')
-                    print('Depot visit in middle of trip')
+                    logging.error('Service Error')
+                    logging.error('Depot visit in middle of trip')
             elif arc in self.info.IFarcsnewkey:
                 self.serviceError = True
                 self.errorFound = True
                 if self.print_output:
-                    print('Service Error')
-                    print('IF visit in middle of trip', arc)
+                    logging.error('Service Error')
+                    logging.error('IF visit in middle of trip', arc)
             elif arc not in self.info.reqArcList: 
                 self.serviceError = True
                 self.errorFound = True
                 if self.print_output:
-                    print('Service Error')
-                    print('Arc does not need to be serviced',arc)
+                    logging.error('Service Error')
+                    logging.error('Arc does not need to be serviced',arc)
             else:
                 self.serviceError = True
                 self.errorFound = True
                 if self.print_output:
-                    print('Service Error')
-                    print('Arc already serviced',arc)
+                    logging.error('Service Error')
+                    logging.error('Arc already serviced',arc)
         
         return(servicedarcs)
     
@@ -112,14 +113,14 @@ class TestCARPSolution(object):
             self.depotError = True
             self.errorFound = True
             if self.print_output:
-                print('Depot Error')
-                print('Route does not begin at depot')
+                logging.error('Depot Error')
+                logging.error('Route does not begin at depot')
         if trip[-1] != self.end_depot:
             self.depotError = True
             self.errorFound = True
             if self.print_output:
-                print('Depot Error')
-                print('Route does not end at depot')
+                logging.error('Depot Error')
+                logging.error('Route does not end at depot')
         
     def testCARPsolution(self):
         nRoutes = self.solution['nVehicles']
@@ -127,8 +128,8 @@ class TestCARPSolution(object):
         if nRoutes != len(self.solution) - 3:
             self.errorFound = True
             if self.print_output:
-                print('Vehicle Error')
-                print('More vehicles than specified - Actual: %i \t Specified: %i' %(nRoutes, len(self.solution) - 3))
+                logging.error('Vehicle Error')
+                logging.error('More vehicles than specified - Actual: %i \t Specified: %i' %(nRoutes, len(self.solution) - 3))
             
         servicedarcs = deepcopy(self.info.reqArcListActual)
         total_cost = 0
@@ -140,14 +141,14 @@ class TestCARPSolution(object):
             self.serviceError = True
             self.errorFound = True
             if self.print_output:
-                print('Service Error')
-                print('Arcs not serviced',servicedarcs)
+                logging.error('Service Error')
+                logging.error('Arcs not serviced',servicedarcs)
         if total_cost != self.solution['TotalCost']:
             self.costError = True
             self.errorFound = True
             if self.print_output:
-                print('Cost Error')
-                print('Incorrect solution cost - Actual: %i \t Specified: %i' %(total_cost, self.solution['TotalCost']))
+                logging.error('Cost Error')
+                logging.error('Incorrect solution cost - Actual: %i \t Specified: %i' %(total_cost, self.solution['TotalCost']))
         
     def testMCARP(self):
         self.testCARPsolution()
@@ -155,7 +156,7 @@ class TestCARPSolution(object):
 
 class TestCLARPIFSolution(object):
     
-    def __init__(self, info, solution):
+    def __init__(self, info, solution, tollerance=0.1):
         self.info = info
         self.solution = solution
         self.errorReport = {}
@@ -168,6 +169,7 @@ class TestCLARPIFSolution(object):
         self.ifError = False
         self.Error = False
         self.end_depot = self.info.depotnewkey
+        self.tollerance = tollerance
         
     def testtripcosts(self, trip, route_cost_info):
         (trip_cost,
@@ -190,26 +192,31 @@ class TestCLARPIFSolution(object):
         servicecost += self.info.serveCostL[trip[-1]]
         load += self.info.demandL[trip[-1]]
         
-        if trip_cost != cost:
+        if not cost - self.tollerance <= trip_cost <= cost + self.tollerance:
             self.Error = self.costError = True
-            print('Cost Error')
-            print('Incorrect trip cost - Actual: %i \t Specified: %i' %(trip_cost, cost))
-        if trip_dead_head_cost != deadhead:
+            logging.error('Cost Error')
+            logging.error('Incorrect trip cost - Actual: %i \t Specified: %i' %(trip_cost, cost))
+            raise ValueError
+        if not deadhead - self.tollerance <= trip_dead_head_cost <= deadhead + self.tollerance:
             self.Error = self.costError = True
-            print('Cost Error')
-            print('Incorrect trip deadheading cost - Actual: %i \t Specified: %i' %(trip_dead_head_cost, deadhead))
-        if trip_service_cost != servicecost:
+            logging.error('Cost Error')
+            logging.error('Incorrect trip deadheading cost - Actual: %i \t Specified: %i' %(trip_dead_head_cost, deadhead))
+            raise ValueError
+        if not servicecost - self.tollerance <= trip_service_cost <= servicecost + self.tollerance:
             self.Error = self.costError = True
-            print('Cost Error')
-            print('Incorrect trip service cost - Actual: %i \t Specified: %i' %(trip_service_cost, servicecost))
-        if trip_load != load:
+            logging.error('Cost Error')
+            logging.error('Incorrect trip service cost - Actual: %i \t Specified: %i' %(trip_service_cost, servicecost))
+            raise ValueError
+        if not load - self.tollerance <= trip_load <= load + self.tollerance:
             self.Error = self.costError = True      
-            print('Cost Error')
-            print('Incorrect trip load', trip_load, load)
-        if trip_load > self.info.capacity: 
+            logging.error('Cost Error')
+            logging.error('Incorrect trip load', trip_load, load)
+            raise ValueError
+        if trip_load > self.info.capacity + self.tollerance:
             self.Error = self.costError = True      
-            print('Constraint Error')
-            print('Load is more than vehicle capacity - Actual: %i \t Specified: %i' %(trip_load, self.info.capacity))
+            logging.error('Constraint Error')
+            logging.error('Load is more than vehicle capacity - Actual: %i \t Specified: %i' %(trip_load, self.info.capacity))
+            raise ValueError
         return(cost, deadhead, servicecost, load)
   
     def testservice(self, trip, servicedarcs):
@@ -224,43 +231,43 @@ class TestCLARPIFSolution(object):
                     del servicedarcs[arc1]
             elif (arc == self.info.depotnewkey)|(arc == self.end_depot):
                 self.Error = self.serviceError = True
-                print('Service Error')
-                print('Depot visit in middle of trip')
+                logging.error('Service Error')
+                logging.error('Depot visit in middle of trip')
             elif arc in self.info.IFarcsnewkey:
                 self.Error = self.serviceError = True
-                print('Service Error')
-                print('IF visit in middle of trip', arc)
+                logging.error('Service Error')
+                logging.error('IF visit in middle of trip', arc)
             elif arc not in self.info.reqArcList: 
                 self.Error = self.serviceError = True
-                print('Service Error')
-                print('Arc does not need to be serviced',arc)
+                logging.error('Service Error')
+                logging.error('Arc does not need to be serviced',arc)
             else:
                 self.Error = self.serviceError = True
-                print('Service Error')
-                print('Arc already serviced',arc)
+                logging.error('Service Error')
+                logging.error('Arc already serviced',arc)
         return(servicedarcs)
     
     def testIFdepot(self, trip):
         if trip[-2] not in self.info.IFarcsnewkey:
             self.Error = self.ifError = True
-            print('IF Error')
-            print('Route does not end at IF then depot')
+            logging.error('IF Error')
+            logging.error('Route does not end at IF then depot')
         if trip[-1] != self.end_depot:
             self.Error = self.depotError = True
-            print('Depot Error')
-            print('Route does not end at depot')
+            logging.error('Depot Error')
+            logging.error('Route does not end at depot')
     
     def testDepot(self, trip):
         if trip[0] != self.info.depotnewkey:
             self.Error = self.depotError = True
-            print('Depot Error')
-            print('Route does not begin at depot')
+            logging.error('Depot Error')
+            logging.error('Route does not begin at depot')
     
     def testIFs(self, IFvisit, prevIFvisit):
         if IFvisit != prevIFvisit:
             self.Error = self.ifError = True
-            print('IF Error')
-            print('Trip does begin at same IF as previous trips end IF')
+            logging.error('IF Error')
+            logging.error('Trip does begin at same IF as previous trips end IF')
     
     def testroute(self, route_solution, servicedarcs, total_cost):
         nTrips = route_solution['nTrips']
@@ -293,26 +300,36 @@ class TestCLARPIFSolution(object):
             route_servicecost += servicecost
             route_load += load
             
-        if route_cost != route_solution['Cost']:
+        if not route_cost - self.tollerance <= route_solution['Cost'] <= route_cost + self.tollerance:
             self.Error = self.costError = True
-            print('Cost Error')
-            print('Incorrect route cost - Actual: %i \t Specified: %i' %(route_cost, route_solution['Cost']))
-        if route_deadhead != route_solution['Deadhead']:
+            logging.error('Cost Error')
+            logging.error('Incorrect route cost - Actual: %i \t Specified: %i' %(route_cost, route_solution['Cost']))
+            raise ValueError
+        if not route_deadhead - self.tollerance <= route_solution['Deadhead']\
+               <= route_deadhead + \
+                self.tollerance:
             self.Error = self.costError = True
-            print('Cost Error')
-            print('Incorrect route deadhead cost - Actual: %i \t Specified: %i' %(route_deadhead, route_solution['Deadhead']))
-        if route_servicecost != route_solution['Service']:
+            logging.error('Cost Error')
+            logging.error('Incorrect route deadhead cost - Actual: %i \t Specified: %i' %(route_deadhead, route_solution['Deadhead']))
+            raise ValueError
+
+        if not route_servicecost - self.tollerance <= route_solution[
+            'Service'] <= route_servicecost + self.tollerance:
             self.Error = self.costError = True
-            print('Cost Error')
-            print('Incorrect route service cost - Actual: %i \t Specified: %i' %(route_servicecost, route_solution['Service']))
-        if route_load != route_solution['Load']:
+            logging.error('Cost Error')
+            logging.error('Incorrect route service cost - Actual: %i \t Specified: %i' %(route_servicecost, route_solution['Service']))
+            raise ValueError
+        if not route_load - self.tollerance <= route_solution['Load'] <= \
+               route_load + self.tollerance:
             self.Error = self.costError = True
-            print('Cost Error') 
-            print('Incorrect route load - Actual: %i \t Specified: %i' %(route_load, route_solution['Load']))
-        if route_cost > self.info.maxTrip: 
+            logging.error('Cost Error') 
+            logging.error('Incorrect route load - Actual: %i \t Specified: %i' %(route_load, route_solution['Load']))
+            raise ValueError
+        if route_cost > self.info.maxTrip + self.tollerance:
             self.Error = self.costError = True      
-            print('Constraint Error')
-            print('Route cost is more than max route cost - Actual: %i \t Specified: %i' %(route_cost, self.info.maxTrip))
+            logging.error('Constraint Error')
+            logging.error('Route cost is more than max route cost - Actual: %i \t Specified: %i' %(route_cost, self.info.maxTrip))
+            raise ValueError
         total_cost += route_cost
         return(servicedarcs, total_cost)
     
@@ -320,29 +337,31 @@ class TestCLARPIFSolution(object):
         nRoutes = self.solution['nVehicles']
         
         if nRoutes != len(self.solution) - 3:
-            print('Vehicle Error')
-            print('More vehicles than specified - Actual: %i \t Specified: %i' %(nRoutes, len(self.solution) - 3))
+            logging.error('Vehicle Error')
+            logging.error('More vehicles than specified - Actual: %i \t Specified: %i' %(nRoutes, len(self.solution) - 3))
             
         total_cost = 0
-        servicedarcs = deepcopy(self.info.reqArcListActual)
+        servicedarcs = deepcopy(list(self.info.reqArcListActual))
         for i in range(nRoutes):
             (servicedarcs, total_cost) = self.testroute(self.solution[i], servicedarcs,total_cost)
         if servicedarcs:
             self.Error = self.serviceError = True
-            print('Service Error')
-            print('Arcs not serviced',servicedarcs)
-        if total_cost != self.solution['TotalCost']:
+            logging.error('Service Error')
+            logging.error('Arcs not serviced',servicedarcs)
+        if not self.solution['TotalCost'] - self.tollerance <=total_cost <= \
+               self.solution['TotalCost'] + self.tollerance:
             self.Error = self.costError = True
-            print('Cost Error')
-            print('Incorrect solution cost - Actual: %i \t Specified: %i' %(total_cost, self.solution['TotalCost']))
+            logging.error('Cost Error')
+            logging.error('Incorrect solution cost - Actual: %i \t Specified: %i' %(total_cost, self.solution['TotalCost']))
+            raise ValueError
          
     def testCLARPIF(self):
         self.testCLARPIFsolution()
         if self.Error: 
             a = 0
             #a = input('Error found : \n')
-            print('Error found')
-            a = input('')       
+            logging.error('Error found')
+                  
             
 def test_solution(info, solution, print_output = True, deadheading = False):
     if solution['ProblemType'] == 'CARP':
@@ -350,15 +369,15 @@ def test_solution(info, solution, print_output = True, deadheading = False):
         tst.deadheading = deadheading
         errors = tst.testMCARP()
         if errors:
-            print('Error found :',errors)
+            logging.error('Error found :',errors)
             a = input('')
-        print('Test errors: %s'%errors)
+        logging.error('Test errors: %s'%errors)
         return(tst.testMCARP())
     elif solution['ProblemType'] == 'CLARPIF':
         tst2 = TestCLARPIFSolution(info, solution)
         tst2.testCLARPIF() 
     else:
-        print('Problem type not specified for test')
+        logging.error('Problem type not specified for test')
 
             
             

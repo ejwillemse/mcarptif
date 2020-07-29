@@ -1434,7 +1434,7 @@ class CalcMoveCosts(object):
         self._dumpCost = info.dumpCost
         self._dummyArcs = {self._depot}
         
-        if nnList == None:
+        if nnList is None:
             print(nnList)
             self._nnList = [[]]
         else:
@@ -1985,7 +1985,7 @@ class CalcMoveCostsMCARPTIFspecial(object):
         self._if_cost = info.if_cost_np
         self._ifs = info.IFarcsnewkey
 
-        if nnList == None:
+        if nnList is None:
             print(nnList)
             self._nnList = [[]]
         else:

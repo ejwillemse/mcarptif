@@ -25,11 +25,13 @@ History:
 
 import solver.py_alg_extended_path_scanning_rr as EPS
 import solver.LS_MCARPTIF as LS
+from solver.py_solution_test import TestCLARPIFSolution
 from converter.load_data import load_instance
 from converter.load_data import ConvertedInputs
 from converter.solution_converter import convert_df
 from converter.solution_converter import convert_df_full
 from converter.solution_converter import write_solution_df
+import logging
 
 
 def gen_solution(info, reduce_trips=True, test_solution=False):
@@ -245,8 +247,10 @@ def solve_store_instance(file_path,
                          overwrite=True,
                          write_results=True,
                          info=None,
-                         test_solution=False):
-    """Solve a specific problem instance and store the partial and full solution
+                         test_solution=True,
+                         debug_test_solution=False,
+                         tollerance=0.1):
+    """Solve a specific problem instance and store the ,partial and full solution
     in the same folder as the raw input data. Two solution files are stored:
     one ending with `_sol_[solver].csv` and `_sol_full_[solver].csv`, where
     [solver] is the type of solver or improvement procedure used. Currently
@@ -487,14 +491,18 @@ def solve_store_instance(file_path,
     if info is None:
         info = load_instance(file_path)
     else:
-        print('Problem info supplied. Directly proceeding to solve problem.')
+        logging.info('Problem info supplied. Directly proceeding to solve problem.')
 
     solution = gen_solution(info, reduce_initial_trips,
-                            test_solution=test_solution)
+                            test_solution=debug_test_solution)
     if improve is not None:
         solution = improve_solution(info, solution, improve,
-                                    test_solution=test_solution)
+                                    test_solution=debug_test_solution)
         ext += improvement_ext[improve]
+
+    if test_solution:
+        tst2 = TestCLARPIFSolution(info, solution, tollerance=tollerance)
+        tst2.testCLARPIF()
 
     solution_df = convert_df(info, solution)
     conv = ConvertedInputs(file_path)

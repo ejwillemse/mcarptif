@@ -25,31 +25,51 @@ def return_crs(country='SG'):
     return country_pairs[country]
 
 
+def geom_to_points(df):
+    """Convert geometry layer into points layer for pydeck plotting.
+
+    Arg:
+        df (geo.dataframe): Geo-dataframe whose active geometry layer will be
+            converted.
+
+    Return:
+        points column: [(lon, lat)] for each lon-lat coordinate pair.
+    """
+    df['points'] = df.apply(lambda x: [y for y in x.geometry.coords], axis=1)
+    return df
+
+
 def calc_dist(df, x0='x', y0='y', x1='x1', y1='y1'):
     dist = ( ( ( df[x0].subtract(df[x1]) ).pow(2) ).add( ( df[y0].subtract(df[y1]) ).pow(2) ) ).pow(0.5)
     return dist
 
 
-def create_gdf(df, crs):
+def create_gdf(df, crs='EPSG:4326', dropna_geom=False):
     """Convert data frame into geopandas data frame.
 
     Arg:
         df (data.frame): to convert, must have `geometry` column.
         crs (str): coordinate reference system.
+        dropna_geom (bool): drop geometries that are nan
     """
+    df = df.copy()
+    if dropna_geom is True:
+        df = df.dropna(subset=['geometry'])
     if df['geometry'].dtype == 'O':
-        df['geometry'] = df['geometry'].apply(wkt.loads)
+        df['geometry'] = df['geometry'].astype(str).apply(wkt.loads)
     df = gpd.GeoDataFrame(df, geometry=df['geometry'], crs=crs)
     return df
 
 
-def create_latlon_gdf(df, crs, x_col='lon', y_col='lat'):
+def create_latlon_gdf(df, crs='EPSG:4326', x_col='lon', y_col='lat', dropna_geom=True):
     """Convert data frame into geopandas data frame.
 
     Arg:
         df (data.frame): to convert, must have `geometry` column.
         crs (str): coordinate reference system.
     """
+    if dropna_geom is True:
+        df = df.dropna(subset=[x_col, y_col])
     df = gpd.GeoDataFrame(df,
                           geometry=gpd.points_from_xy(df[x_col], df[y_col]),
                           crs=crs)
@@ -111,6 +131,20 @@ def customer_network_plot(customers,
     return fig
 
 
+def required_arc_plot(full_network,
+                      required_arcs,
+                      figsize=None,
+                      linewidth_full=1,
+                      linewidth_req=2.5):
+    if figsize is None:
+        figsize = (40, 40)
+
+    fig, ax = plt.subplots(figsize=figsize)
+    _ = full_network.plot(ax=ax, linewidth=linewidth_full)
+    _ = required_arcs.plot(ax=ax, linewidth=linewidth_req, color='red')
+    return fig
+
+
 class NetworkCode:
     """Assign points to OSM network, can either be to the nearest point or
     nearest arcs. Highly recommended to use a directed graph when snapping
@@ -137,7 +171,8 @@ class NetworkCode:
             self.df_network = df_network.copy()
         self.crs = return_crs(country)
         self.df_network = create_gdf(self.df_network,
-                                     self.crs['latlon'])
+                                     self.crs['latlon'],
+                                     dropna_geom=True)
 
         self.crs_ref = self.crs['latlon']
         self.xy_converted = xy_converted
@@ -150,6 +185,8 @@ class NetworkCode:
         self.df_nodes = self.create_nodes_gdf(self.df_network)
         self.df_network_filter = self.df_network.copy()
         self.df_nodes_filter = self.df_nodes.copy()
+
+        self.df_solution = None
 
     def plot_customers_network(self):
         return customer_network_plot(self.df, self.df_network)
@@ -390,6 +427,11 @@ class NetworkCode:
         df_fit = self.find_best_collection(df_fit)
         self.df_collection_points = df_fit.copy()
 
+    def merge_network(self):
+        """Add arc attributes"""
+        logging.info('Adding arc attributes.')
+        self.df_collection_points = self.df_collection_points.merge(self.df_network_filter[['arc_id', 'arc_index', 'highway', 'oneway']])
+
     def convert_geometries_latlon(self, columns=None):
         """Convert all geometry columns to crs. Needed for kepler.gl that
         crashes when geometries are not on lat-lon.
@@ -406,3 +448,7 @@ class NetworkCode:
         for col in columns:
             self.df_collection_points = self.df_collection_points.set_geometry(col, crs=self.crs['xy'])
             self.df_collection_points = self.df_collection_points.to_crs(crs=self.crs['latlon'])
+
+    def network_to_points(self):
+        logging.info('Convert geometry to geom-point objects.')
+        self.df_network = geom_to_points(self.df_network)

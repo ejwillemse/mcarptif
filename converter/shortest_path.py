@@ -41,6 +41,10 @@ def sp_full(p_full, origin, destination, full=False):
     n_arcs = len(p_origin)
     v = destination
 
+    #TODO: hack, for error in p_full when the precedessor p_full[i][i] = 0 instead of i.
+    if origin == destination:
+        return path
+
     while True:
         v = p_origin[v]
         if v == origin:

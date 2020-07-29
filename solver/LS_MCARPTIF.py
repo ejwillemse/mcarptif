@@ -27,7 +27,7 @@ class TestLocalSeach(object):
     '''
     Class to check if solution and locals search moves are calculated correctly
     '''
-    def __init__(self, info):
+    def __init__(self, info, tollerance=0.1):
         '''
         Class initialization values.
         '''
@@ -53,6 +53,7 @@ class TestLocalSeach(object):
         self._prevSolution = None  
         self._if_cost = info.if_cost_np
         self._if_arc = info.if_arc_np
+        self.tollerance = tollerance
 
     def _testSolution(self, solution):
         '''
@@ -70,10 +71,11 @@ class TestLocalSeach(object):
                 serviceCost = sum([self._service[arc] for arc in trip])
                 deadheadCost = sum([self._d[trip[j]][trip[j+1]] for j in range(len(trip)-1)]) + self._dumpCost
                 routeCost += serviceCost + deadheadCost
-                if demand != solution[i]['TripLoads'][tripIndex]:
+                if not demand - self.tollerance <= solution[i]['TripLoads'][
+                    tripIndex] <= demand + self.tollerance:
                     errorsFound = True
                     print('ERROR: Incorrect route load specified for route %i trip %i: actual %i vs %i'%(i, tripIndex, demand, solution[i]['TripLoads'][tripIndex]))
-                if demand > self._capacity:
+                if demand > self._capacity + self.tollerance:
                     errorsFound = True 
                     print('ERROR: Trip demand exceeds capacity for route %i trip %i: actual %i vs %i'%(i, tripIndex, demand, self._capacity))
                 if tripIndex == 0 and routeI[tripIndex][0] != self._depot:
@@ -108,16 +110,16 @@ class TestLocalSeach(object):
                         errorsFound = True
                         print('ERROR: Last IF visit at the end of trip %i not the same as next trip: %i and %i'%(i, routeI[tripIndex][-1], solution[i]['Trips'][tripIndex + 1][0]))
                                                     
-            if routeCost != solution[i]['Cost']:
+            if not routeCost - self.tollerance <= solution[i]['Cost'] <= routeCost + self.tollerance:
                 errorsFound = True
                 print('ERROR: Incorrect route cost specified for route %i: actual %i vs %i'%(i, routeCost, solution[i]['Cost']))
                 #totalCost += serviceCost + deadheadCost
-            if routeCost > self._maxTrip:
+            if routeCost > self._maxTrip + self.tollerance:
                 errorsFound = True 
                 print('ERROR: Route cost exceeds max cost limit for route %i: actual %i vs %i'%(i, routeCost, self._maxTrip))
             totalCost += routeCost
             
-        if  totalCost != solution['TotalCost']:
+        if not totalCost - self.tollerance <= solution['TotalCost'] <= totalCost + self.tollerance:
             errorsFound = True
             print('ERROR: Incorrect total cost specified: actual %i vs %i'%(totalCost, solution['TotalCost']))   
         for arc in arcsNotService:

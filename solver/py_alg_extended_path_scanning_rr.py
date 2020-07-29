@@ -682,7 +682,8 @@ class EPS(ExtendedPathScanning_Operators, TieBreakRules):
         TieBreakRules.__init__(self)
         self.capacity = info.capacity
         self.dumpCost = info.dumpCost
-        self.reqArcs = info.reqArcListActual
+        self.reqArcs = list(info.reqArcListActual()) #TODO: decide between
+        # numpy and python
         self.depot = info.depotnewkey
         self.end_depot = self.depot
         self.invArcList = info.reqInvArcList
@@ -1095,7 +1096,8 @@ class EPS_IF(ExtendedPathScanning_Operators, TieBreakRules):
         self.capacity = info.capacity
         self.maxTrip = info.maxTrip
         self.dumpCost = info.dumpCost
-        self.reqArcs = info.reqArcListActual
+        self.reqArcs = list(info.reqArcListActual) #TODO: decide between
+        # numpy or python
         self.depot = info.depotnewkey
         self.end_depot = self.depot
         self.invArcList = info.reqInvArcList
@@ -1397,7 +1399,7 @@ class EPS_IF(ExtendedPathScanning_Operators, TieBreakRules):
         self.reqArcsUnassigned = deepcopy(self.reqArcs)
         nVehicles = -1
         self.totalcost = 0
-        while self.reqArcsUnassigned:
+        while len(self.reqArcsUnassigned) != 0:
             nVehicles += 1
             #print('\t Vehicle Route - %i'%nVehicles)
             solution[nVehicles] = {}

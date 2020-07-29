@@ -81,3 +81,20 @@ def return_arc_layer(df,
                                pickable=False,
                                auto_highlight=True)
     return from_to_arcs_u
+
+
+def return_network_layer(df, col='[68, 85, 90, 255]'):
+    df = df.copy()
+    df = df[['points', 'u', 'v', 'highway', 'length', 'maxspeed']]
+    df = df.fillna('')
+    path_layer = pdk.Layer(
+        type="PathLayer",
+        data=df,
+        pickable=True,
+        auto_highlight=True,
+        get_color=col,
+        width_min_pixels=0.75,
+        get_path="points",
+        get_width=2,
+        rounded=True)
+    return path_layer

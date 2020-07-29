@@ -408,3 +408,8 @@ def summarise_routes_and_activities(df):
     full_sum = full_sum.sort_values(['Vehicle ID'])
 
     return full_sum
+
+
+def plot_routes(df, infrastructure, producers, producers_rest):
+    """All routes, customers and infrastructure to be plotted."""
+    pass
