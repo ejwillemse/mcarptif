@@ -7,6 +7,7 @@ import tables as tb
 from osmnx_network_extract.create_instance import create_arc_id
 from converter.shortest_path import sp_full
 from osmnx_network_extract.network_code import create_gdf, create_latlon_gdf
+from visualise.customer_plots import color_df
 
 import matplotlib.pyplot as plt
 import qgrid
@@ -38,7 +39,8 @@ class NetworkExtract:
                  network,
                  arc_h5_path,
                  round_cost=True,
-                 length_int=True):
+                 length_int=True,
+                 key_pois=None):
         """
         Arg:
             network (df): full arc network.
@@ -47,6 +49,7 @@ class NetworkExtract:
             round_cost (bool): whether costs should be rounded to integers.
                 Can causse issues with cost testing later.
             length_int (bool): convert arc length into integer
+            key_pois (dataframe): key POI data frame.
         """
         self.network = network.copy()
         if length_int:
@@ -118,6 +121,13 @@ class NetworkExtract:
 
         self.df_solution = None
         self.df_solution_full = None
+
+        self.collection_schedule = None
+
+        self.key_pois = key_pois.copy()
+        self.offload_table_wide = None
+        self.producer_demand = None
+        self.producer_collection_schedule = None
 
     def create_inv_list(self):
         """Create an inverse arc list for the network arcs. We limit it to
@@ -601,9 +611,9 @@ class NetworkExtract:
         fig, ax = plt.subplots(figsize=figsize)
         _ = self.network_plot.plot(ax=ax, linewidth=linewidth_full)
         _ = self.df_required_arcs_plot.plot(ax=ax, markersize=linewidth_req, color='red')
-
+        return fig
         
-    def add_solution(self, df_solution, extend=True):
+    def add_solution(self, df_solution, extend=True, order=True):
         """Add solution to network, and do a few quick modifications."""
         if extend:
             self.extend_prop_info()
@@ -619,12 +629,99 @@ class NetworkExtract:
         df_solution['total_traversal_time_to_activity'] = df_solution['total_traversal_time_to_activity'].fillna(method='ffill')
         df_solution = df_solution.loc[df_solution['activity_type'] != 'arrive_if']
         df_solution = df_solution.merge(self.prop_info_extended, how='left')
+
+        if order:
+            df_solution['temp_index'] = -df_solution.index
+            total_time = df_solution.groupby(['route']).agg(
+                total_time=('cum_time', 'max')).reset_index()
+            total_time = total_time.sort_values(['total_time'], ascending=False).reset_index(drop=True)
+            total_time['new_route'] = total_time.index
+            df_solution = df_solution.merge(total_time, how='left')
+            df_solution = df_solution.sort_values(['total_time', 'temp_index'],
+                                                  ascending=False)
+            df_solution['route'] = df_solution['new_route']
+            df_solution = df_solution.drop(columns=['temp_index',
+                                                    'total_time',
+                                                    'new_route'])
+        df_solution = df_solution.reset_index(drop=True)
         self.df_solution = df_solution.copy()
+
+    def add_hk_solution(self,
+                        df_solution,
+                        intermediate_if,
+                        extend=True,
+                        order=True):
+
+        if extend:
+            self.extend_prop_info()
+        df_solution = df_solution.copy()
+        df_solution = df_solution.rename(
+            columns={'activity_id': 'req_arc_index'})
+        df_solution = df_solution.loc['activity_type'] != 'offload'
+        df_solution = df_solution.merge(self.main_arc_list,
+                                          left_on='req_arc_index',
+                                          right_on='req_arc_index',
+                                          how='left')
+
+    def add_intermediate_hk_if(self, intermediate_ifs):
+        """
+        Add pick-up return offloads into solution df.
+        """
+        if_insert = np.unique(intermediate_ifs)[0]
+
+        solution_df_temp = self.df_solution.copy()
+        solution_df_temp = solution_df_temp.reset_index(drop=True)
+        solution_df_temp['index'] = solution_df_temp.index
+        solution_df_temp = solution_df_temp.loc[
+            solution_df_temp['activity_type'] != 'offload']
+        solution_df_temp['index_temp'] = solution_df_temp['index']
+
+        if_inter = if_insert
+        solution_collect = solution_df_temp.loc[
+            solution_df_temp['activity_type'] == 'collect'].copy()
+        solution_df_temp = solution_df_temp.loc[
+            solution_df_temp['activity_type'].str.contains('depot',
+                                                           regex=False)]
+
+        solution_df_temp['activity_time'] = 0
+
+        solution_collect['activity_time'] = 10 * 60
+        solution_collect['total_traversal_time_to_activity'] = 0
+
+        df_offload = solution_collect.copy()
+        df_offload['arc_index'] = if_inter
+        df_offload['index_temp'] = df_offload['index_temp'] + 0.1
+        df_offload['activity_type'] = 'offload'
+        df_offload['activity_time'] = 10 * 60
+        df_offload['arc_category'] = 'offload'
+        df_offload['activity_demand'] = 0
+        df_offload['total_traversal_time_to_activity'] = 0
+
+        df_offload[['n_bins', 'n_bins_indirect', 'n_units', 'demand', 'speed',
+                    'arc_id_ordered', 'req_arc_index']] = np.nan
+        df_offload[['arc_index_inv', 'req_arc_index_inv']] = -1
+
+        df_return = solution_collect.copy()
+        df_return['index_temp'] = df_return['index_temp'] + 0.2
+        df_return['activity_type'] = 'collect_return'
+        df_return['activity_demand'] = 0
+        df_return['activity_time'] = 8 * 60
+        df_return['total_traversal_time_to_activity'] = 0
+        df_return[['n_bins', 'n_bins_indirect', 'n_units', 'demand', 'speed',
+                   'arc_id_ordered', 'req_arc_index']] = np.nan
+
+        solution_df_temp = pd.concat(
+            [solution_df_temp, solution_collect, df_offload, df_return])
+        solution_df_temp = solution_df_temp.sort_values(['index_temp'])
+        solution_df_temp = solution_df_temp.drop(columns=['index_temp', 'index'])
+        solution_df_temp = solution_df_temp.reset_index(drop=True)
+
+        self.df_solution = solution_df_temp.copy()
 
     def deconstruct_solution(self):
         """Fill shortest paths arc indices into solution and assign arc
         categories."""
-        routes = self.df_solution
+        routes = self.df_solution.copy()
         routes['solution_index'] = routes.index
         frame_index = routes['solution_index'].values
         route_number = routes['route'].values
@@ -637,7 +734,7 @@ class NetworkExtract:
             sp_info = h5file.root.shortest_path_info
             p_full = sp_info.predecessor_matrix
 
-            for i in range(1, n_solution_arcs - 1):
+            for i in range(0, n_solution_arcs - 1):
                 arc_i = arc_index[i]
                 arc_j = arc_index[i + 1]
                 frame_i = frame_index[i]
@@ -655,6 +752,7 @@ class NetworkExtract:
                         temp_frame['activity_type'] = 'travel'
                         temp_frame['solution_group'] = frame_i
                         filler_frames.append(temp_frame.copy())
+
         travel_paths = pd.concat(filler_frames)
         routes_full = pd.concat([routes, travel_paths])
         routes_full = routes_full.sort_values(['solution_index'])
@@ -676,7 +774,8 @@ class NetworkExtract:
             figsize = (40, 40)
 
         df_solution_map = self.df_solution_full.copy()
-        df_solution_map['Route'] = df_solution_map['route'] + 1
+        df_solution_map['Route'] = df_solution_map['route'].astype(int).astype(str)
+        df_solution_map['Route'] = df_solution_map['Route'].apply(lambda x: '0' + x if len(x) == 1 else x)
         df_solution_map['Route'] = 'Route ' + df_solution_map['Route'].astype(str)
 
         df_solution_map_travel = df_solution_map.loc[df_solution_map['activity_type'] == 'travel']
@@ -701,7 +800,7 @@ class NetworkExtract:
         self.df_solution_full = df
 
     def add_time_formatted(self,
-                           start_time='2020-06-14 08:00:00',
+                           start_time='2021-07-01 07:00:00',
                            t_col='cum_time',
                            t_units='s',
                            tz=None,
@@ -726,7 +825,7 @@ class NetworkExtract:
         self.df_solution_full = df
 
     def add_constant_duration_time(self,
-                                   start_time='2020-06-14 08:00:00',
+                                   start_time='2021-07-01 07:00:00',
                                    duration=30,
                                    t_units='sec'):
         """Add fake time with each activity assigned a constant duration.
@@ -779,10 +878,15 @@ class NetworkExtract:
         weight_col2_link = 'ND units'
         weight_col3 = 'Weight per day per hawker'
         weight_col3_link = 'H/M units'
+
+        prod[[weight_col1_link, weight_col2_link, weight_col3_link]] = prod[[weight_col1_link, weight_col2_link, weight_col3_link]].fillna(0)
+
+
         prod['demand'] = prod[weight_col1] * prod[weight_col1_link] + \
             prod[weight_col2] * prod[weight_col2_link] + \
             prod[weight_col3] * prod[weight_col3_link]
         prod['demand'] = prod['demand'] * units
+        self.producer_demand = prod.copy()
         return prod.copy()
 
     def calc_bin_center_demand_simple(self, prod, units=1):
@@ -795,13 +899,19 @@ class NetworkExtract:
         weight_col2_link = 'ND units'
         weight_col3 = 'HK_demand'
         weight_col3_link = 'H/M units'
+
+        prod[[weight_col1_link, weight_col2_link, weight_col3_link]] = prod[[weight_col1_link, weight_col2_link, weight_col3_link]].fillna(0)
+
         prod['demand'] = prod[weight_col1] * prod[weight_col1_link] + \
             prod[weight_col2] * prod[weight_col2_link] + \
             prod[weight_col3] * prod[weight_col3_link]
         prod['demand'] = prod['demand'] * units
+        self.producer_demand = prod.copy()
         return prod.copy()
 
-    def calc_normal_demand_simple(self, prod, units=1):
+    def calc_normal_demand_simple(self,
+                                  prod,
+                                  units=1):
         """
         args
         """
@@ -817,6 +927,7 @@ class NetworkExtract:
         prod['demand'] = prod['demand'] * units
         unknown_demand = prod['demand'] == 0
         prod.loc[unknown_demand, 'demand'] = prod.loc[unknown_demand]['nan_demand']
+        self.producer_demand = prod.copy()
         return prod.copy()
 
     def add_demand_service_cost_to_ars(self, df, speed=10/3.6):
@@ -863,3 +974,258 @@ class NetworkExtract:
         prod['bin_service_cost'] = prod[service_col1_link] / prod[service_col1] + \
             prod[service_col2]
         return prod.copy()
+
+    def vehicle_collection_schedule(self, schedule='weekly'):
+        """
+        Arg:
+            schedule (str): collection schedule (daily, weekly, two_one)
+                two_one, is twice in the week, once on Sundays.
+        """
+        if schedule == 'daily':
+            dow_collection = ['Mon-Sun']
+
+        if schedule == 'weekly':
+            dow_collection = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+
+        if schedule == 'two_one':
+            dow_collection = ['Mon, Wed, Sat', 'Tue, Thu, Sun']
+
+        n_routes = self.df_solution['route'].nunique()
+        n_days = len(dow_collection)
+        n_repeats = np.ceil(n_routes / n_days).astype(int)
+        schedule_route = []
+        vehicle_assigned = []
+        route_count = 0
+        for day in dow_collection:
+            for i in range(n_repeats):
+                route_count += 1
+                vehicle_assigned.append(i + 1)
+                schedule_route.append(day)
+                if route_count == n_routes:
+                    break
+            if route_count == n_routes:
+                break
+        self.collection_schedule = pd.DataFrame({'Vehicle': vehicle_assigned,
+                                                 'Collection day': schedule_route})
+        self.collection_schedule = self.collection_schedule.sort_values('Vehicle')
+        self.collection_schedule['route'] = list(range(n_routes))
+
+    def add_route_colors(self):
+        """Add route colors to full collection solution"""
+        self.df_solution_full = color_df(self.df_solution_full,
+                                         group='route',
+                                         opacity=0.5)
+
+    def extract_wide_offload_totals(self):
+        """Extract offlaod totals per facility in a wide table format."""
+        activity_df = self.df_solution.copy()
+        key_pois = self.key_pois
+        offloads = activity_df['activity_type'] == 'offload'
+        activity_df.loc[offloads, 'cum_demand'] = np.nan
+        activity_df['cum_demand'] = activity_df['cum_demand'].fillna(
+            method='ffill')
+        df_offloads = activity_df.loc[offloads]
+        df_offloads = df_offloads[
+            ['route', 'subroute', 'arc_index', 'cum_demand', 'cum_time']]
+        poi_locations = key_pois[
+            ['description', 'arc_index']].drop_duplicates()
+        df_offloads = df_offloads.merge(poi_locations, how='left')
+        df_offloads = df_offloads.groupby(['route', 'description']).agg(
+            total_disposed=('cum_demand', 'sum')).reset_index()
+        df_offloads['total_disposed'] = (
+                    df_offloads['total_disposed'] / 1000).round(2)
+
+        offload_sum = df_offloads.pivot_table(index=['route'],
+                                              columns='description',
+                                              values=['total_disposed'])
+        offload_sum.columns = [f'Tons disposed at @ {y}' for x, y in
+                               offload_sum.columns]
+        offload_sum = offload_sum.reset_index()
+        offload_sum = offload_sum.fillna(0)
+        offload_sum['route'] = offload_sum['route'] + 1
+        offload_sum = offload_sum.rename(columns={'route': 'Route'})
+        self.offload_table_wide = offload_sum.copy()
+
+    def full_producer_report(self, bc=False, bc_full=False):
+        df_arc_producer = self.df_solution_full.copy()
+
+        if bc_full:
+            df_arc_producer = df_arc_producer.loc[df_arc_producer['activity_type'] != 'offload']
+
+        df_arc_producer['time'] = df_arc_producer['time'].dt.round('1s')
+        df_arc_producer['time_start'] = df_arc_producer.groupby(['route'])[
+            'time'].shift()
+        df_arc_producer['time_end'] = df_arc_producer['time']
+        df_arc_producer['Service time window'] = df_arc_producer[
+                                                     'time_start'].astype(
+            str).str[10:] + ' - ' + df_arc_producer['time_end'].astype(
+            str).str[10:]
+        df_arc_producer = df_arc_producer.loc[
+            df_arc_producer['activity_type'] != 'travel']
+        df_inv_arcs = df_arc_producer[
+                          'arc_category'] == 'required_edge_inverse'
+        df_arc_producer.loc[df_inv_arcs, 'arc_index'] = df_arc_producer[
+            'arc_index_inv']
+        df_arc_producer = df_arc_producer[
+            ['route', 'subroute', 'arc_index', 'activity_type',
+             'Service time window', 'time']]
+        df_arc_producer = pd.merge(df_arc_producer,
+                                   self.producer_demand,
+                                   left_on='arc_index', right_on='arc_index',
+                                   how='left')
+        df_arc_producer = df_arc_producer.merge(
+            self.collection_schedule)
+        df_arc_producer = df_arc_producer.reset_index(drop=True)
+        df_arc_producer['index_temp'] = df_arc_producer.index
+        route_kpi = df_arc_producer.loc[df_arc_producer['category'].isna()][
+            ['arc_index', 'Vehicle', 'route', 'subroute', 'Collection day',
+             'index_temp', 'time']]
+        df_arc_producer = df_arc_producer.dropna(subset=['category'])
+
+        if not bc:
+
+            df_arc_producer = df_arc_producer[
+                ['Vehicle', 'route', 'Collection day', 'Service time window',
+                 'category', 'block_number', 'street_name', 'Postal Code',
+                 'description / building',
+                 'planning_zone', 'demand', 'total units',
+                 'total_people', 'index_temp']]
+
+        else:
+            df_arc_producer = df_arc_producer[
+                ['Vehicle', 'route', 'Collection day', 'Service time window',
+                 'Machine Type', 'BC Blk No', 'Street Name', 'Postal Code',
+                 'Type of BC',
+                 'Twon Council', 'demand', 'Total units',
+                 'No of Blks Served', 'index_temp']]
+
+        pois = self.key_pois.drop_duplicates(['Postal Code'])
+        pois.loc[pois['type'] != 'depot', 'type'] = 'offload'
+        route_kpi_add = route_kpi.merge(pois, left_on='arc_index',
+                                        right_on='arc_index', how='left')
+
+
+        if not bc:
+
+            route_kpi_add = route_kpi_add.rename(columns={
+                'BLK_NO': 'block_number',
+                'ROAD_NAME': 'street_name'})
+            route_kpi_add['Machine Type'] = route_kpi_add['description']
+            route_kpi_add['Service time window'] = route_kpi_add['type'] + ' ' + \
+                                                   route_kpi_add['time'].astype(
+                                                       str).str[10:]
+            route_kpi_add = route_kpi_add[
+                ['Vehicle', 'route', 'Collection day', 'Service time window',
+                 'category', 'block_number', 'street_name', 'Postal Code',
+                 'index_temp']]
+
+        else:
+
+            route_kpi_add = route_kpi_add.rename(columns={
+                'BLK_NO': 'BC Blk No',
+                'ROAD_NAME':  'Street Name'})
+            route_kpi_add['Machine Type'] = route_kpi_add['description']
+            route_kpi_add['Service time window'] = route_kpi_add[
+                                                       'type'] + ' ' + \
+                                                   route_kpi_add[
+                                                       'time'].astype(
+                                                       str).str[10:]
+            route_kpi_add = route_kpi_add[
+                ['Vehicle', 'route', 'Collection day', 'Service time window',
+                 'Machine Type', 'BC Blk No', 'Street Name', 'Postal Code',
+                 'index_temp']]
+
+        df_arc_final = pd.concat([df_arc_producer, route_kpi_add],
+                                 ignore_index=True).sort_values(['index_temp'])
+        df_arc_final = df_arc_final.reset_index(drop=True)
+        df_arc_final = df_arc_final.drop(columns=['index_temp'])
+
+        if not bc:
+            df_arc_final[['demand', 'total units', 'total_people']] = \
+            df_arc_final[
+                ['demand', 'total units', 'total_people']].fillna(0)
+            df_arc_final['demand'] = df_arc_final['demand'].round(2)
+            df_arc_final[['route', 'total units', 'total_people']] = \
+            df_arc_final[
+                ['route', 'total units', 'total_people']].astype(int)
+            df_arc_final['route'] = df_arc_final['route'] + 1
+            df_arc_final.columns = ['Vehicle', 'Route', 'Collection day',
+                                    'Service time window', 'Producer Category',
+                                    'Block number', 'Street name',
+                                    'Postal Code',
+                                    'Description / Building',
+                                    'Planning zone', 'Demand (kg)',
+                                    'Total units',
+                                    'Estimated residents']
+        else:
+            df_arc_final = df_arc_final.drop(columns=['Type of BC'])
+            df_arc_final[['demand', 'Total units',
+                     'No of Blks Served']] = df_arc_final[
+                ['demand', 'Total units',
+                     'No of Blks Served']].fillna(0)
+            df_arc_final['demand'] = df_arc_final['demand'].round(2)
+            df_arc_final[['route', 'demand', 'Total units',
+                     'No of Blks Served']] = df_arc_final[
+                ['route', 'demand', 'Total units',
+                     'No of Blks Served']].astype(int)
+            df_arc_final['route'] = df_arc_final['route'] + 1
+
+            df_arc_final.columns = ['Vehicle', 'Route', 'Collection day',
+                                    'Service time window', 'Machine Type',
+                                    'Block number', 'Street name', 'Postal Code',
+                                    'Planning zone', 'Demand (kg)', 'Total units',
+                                    'No of Blks Served']
+
+        self.producer_collection_schedule = df_arc_final.copy()
+        return self.producer_collection_schedule
+
+    def store_results(self,
+                      scenario_name,
+                      prod_select,
+                      route_sum_table,
+                      r):
+        self.df_solution_full.to_csv(
+            'scenario_full_routes/{} - Collection routes.csv'.format(
+                scenario_name), index=False)
+        prod_select.to_csv(
+            'scenario_producers/{} - Full service points.csv'.format(
+                scenario_name), index=False)
+        prod_select_disp = prod_select.drop(
+            columns=['geometry', 'geometry_arc', 'geometry_u',
+                     'geometry_arc_snap_point'])
+        prod_select_disp.to_csv(
+            'scenario_producers/{} - Service points.csv'.format(scenario_name),
+            index=False)
+        if self.producer_collection_schedule is not None:
+            self.producer_collection_schedule.to_csv('scenario_collection_schedule/{} - Collection schedule.csv'.format(scenario_name), index=False)
+        route_sum_table.to_csv(
+            'scenario_KPIs/{} - KPIs.csv'.format(scenario_name), index=False)
+
+        #self.write_KIP_to_excel(route_sum_table, scenario_name)
+
+        r.to_html(filename='scenario_maps_html/{} - Collection maps.html'.format(
+            scenario_name), offline=True, notebook_display=False)
+
+    def write_KIP_to_excel(self, route_sum_table, scenario_name):
+        short_column = scenario_name[:len('Collection setup ') + 2]
+        writer = pd.ExcelWriter('scenario_KPIs_xlsx/{} - KPIs.xlsx'.format(scenario_name),
+                                engine='xlsxwriter')
+        route_sum_table.to_excel(writer, sheet_name=short_column, index=False)
+        workbook = writer.book
+        worksheet = writer.sheets[short_column]
+
+        bold = workbook.add_format({'bold': True})
+
+        my_format = workbook.add_format()
+        my_format.set_align('right')
+        _ = worksheet.set_column('E:Q', None, my_format)
+
+        my_format2 = workbook.add_format()
+        my_format2.set_align('center')
+        _ = worksheet.set_column('A:D', None, my_format2)
+
+        length_list = [len(x) for x in route_sum_table.columns]
+        for i, width in enumerate(length_list):
+            _ = worksheet.set_column(i, i, width)
+
+        writer.save()
