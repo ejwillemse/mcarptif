@@ -60,7 +60,7 @@ def gen_solution(info, reduce_trips=True, test_solution=False):
     return solution
 
 
-def initiate_local_search(info, test_solution=False):
+def initiate_local_search(info, test_solution=False, nnFrac=1):
     """Initiate the Local Search algorithm with specific parameter values.
 
     Arg:
@@ -72,7 +72,9 @@ def initiate_local_search(info, test_solution=False):
     Return:
         improve (class): solution improvement class
     """
-    improve = LS.LS_MCARPTIF(info, info.nn_list, testAll=test_solution,
+    improve = LS.LS_MCARPTIF(info,
+                             info.nn_list,
+                             testAll=test_solution,
                              autoInvCosts=False)
 
     # Defaults
@@ -90,12 +92,12 @@ def initiate_local_search(info, test_solution=False):
     improve.setScreenPrint(True)
 
     # Non default
-    improve.nnFrac = 1  # Set nearest neighbor fraction, to be changed.
+    improve.nnFrac = nnFrac  # Set nearest neighbor fraction, to be changed.
 
     return improve
 
 
-def initiate_tabu_search(info, test_solution):
+def initiate_tabu_search(info, test_solution, nnFrac=1):
     """Initiate the Tabu Search algorithm with specific parameter values.
 
     Arg:
@@ -107,7 +109,9 @@ def initiate_tabu_search(info, test_solution):
     Return:
         improve (class): solution improvement class
     """
-    improve = LS.TabuSearch_MCARPTIF(info, info.nn_list, testAll=test_solution)
+    improve = LS.TabuSearch_MCARPTIF(info,
+                                     info.nn_list,
+                                     testAll=test_solution)
 
     # Defaults
     compoundMoves = True
@@ -120,7 +124,7 @@ def initiate_tabu_search(info, test_solution):
     improve.suppressOutput = False
 
     # Non-default
-    nnFrac = 1
+    nnFrac = nnFrac
     maxNonImprovingMoves = 50
 
     improve.setTabuSearchParameters(compoundMoves,
@@ -142,7 +146,9 @@ def clear_improvement_setup(improvement_procedure):
 def improve_solution(info,
                      initial_solution,
                      improvement='LS',
-                     test_solution=False):
+                     test_solution=False,
+                     nnFracLS=1,
+                     nnFracTS=1):
     """Improve a give initial solution using metaheuristics.
 
     Arg:
@@ -162,9 +168,9 @@ def improve_solution(info,
             problem instance.
     """
     if improvement == 'LS':
-        improver = initiate_local_search(info, test_solution)
+        improver = initiate_local_search(info, test_solution, nnFracLS)
     if improvement == 'TS':
-        improver = initiate_tabu_search(info, test_solution)
+        improver = initiate_tabu_search(info, test_solution, nnFracTS)
     solution = improver.improveSolution(initial_solution)
     clear_improvement_setup(improver)
 
@@ -174,7 +180,9 @@ def improve_solution(info,
 def solve_instance(file_path,
                    improve=None,
                    reduce_initial_trips=True,
-                   test_solution=False):
+                   test_solution=False,
+                   nnFracLS=1,
+                   nnFracTS=1):
     """Generate and improve a solution from a raw instance file.
 
     Arg:
@@ -234,7 +242,9 @@ def solve_instance(file_path,
         solution = improve_solution(info,
                                     solution,
                                     improve,
-                                    test_solution=test_solution)
+                                    test_solution=test_solution,
+                                    nnFracLS=nnFracLS,
+                                    nnFracTS=nnFracTS)
 
     return solution
 
@@ -249,7 +259,9 @@ def solve_store_instance(file_path,
                          info=None,
                          test_solution=True,
                          debug_test_solution=False,
-                         tollerance=0.1):
+                         tollerance=0.1,
+                         nnFracLS=1,
+                         nnFracTS=1):
     """Solve a specific problem instance and store the ,partial and full solution
     in the same folder as the raw input data. Two solution files are stored:
     one ending with `_sol_[solver].csv` and `_sol_full_[solver].csv`, where
@@ -287,8 +299,13 @@ def solve_store_instance(file_path,
         write_results (bool): whether the solution should be written to a file.
         info (class): problem info loaded by `load_instance`. Can be used instead
             of loading the info repeatedly.
-        test_solution (bool): whether the solution should be tested. Can slow
+        test_solution (bool): whether the final solution should be tested. Can slow
             down the algorithm but useful for debugging.
+        debug_test_solution (bool): whether each move of LS should be tested,
+            slows down execution.
+        tollerance (float): tollerance for testing, due to float rounding.
+        nnFrac (float): fraction of nearest neighbours to use, speeds up LS
+            but reduces solution quality.
 
     Returns solution_df (pandas df): full or partial solution data frame
 
@@ -497,7 +514,9 @@ def solve_store_instance(file_path,
                             test_solution=debug_test_solution)
     if improve is not None:
         solution = improve_solution(info, solution, improve,
-                                    test_solution=debug_test_solution)
+                                    test_solution=debug_test_solution,
+                                    nnFracLS=nnFracLS,
+                                    nnFracTS=nnFracTS)
         ext += improvement_ext[improve]
 
     if test_solution:
