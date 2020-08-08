@@ -14,9 +14,15 @@ History:
     @author: Elias J. Willemse
     @contact: ejwillemse@gmail.com
 """
+from visualise.customer_plots import color_df
 import pandas as pd
+import webcolors
+import pydeck as pdk
 from osmnx_network_extract.create_instance import test_column_exists, \
     create_arc_id
+
+def color_name(name='red'):
+    return list(webcolors.name_to_rgb(name))
 
 
 class CreateRoutesGeo:
@@ -410,6 +416,123 @@ def summarise_routes_and_activities(df):
     return full_sum
 
 
-def plot_routes(df, infrastructure, producers, producers_rest):
+def plot_routes(network_info,
+                key_pois,
+                mapbox_key,
+                customers=None,
+                cust_size=None):
     """All routes, customers and infrastructure to be plotted."""
-    pass
+    routes_deck = network_info.df_solution_full
+
+
+    routes_deck = routes_deck.fillna('')
+    routes_deck_disp = routes_deck[['route',
+                                    'activity_type',
+                                    'arc_category',
+                                    'arc_index',
+                                    'geometry']]
+
+    routes_deck_disp = color_df(routes_deck_disp, group='route', opacity=0.5)
+
+    routes_deck_disp_collect = routes_deck_disp.loc[
+        routes_deck_disp['activity_type'] == 'collect']
+    routes_deck_disp_travel = routes_deck_disp.loc[
+        routes_deck_disp['activity_type'] != 'collect']
+
+    viewport = {"longitude": 103.772207, 'latitude': 1.368659, "zoom": 11.5}
+
+    key_pois_plot = key_pois.drop_duplicates(['description'])
+    key_pois_plot_map = key_pois_plot[
+        ['description', 'type', 'lat', 'lon', 'Postal Code', 'ADDRESS']]
+    key_pois_plot_map_text = key_pois_plot_map.copy()
+    key_pois_plot_map_text['lon'] = key_pois_plot_map_text['lon'] - 0.0015
+    key_pois_plot_map_text['coordinates'] = '[' + key_pois_plot_map[
+        'lon'].astype(str) + ',' + key_pois_plot_map['lat'].astype(str) + ']'
+
+    geo_layer_service = pdk.Layer("GeoJsonLayer",
+                                  id='network_service',
+                                  data=routes_deck_disp_collect,
+                                  pickable=True,
+                                  stroked=True,
+                                  filled=False,
+                                  extruded=False,
+                                  wireframe=False,
+                                  line_width_min_pixels=2,
+                                  get_line_width=2,
+                                  get_line_color='color')
+
+    geo_layer_travel = pdk.Layer("GeoJsonLayer",
+                                 id='network_travel',
+                                 data=routes_deck_disp_travel,
+                                 pickable=True,
+                                 stroked=True,
+                                 filled=False,
+                                 extruded=False,
+                                 wireframe=False,
+                                 line_width_min_pixels=1.25,
+                                 get_line_width=1.25,
+                                 get_line_color='color')
+
+    if customers is not None:
+        customer = customers.copy()
+        customer = customers.fillna('')
+        customer = customer[['category', 'lon', 'lat', 'Postal Code']]
+
+        if cust_size is None:
+            cust_size = {'radiusMinPixels': 1,
+                         'radiusMaxPixels': 4,
+                         'get_radius': 2,
+                         'color': 'white'}
+
+        customers_layer = pdk.Layer('ScatterplotLayer',
+                             data=customer,
+                             id='POIs',
+                             pickable=True,
+                             opacity=0.75,
+                             stroked=False,
+                             filled=True,
+                             radiusMinPixels=cust_size['radiusMinPixels'],
+                             radiusMaxPixels=cust_size['radiusMaxPixels'],
+                             get_radius=cust_size['get_radius'],
+                             get_fill_color=color_name(cust_size['color']),
+                             get_position='[lon, lat]')
+
+    if_layer = pdk.Layer('ScatterplotLayer',
+                         data=key_pois_plot_map,
+                         id='POIs',
+                         pickable=True,
+                         opacity=1,
+                         stroked=False,
+                         filled=True,
+                         radiusMinPixels=4,
+                         radiusMaxPixels=4,
+                         get_radius=10,
+                         get_fill_color=color_name('white'),
+                         get_position='[lon, lat]')
+
+    infrastructure_text = pdk.Layer("TextLayer",
+                                    data=key_pois_plot_map_text,
+                                    id='infra_text',
+                                    pickable=True,
+                                    get_position="[lon,lat]",
+                                    get_text="description",
+                                    get_size=22,
+                                    get_color=[255, 255, 255],
+                                    get_angle=0,
+                                    # Note that string constants in pydeck are explicitly passed as strings
+                                    # This distinguishes them from columns in a data set
+                                    get_text_anchor="'end'",
+                                    get_alignment_baseline="'center'")
+
+    plot_layers = [geo_layer_travel, geo_layer_service, if_layer, infrastructure_text]
+    if customers is not None:
+        plot_layers.append(customers_layer)
+
+    r = pdk.Deck(
+        layers=plot_layers,
+        initial_view_state=viewport,
+        mapbox_key=mapbox_key,
+        height=700,
+        width=1250)
+
+    return r

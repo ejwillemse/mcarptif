@@ -29,7 +29,7 @@ def color_df(df,
         df = pd.merge(df, color_frame, how='left', left_on=group, right_on=group)
     elif col_rule == 'one':
         col_pal = perc_to_rgb(sns.color_palette(palet, 1))
-        df['color'] = col_pal  * len(df)
+        df['color'] = col_pal * len(df)
     elif col_rule == 'unique':
         n_groups = len(df)
         col_pal = perc_to_rgb(sns.color_palette(palet, n_groups))
