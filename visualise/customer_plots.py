@@ -6,8 +6,6 @@ import pandas as pd
 
 
 MAX_RGB = 255
-
-
 def perc_to_rgb(color_list):
     color_full = [[int(col_ind * 255) for col_ind in color_row] for color_row in color_list]
     return color_full
