@@ -13,12 +13,15 @@ Data needed of the network for shortest path calculations:
     path calculations invalid.
 """
 import pandas as pd
-import numpy as np
+import networkx as nx
 import logging
 import os
 import tables as tb
 import converter.shortest_paths as shortest_paths
 from time import perf_counter as clock
+from scipy.sparse.csgraph import shortest_path
+import numpy as np
+import osmnx as ox
 
 
 def key_columns_exists(df, required_columns):
@@ -77,6 +80,21 @@ def return_successor_arcs_indices(u, v):
 
     successor_list = np.array([np.where(x == u_np)[0] for x in v_np])
     return successor_list
+
+
+def check_if_pytable_exists(path, overwrite=False):
+    file_exists = os.path.isfile(path)
+    if overwrite is False and file_exists:
+        logging.error('File {} already exists.'.format(path))
+        raise ValueError
+    elif file_exists:
+        logging.warning('File {} will be overwritten'.format(path))
+        a = input("Press 'y' to continue")
+        if a != 'y':
+            logging.error("Entered `{}`. Unable to confirm if "
+                          "the file should be overwritten, "
+                          "so aborting".format(a))
+            raise ValueError
 
 
 class Network:
@@ -191,18 +209,7 @@ class Network:
             ValueError: if file already exists and it shouldn't be
                 over-written.
         """
-        file_exists = os.path.isfile(path)
-        if overwrite is False and file_exists:
-            logging.error('File {} already exists.'.format(path))
-            raise ValueError
-        elif file_exists:
-            logging.warning('File {} will be overwritten'.format(path))
-            a = input("Press 'y' to continue")
-            if a != 'y':
-                logging.error("Entered `{}`. Unable to confirm if "
-                              "the file should be overwritten, "
-                              "so aborting".format(a))
-                raise ValueError
+        check_if_pytable_exists(path, overwrite)
 
         if self.arc_successor_index_list is None:
             logging.error('Successor index is required and can be generated '
@@ -435,3 +442,131 @@ class ShortestPath:
                                 "Shortest path calculation time (seconds)")
             logging.info('Done')
             logging.info('h5file')
+
+
+class ShortestPathNodes:
+    """Calculate the shortest node-to-node path on a networkx graph.
+
+    Road networks are sparse graphs. Accordingly, sparse graph calculations
+    are used.
+    """
+
+    def __init__(self, G, weight='length', overwrite=False):
+        """
+        Args:
+            G (networkx Graph G): networkx graph, with nodes, edges and the
+                weight column to use.
+            weight (str): weight column to use.
+            overwrite (bool): if existing files should be overwritten
+        """
+        self.G = G
+        self.node_list, self.edge_list = ox.graph_to_gdfs(G)
+        self.weight = weight
+        self.overwrite = overwrite
+        self.sm = None
+
+    def calc_sparse_matrix(self):
+        """Set sparse matrix, needed for SP calculations"""
+        self.sm = nx.convert_matrix.to_scipy_sparse_matrix(self.G,
+                                                           weight=self.weight)
+
+    def calc_shortest_path_pytable(self,
+                                   path,
+                                   description=None,
+                                   indices=None):
+        """Calculate the shortest path and set the distance matrix in pytable.
+
+        Arg:
+            path (str): path to shortest-path and predecessor matrix,
+                stored as a pytable.
+            description (str): accompanying description, such as the area name,
+                date, etc.
+            overwrite (bool): if an existing pytable file should be
+                overwritten.
+            indices (list): indices to which the SP should be calculated.
+                Can be used to split-up the SP calculations.
+
+        See: https://stackoverflow.com/questions/19116917/merging-several-hdf5-files-into-one-pytable
+        """
+        check_if_pytable_exists(path, self.overwrite)
+        t_start = clock()
+        n_nodes = self.G.number_of_nodes()
+        if indices is not None:
+            n_nodes_from = indices.shape[0]
+        else:
+            n_nodes_from = n_nodes
+        logging.info('Generating {}x{} distance and predecessor matrix'.format(n_nodes_from, n_nodes))
+        with tb.open_file(path, 'w') as h5file:
+            logging.info(
+                'Writing shortest path info to {}'.format(path))
+            filters = tb.Filters(complevel=1)
+
+            sp_info = h5file.create_group(h5file.root, 'shortest_path_info',
+                                          'Shortest path info for network')
+
+            if description is not None:
+                h5file.create_array(sp_info,
+                                    'info',
+                                    np.array([description]),
+                                    "Network info")
+
+            if self.sm is None:
+                sm = nx.convert_matrix.to_scipy_sparse_matrix(self.G,
+                                                              weight=self.weight)
+            else:
+                sm = self.sm
+
+            logging.info('Starting shortest path calculations')
+            cost_matrix_calc, predecessor_matrix_calc = shortest_path(csgraph=sm,
+                                                                      directed=True,
+                                                                      return_predecessors=True,
+                                                                      indices=indices)
+
+            h5file.create_carray(sp_info, 'cost_matrix', None, None,
+                title='shortest path cost matrix between all node indices',
+                                               filters=filters,
+                                               obj=cost_matrix_calc)
+
+            h5file.create_carray(sp_info, 'predecessor_matrix', None, None,
+                title='shortest path predecessor index matrix between all node indices',
+                                                      filters=filters,
+                                                      obj=predecessor_matrix_calc)
+
+            logging.info('Shortest path info added.')
+
+            t_end = clock() - t_start
+            self.shortest_path_processing_time = t_end
+            logging.info('Shortest path calculations took {} seconds'.format(
+                round(t_end, 0)))
+
+            h5file.create_array(sp_info, 'calculation_time', np.array([t_end]),
+                                "Shortest path calculation time (seconds)")
+
+            h5file.create_array(sp_info, 'matrix_size', cost_matrix_calc.shape,
+                                "Matrix size")
+
+            logging.info('Done')
+            logging.info('h5file')
+
+    def split_shortest_path_calculations(self,
+                                         path,
+                                         block_size=10000,
+                                         description=None,
+                                         overwrite=False,
+                                         indices=None):
+        """Split shortest path calculations into blocks
+
+        Arg:
+            path (str): path to shortest-path and predecessor matrix,
+                stored as a pytable.
+            block_size (int): size of each block
+            description (str): accompanying description, such as the area name,
+                date, etc.
+            overwrite (bool): if an existing pytable file should be
+                overwritten.
+            indices (list): indices to which the SP should be calculated.
+                Can be used to split-up the SP calculations.
+
+        See: https://stackoverflow.com/questions/19116917/merging-several-hdf5-files-into-one-pytable
+        """
+        pass
