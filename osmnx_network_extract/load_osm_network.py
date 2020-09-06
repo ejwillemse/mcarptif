@@ -101,7 +101,7 @@ def load_network(location='Singapore'):
             the network.
     """
     custom_filter = return_customer_filter()
-    G = ox.graph_from_place(query='Singapore', custom_filter=custom_filter)
+    G = ox.graph_from_place(query=location, custom_filter=custom_filter)
     return G
 
 
