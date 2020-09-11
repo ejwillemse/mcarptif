@@ -31,6 +31,7 @@ from converter.load_data import ConvertedInputs
 from converter.solution_converter import convert_df
 from converter.solution_converter import convert_df_full
 from converter.solution_converter import write_solution_df
+from copy import deepcopy
 import logging
 
 
@@ -522,6 +523,86 @@ def solve_store_instance(file_path,
     if test_solution:
         tst2 = TestCLARPIFSolution(info, solution, tollerance=tollerance)
         tst2.testCLARPIF()
+
+    solution_df = convert_df(info, solution)
+    conv = ConvertedInputs(file_path)
+    if out_path is None:
+        out_path = conv.folder_path + conv.file_name
+    else:
+        out_path += conv.file_name
+
+    if write_results:
+        output_file = out_path + '_sol_' + ext + '.csv'
+        print('Writing encoded solution to {0}'.format(output_file))
+        write_solution_df(solution_df, output_file, overwrite)
+
+    if full_output is True:
+        solution_df_full = convert_df_full(info, solution_df)
+
+        if write_results:
+            output_file_full = out_path + '_sol_full_' + ext + '.csv'
+            print('Writing full solution to {0}'.format(output_file_full))
+            write_solution_df(solution_df_full, output_file_full, overwrite)
+
+        return solution_df_full
+
+    return solution_df
+
+
+def solve_instance_circular(file_path,
+                         out_path=None,
+                         improve=None,
+                         reduce_initial_trips=True,
+                         full_output=True,
+                         overwrite=True,
+                         write_results=True,
+                         info=None,
+                         test_solution=True,
+                         debug_test_solution=False,
+                         tollerance=0.1,
+                         nnFracLS=1,
+                         nnFracTS=1):
+    improvement_ext = {'LS' : '_local_search', 'TS' : '_tabu_search'}
+    ext = 'ps'
+
+    if info is None:
+        info = load_instance(file_path)
+    else:
+        logging.info('Problem info supplied. Directly proceeding to solve problem.')
+
+    solution = gen_solution(info, reduce_initial_trips,
+                            test_solution=debug_test_solution)
+    if improve is not None:
+        solution = improve_solution(info, solution, improve,
+                                    test_solution=debug_test_solution,
+                                    nnFracLS=nnFracLS,
+                                    nnFracTS=nnFracTS)
+        ext += improvement_ext[improve]
+
+    if test_solution:
+        tst2 = TestCLARPIFSolution(info, solution, tollerance=tollerance)
+        tst2.testCLARPIF()
+
+    n = solution['nVehicles']
+    for i in range(n):
+        route = solution[i]
+        trips = []
+        for trip in route['Trips']:
+            n_arcs = len(trip)
+            if trip[-1] == 0 and trip[0] == 0:
+                trip = [trip[0]] + trip[1:n_arcs - 2] + trip[
+                                                        1:n_arcs - 2] + trip[
+                                                                        n_arcs - 2:]
+            elif trip[-1] != 0 and trip[0] == 0:
+                trip = [trip[0]] + trip[1:n_arcs - 1] + trip[1:n_arcs - 1]
+            elif trip[-1] != 0 and trip[0] != 0:
+                trip = trip[:n_arcs - 1] + trip[:n_arcs - 1]
+            elif trip[-1] == 0 and trip[0] != 0:
+                trip = trip[:n_arcs - 2] + trip[:n_arcs - 2] + trip[
+                                                               1:n_arcs - 2] + trip[
+                                                                               n_arcs - 2:]
+            trips.append(deepcopy(trip))
+        solution[i]['Trips'] = deepcopy(trips)
 
     solution_df = convert_df(info, solution)
     conv = ConvertedInputs(file_path)

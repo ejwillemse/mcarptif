@@ -383,12 +383,17 @@ class NetworkCode:
             ~arc_closest, 'dist_u']
         return df
 
-    def find_nearest_collection_point(self, dist=None):
+    def find_nearest_collection_point(self,
+                                      dist=None,
+                                      snap_arcs=True,
+                                      key_merge=False):
         """Find the nearest collection points, nodes or edges.
 
         Arg:
-            dist (float): tollerance, in meters, since we convert to xy,
+            dist (float): tolerance, in meters, since we convert to xy,
                 of snapping.
+            snap_arcs (bool): snap point to nearest arc, can be disabled to
+                speed up calculations.
         """
         df_fit = self.df.copy()
         network = self.df_network_filter.copy()
@@ -417,14 +422,22 @@ class NetworkCode:
 
         u = edge_assign[:, 0]
         v = edge_assign[:, 1]
+        k = edge_assign[:, 2]
         df_fit['arc_u'] = u
         df_fit['arc_v'] = v
-        df_fit = create_arc_id(df_fit, 'arc_id', 'arc_u', 'arc_v')
+        if key_merge:
+            df_fit['arc_key'] = k
+            df_fit = create_arc_id(df_fit,
+                                   'arc_id',
+                                   'arc_u',
+                                   'arc_v',
+                                   'arc_key')
         df_fit = self.assign_closest_edge_vertex(df_fit)
         network = network.rename(columns={'geometry': 'geometry_arc'})
         df_fit = df_fit.merge(network[['arc_id', 'geometry_arc']], how='left')
-        df_fit = self.snap_customers(df_fit)
-        df_fit = self.find_best_collection(df_fit)
+        if snap_arcs:
+            df_fit = self.snap_customers(df_fit)
+            df_fit = self.find_best_collection(df_fit)
         self.df_collection_points = df_fit.copy()
 
     def merge_network(self):
@@ -452,3 +465,14 @@ class NetworkCode:
     def network_to_points(self):
         logging.info('Convert geometry to geom-point objects.')
         self.df_network = geom_to_points(self.df_network)
+
+
+def prepare_node_routing(node_list, edge_list):
+    node_list['u'] = node_list.index
+    node_list = node_list.reset_index(drop=True)
+    node_list['index'] = node_list.index
+    edge_list['u-v'] = edge_list['u'].astype(int).astype(str) + '-' + \
+                       edge_list['v'].astype(int).astype(str)
+    edge_list['arc_index'] = edge_list.index
+    edge_list['arc_id'] = edge_list['u'].astype(str) + '-' + edge_list['v'].astype(str) + '-' + edge_list['key'].astype(str)
+    return node_list, edge_list
