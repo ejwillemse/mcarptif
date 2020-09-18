@@ -177,13 +177,7 @@ class RouteSummary:
         return substrip_summary
 
     def route_trip_time_summary_bar(self):
-        solution_df = self.solution_df.copy()
-        solution_df_travel = solution_df[
-            ['route', 'total_traversal_time_to_activity']]
-        solution_df_travel['route'] = solution_df_travel['route']
-        solution_df_travel.columns = ['route', 'activity_time']
-        solution_df_travel['activity_type'] = 'travel'
-        solution_df = pd.concat([solution_df, solution_df_travel])
+        solution_df = self.solution_df
         solution_df = solution_df.groupby(['route', 'activity_type']).agg(activity_time=('activity_time', 'sum')).reset_index()
         solution_df['activity_time'] = solution_df['activity_time'] / self.cost_conv
         solution_df = solution_df.loc[solution_df['activity_type'].isin(['collect', 'travel', 'offload'])]
@@ -198,12 +192,6 @@ class RouteSummary:
 
     def route_trip_distance_summary_bar(self):
         solution_df = self.solution_df.copy()
-        solution_df_travel = solution_df[
-            ['route', 'total_traversal_time_to_activity']]
-        solution_df_travel['route'] = solution_df_travel['route']
-        solution_df_travel.columns = ['route', 'activity_time']
-        solution_df_travel['activity_type'] = 'travel'
-        solution_df = pd.concat([solution_df, solution_df_travel])
         solution_df = solution_df.groupby(['route', 'activity_type']).agg(activity_distance=('length', 'sum')).reset_index()
         solution_df['activity_distance'] = solution_df['activity_distance'] / self.dist_conv
         solution_df = solution_df.loc[solution_df['activity_type'].isin(['collect', 'travel'])]
