@@ -86,7 +86,7 @@ def return_customer_filter():
     drive_service_all = '["area"!~"yes"]["highway"!~"cycleway|footway|path|pedestrian|steps|track|corridor|elevator|escalator|proposed|construction|bridleway|abandoned|platform|raceway"]["motor_vehicle"!~"no"]["motorcar"!~"no"]'
     exclude_emergency_services = '["service"!~"emergency_access"]'
     exclude_custom_services = '["access"!~"private"]["service"!~"parking|parking_aisle|private|emergency_access"]'
-    exclude_parking_privarte_emergency = '["access"!~"private"]["service"!~"parking|private|emergency_access"]'
+    exclude_parking_private_emergency = '["access"!~"private"]["service"!~"parking|private|emergency_access"]'
     exclude_private = '["access"!~"private"]["service"!~"private"]'
     custom_filter = drive_service_all + exclude_emergency_services
     return custom_filter
