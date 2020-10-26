@@ -208,7 +208,7 @@ class RouteSummary:
         solution_df = self.solution_df.copy()
         solution_df = solution_df.rename(columns={'activity_id': 'req_arc_index'})
         solution_df = solution_df.loc[solution_df['activity_type'] != 'depart_if']
-        solution_df = solution_df.loc[solution_df['activity_type'] != 'depart_if']
+        #solution_df = solution_df.loc[solution_df['activity_type'] != 'depart_if']
         solution_df.loc[solution_df['activity_type'] == 'offload', 'total_traversal_time_to_activity'] = np.nan
         solution_df['total_traversal_time_to_activity'] = solution_df['total_traversal_time_to_activity'].fillna(method='ffill')
         solution_df = solution_df.loc[solution_df['activity_type'] != 'arrive_if']

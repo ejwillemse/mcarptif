@@ -627,3 +627,54 @@ def solve_instance_circular(file_path,
         return solution_df_full
 
     return solution_df
+
+
+def solve_tweak_solution(file_path,
+                         out_path=None,
+                         improve=None,
+                         reduce_initial_trips=True,
+                         full_output=True,
+                         overwrite=True,
+                         write_results=True,
+                         info=None,
+                         test_solution=True,
+                         debug_test_solution=False,
+                         tollerance=0.1,
+                         nnFracLS=1,
+                         nnFracTS=1):
+    """Solve a solution and return raw lists for tweaking."""
+    improvement_ext = {'LS' : '_local_search', 'TS' : '_tabu_search'}
+    ext = 'ps'
+
+    if info is None:
+        info = load_instance(file_path)
+    else:
+        logging.info('Problem info supplied. Directly proceeding to solve problem.')
+
+    solution = gen_solution(info, reduce_initial_trips,
+                            test_solution=debug_test_solution)
+    if improve is not None:
+        solution = improve_solution(info, solution, improve,
+                                    test_solution=debug_test_solution,
+                                    nnFracLS=nnFracLS,
+                                    nnFracTS=nnFracTS)
+        ext += improvement_ext[improve]
+
+    if test_solution:
+        tst2 = TestCLARPIFSolution(info, solution, tollerance=tollerance)
+        tst2.testCLARPIF()
+    return solution
+
+
+def build_tweak_solution(solution,
+                         full_output=True,
+                         info=None):
+    """Build solution based on tweaked solution list"""
+    solution_df = convert_df(info, solution)
+
+    if full_output is True:
+        solution_df_full = convert_df_full(info, solution_df)
+
+        return solution_df_full
+
+    return solution_df
