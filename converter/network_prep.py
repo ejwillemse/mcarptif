@@ -492,7 +492,7 @@ class ShortestPathNodes:
         t_start = clock()
         n_nodes = self.G.number_of_nodes()
         if indices is not None:
-            n_nodes_from = indices.shape[0]
+            n_nodes_from = len(indices)
         else:
             n_nodes_from = n_nodes
         logging.info('Generating {}x{} distance and predecessor matrix'.format(n_nodes_from, n_nodes))
