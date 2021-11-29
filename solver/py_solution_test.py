@@ -186,7 +186,7 @@ class TestCLARPIFSolution(object):
             servicecost += self.info.serveCostL[arc]
             cost += self.info.d[arc][arc_next] + self.info.serveCostL[arc]
             load += self.info.demandL[arc]
-            
+
         cost += self.info.serveCostL[trip[-1]] + self.info.dumpCost
         deadhead += self.info.dumpCost
         servicecost += self.info.serveCostL[trip[-1]]
@@ -195,7 +195,7 @@ class TestCLARPIFSolution(object):
         if not cost - self.tollerance <= trip_cost <= cost + self.tollerance:
             self.Error = self.costError = True
             logging.error('Cost Error')
-            logging.error('Incorrect trip cost - Actual: %i \t Specified: %i' %(trip_cost, cost))
+            logging.error('Incorrect trip cost - Actual: %i \t Specified: %i' %(cost, trip_cost))
             raise ValueError
         if not deadhead - self.tollerance <= trip_dead_head_cost <= deadhead + self.tollerance:
             self.Error = self.costError = True
@@ -294,6 +294,7 @@ class TestCLARPIFSolution(object):
                                route_solution['TripDeadheads'][i],
                                route_solution['TripServices'][i],
                                route_solution['TripLoads'][i])
+            print(f"Test trip {i}")
             (cost, deadhead, servicecost, load) = self.testtripcosts(route_solution['Trips'][i], route_cost_info)
             route_cost += cost
             route_deadhead += deadhead
@@ -343,6 +344,7 @@ class TestCLARPIFSolution(object):
         total_cost = 0
         servicedarcs = deepcopy(list(self.info.reqArcListActual))
         for i in range(nRoutes):
+            print(f"Test route {i}")
             (servicedarcs, total_cost) = self.testroute(self.solution[i], servicedarcs,total_cost)
         if servicedarcs:
             self.Error = self.serviceError = True

@@ -513,6 +513,7 @@ def solve_store_instance(file_path,
 
     solution = gen_solution(info, reduce_initial_trips,
                             test_solution=debug_test_solution)
+
     if improve is not None:
         solution = improve_solution(info, solution, improve,
                                     test_solution=debug_test_solution,

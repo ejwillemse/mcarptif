@@ -60,7 +60,7 @@ class NetworkExtract:
             arc_h5_path (str): path to arc info h5 file, with shortest path
                 info.
             round_cost (bool): whether costs should be rounded to integers.
-                Can causse issues with cost testing later.
+                Can cause issues with cost testing later.
             length_int (bool): convert arc length into integer
             key_pois (dataframe): key POI data frame.
         """
