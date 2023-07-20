@@ -110,7 +110,9 @@ or check-out the module directly in `solver/solve/solve.py` (it's the last modul
 
 ## Real application
 
-It would be great if someone wishes to use this for real route planning (check the license--- basically, you can do whatever you want, except hold me liable when things go wrong). From our experience, the biggest issue is not developing the routes, it's getting the input data required for these algorithms. The following information is required:
+The algorithms have been successfully incorporated and used for commercial purposes by Waste Labs (https://wastelabs.co/). The license of the code allows for others to do so as well (as per the license: basically, you can do whatever you want, except hold me liable when things go wrong). 
+
+A note, from our experience, the biggest issue is not developing the routes; it's getting the input data required for these algorithms. The following information is required:
 
 1. Vehicle capacity.
 2. Work duration limits.
